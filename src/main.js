@@ -1,5 +1,42 @@
-// Este es el punto de entrada de tu aplicacion
+// Importa las vistas
+import home from './Vistas/home';
+import login from './Vistas/login';
+import error from './Vistas/error';
+import mapa from './Vistas/mapa';
 
-import { myFunction } from './lib/index.js';
+const root = document.getElementById('root');
 
-myFunction();
+const routes = [
+  { path: '/', vista: home },
+  { path: '/Login', vista: login },
+  { path: '/error', vista: error },
+  { path: '/mapa', vista: mapa},
+];
+
+const defaultRoute = '/';
+
+function navigateTo(hash) {
+  const route = routes.find((routeFind) => routeFind.path === hash);
+
+  if (route && route.vista) {
+    window.history.pushState(
+      {},
+      route.path,
+      window.location.origin + route.path,
+    );
+    if (root.firstChild) {
+      while (root.firstChild) {
+        root.removeChild(root.lastChild);
+      }
+    }
+    root.append(...route.vista(navigateTo));
+  } else {
+    navigateTo('/error');
+  }
+}
+
+window.onpopstate = () => {
+  navigateTo(window.location.pathname);
+};
+
+navigateTo(window.location.pathname || defaultRoute);
