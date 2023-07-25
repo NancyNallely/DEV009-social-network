@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import {
-  getFirestore, doc, getDocs, collection, addDoc, query, where, limit,
+  getFirestore, getDocs, collection, query, where, limit,
 } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,5 +21,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
+
+// funcion para autenticar usuarios
+export async function autenticar(usuario, password) {
+  const consulta = query(collection(db, 'usuarios'), where('usuario', '==', usuario), where('password', '==', password), limit(1));
+  const resultado = await getDocs(consulta);
+  let datos;
+  resultado.forEach((documento) => {
+    datos = documento.data();
+  });
+  return datos;
+}

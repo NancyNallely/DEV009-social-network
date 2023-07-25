@@ -1,3 +1,17 @@
+import * as firebase from '../firebase.js';
+
+async function autenticarUsuario() {
+  const usuario = document.getElementById('usuario').value;
+  const password = document.getElementById('contraseña').value;
+  const resultado = await firebase.autenticar(usuario, password);
+  if (resultado) {
+    alert('bienvenido ' + resultado.usuario);
+    window.location.href = '/mapa';
+  } else {
+    alert('nombre de usuario o contraseña incorrectos');
+  }
+}
+
 function login(navigateTo) {
   const section = document.createElement('section');
   const logo = document.createElement('img');
@@ -23,9 +37,7 @@ function login(navigateTo) {
   buttonLogin.textContent = 'INGRESAR';
   buttonLogin.id = 'botonLogin';
   buttonLogin.className = 'ingreso';
-  buttonLogin.addEventListener('click', () => {
-    navigateTo('mapa.js');
-  });
+  buttonLogin.addEventListener('click', autenticarUsuario);
   section.append(logo);
   div.append(title, inputUsuario, inputContraseña, buttonLogin);
   pagina.push(section, div);
