@@ -1,6 +1,7 @@
 function registro(navigateTo) {
   const pagina = [];
   const section = document.createElement('section');
+  const div= document.createElement ("div");
   const title = document.createElement('h2');
   title.textContent = 'Bienvenidos a la ruta del sabor';
   const name = document.createElement('input');
@@ -22,9 +23,11 @@ function registro(navigateTo) {
   button.addEventListener('click', () => {
     navigateTo('/mapa');
   });
+  section.appendChild(div);
+  div.append(title, name, lastname, email, emailagain, newpassword, birthdate,button);
 
-  section.append(title, name, lastname, email, emailagain, newpassword, birthdate, button);
   section.id = 'registroSection'; // Agregamos un ID al elemento section creado
+  div.id="divregistro"
   pagina.push(section);
   return pagina;
 }

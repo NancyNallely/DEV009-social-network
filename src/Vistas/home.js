@@ -8,9 +8,6 @@ function mostrarMenu() {
 }
 
 function home(navigateTo) {
-  const bodyPrincipal = document.getElementById('bodyPrincipal');
-  const videoPrincipal = document.createElement('video');
-  const source = document.createElement('source');
   // Obtener referencia al elemento nav
   const barraNav = document.createElement('nav');
   // Crear los elementos de la navegación
@@ -26,16 +23,9 @@ function home(navigateTo) {
   const intro = document.createElement('p');
   const pagina = [];
 
-  videoPrincipal.id = 'videoPrincipal';
-  videoPrincipal.setAttribute('autoplay', 'autoplay');
-  videoPrincipal.setAttribute('loop', 'true');
-  videoPrincipal.setAttribute('muted', 'muted');
-  source.src = './imagenes/fondoComida.mp4';
-  source.type = 'video/mp4';
-
   barraNav.id = 'barraNav';
   logo.src = './imagenes/logo.jpg';
-  logo.id = 'logo';
+  logo.id = 'logohome';
   main.id = 'mainHome';
   div.id = 'divHome';
 
@@ -46,7 +36,7 @@ function home(navigateTo) {
   menu.addEventListener('click', mostrarMenu);
 
   bienvenida.textContent = 'BIENVENIDO(A)';
-  bienvenida.className = 'bienvenida';
+  bienvenida.className = 'Bienvenida';
   registro.textContent = 'Registrarse';
   registro.addEventListener('click', () => {
     navigateTo('/registro');
@@ -57,11 +47,9 @@ function home(navigateTo) {
     navigateTo('/Login');
   });
 
-  videoPrincipal.append(source);
-  bodyPrincipal.append(videoPrincipal);
   intro.textContent = 'Visitas México, Colombia o Perú pronto. Aqui podrás encontrar recomendaciones para comer según tu presupuesto y también compartirnos tus experiencias propias.';
   div.append(registro, ingreso);
-  barraNav.append(logo, bienvenida, div, menu);
+  barraNav.append( bienvenida, div, menu,logo);
   main.append(intro);
   pagina.push(barraNav);
   pagina.push(main);

@@ -1,14 +1,20 @@
 function mapa(navigateTo) {
-  const videoPrincipal = document.getElementById('videoPrincipal');
   const paginaPrincipal = document.getElementById('paginaPrincipal');
   const section = document.createElement('section');
   const buttonMexico = document.createElement('button');
+  buttonMexico.id="buttonMexico";
   const buttonPeru = document.createElement('button');
+  buttonPeru.id="buttonPeru";
   const buttonColombia = document.createElement('button');
+  buttonColombia.id="buttonColombia";
   const buttonCerrarSesion = document.createElement('button');
   const title = document.createElement('h1');
   const mapas = document.createElement('img');
   const pagina = [];
+
+  paginaPrincipal.id = 'paginaprincipalmapa'; // Agregamos un ID al elemento section creado
+  section.id="mapasection"
+  pagina.push(section);
 
   title.textContent = 'Selecciona tu país de destino';
   buttonMexico.textContent = 'México';
@@ -22,13 +28,8 @@ function mapa(navigateTo) {
     navigateTo('/mexico');
   });
   mapas.src = './imagenes/logo.jpg';
-
-  if (videoPrincipal) {
-    videoPrincipal.remove();
-  }
-  paginaPrincipal.className = 'fondoMapa';
-
-  section.append(buttonMexico, buttonPeru, buttonColombia, buttonCerrarSesion, mapas, title);
+  section.append( title,mapas, buttonMexico, buttonPeru, buttonColombia);
+  paginaPrincipal.append(section, buttonCerrarSesion);
   pagina.push(section);
   return pagina;
 }
