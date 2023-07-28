@@ -1,3 +1,8 @@
+/* eslint-disable prefer-template */
+/* eslint-disable func-names */
+/* eslint-disable no-alert */
+/* eslint-disable no-shadow */
+/* eslint-disable prefer-arrow-callback */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {
@@ -6,6 +11,7 @@ import {
 import {
   getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -41,7 +47,7 @@ export async function autenticar(usuario, password) {
 export async function autenticarGoogle() {
   await signInWithPopup(auth, new GoogleAuthProvider())
     .then((result) => {
-    // This gives you a Google Access Token. You can use it to access Google APIs.
+      // This gives you a Google Access Token. You can use it to access Google APIs.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
 
@@ -49,27 +55,30 @@ export async function autenticarGoogle() {
       const user = result.user;
       return result;
     }).catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       return error;
-    // ...
+      // ...
     });
 }
 
 export async function autenticarUsuarios(email, password) {
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-    // Signed in
+      // Signed in
       const user = userCredential.user;
-      return user;
+      alert('Bienvenido(a) ' + user.email);
+      setTimeout(function () {
+        window.location.href = './mapa';
+      }, 2000);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      return error;
+      alert(errorMessage);
     });
 }
 
@@ -78,11 +87,28 @@ export async function createUser(email, password) {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      return user;
+      // eslint-disable-next-line no-alert, prefer-template
+      // alert('Bienvenido(a) ' + user.email);
+      // eslint-disable-next-line func-names
+      setTimeout(function () {
+        window.location.href = './mapa';
+      }, 2000);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      return error;
+      alert(errorMessage);
     });
+}
+
+export async function cerrarSesion() {
+  await signOut(auth).then(() => {
+    // Cerro sesion satisfactoriamente
+    alert('Vuelve pronto');
+    setTimeout(function () {
+      window.location.href = '/';
+    }, 2000);
+  }).catch((error) => {
+    alert(error);
+  });
 }

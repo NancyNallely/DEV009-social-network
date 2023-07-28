@@ -1,42 +1,40 @@
 import * as firebase from '../firebase.js';
 import { crearModal } from '../lib/index.js';
 
-export function mostrarModal(titulo, txt) {
-  console.log(`titulo: ${titulo}`);
-  const encabezado = document.querySelector('#tituloModal');
-  encabezado.textContent = titulo;
-  location.href = '#openModal';
+function validarUsuario(usuario) {
+  // Expresión regular para validar el formato de un correo electrónico
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Comprueba si el correo coincide con el formato esperado
+  if (regex.test(usuario)) {
+    return true; // El correo es válido
+  }
+  alert('El correo electrónico ingresado no tiene un formato válido.'); // Muestra un mensaje de alerta
+  return false; // El correo no es válido
 }
 
-async function autenticarUsuario() {
+function autenticarUsuario() {
   const usuario = document.getElementById('usuario').value;
   const password = document.getElementById('contraseña').value;
   let mensaje = '';
   if (usuario === '') {
     mensaje += 'ingrese su usuario ';
+  } else{
+    validarUsuario(usuario);
   }
   if (password === '') {
     mensaje += 'ingrese su contraseña';
   }
-  alert(mensaje);
+  if (mensaje !== '') {
+    alert(mensaje);
+  }
+
   if (usuario !== '' && password !== '') {
-    const resultado = await firebase.autenticarUsuarios(usuario, password);
-    setTimeout(() => {
-      window.location.href = '/mapa';
-    }, 5000);
+    firebase.autenticarUsuarios(usuario, password);
   }
 }
 
-async function autenticarGoogle() {
-  const resultado = await firebase.autenticarGoogle();
-  if (resultado) {
-    // eslint-disable-next-line no-alert, prefer-template
-    alert('bienvenido (a)');
-    window.location.href = '/mapa';
-  } else {
-    // eslint-disable-next-line no-alert
-    alert('nombre de usuario o contraseña incorrectos');
-  }
+function autenticarGoogle() {
+  firebase.autenticarGoogle();
 }
 
 function login() {
