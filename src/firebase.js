@@ -12,7 +12,9 @@ import {
   getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
+import { async } from 'regenerator-runtime';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -88,7 +90,7 @@ export async function createUser(email, password) {
       // Signed in
       const user = userCredential.user;
       // eslint-disable-next-line no-alert, prefer-template
-      // alert('Bienvenido(a) ' + user.email);
+      alert('Bienvenido(a) ' + user.email);
       // eslint-disable-next-line func-names
       setTimeout(function () {
         window.location.href = './mapa';
@@ -111,4 +113,15 @@ export async function cerrarSesion() {
   }).catch((error) => {
     alert(error);
   });
+}
+
+export async function restaurarPassword(email) {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert('se ha enviado un correo con el enlace para restablecer la contraseña');
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
 }

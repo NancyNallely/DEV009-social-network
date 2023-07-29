@@ -1,5 +1,4 @@
 import * as firebase from '../firebase.js';
-import { crearModal } from '../lib/index.js';
 
 function validarUsuario(usuario) {
   // Expresión regular para validar el formato de un correo electrónico
@@ -18,7 +17,7 @@ function autenticarUsuario() {
   let mensaje = '';
   if (usuario === '') {
     mensaje += 'ingrese su usuario ';
-  } else{
+  } else {
     validarUsuario(usuario);
   }
   if (password === '') {
@@ -37,6 +36,11 @@ function autenticarGoogle() {
   firebase.autenticarGoogle();
 }
 
+function restablecerPassword() {
+  const email = prompt('Ingrese su email');
+  firebase.restaurarPassword(email);
+}
+
 function login() {
   const section = document.createElement('section');
   const logo = document.createElement('img');
@@ -47,6 +51,8 @@ function login() {
   const buttonLogin = document.createElement('button');
   const spanGoogle = document.createElement('span');
   const imagenGoogle = document.createElement('i');
+  const spanOlvido = document.createElement('span');
+  const olvidoPassword = document.createElement('a');
   const pagina = [];
 
   logo.src = './imagenes/logo.jpg';
@@ -65,6 +71,9 @@ function login() {
   imagenGoogle.className = 'fa fa-google';
   imagenGoogle.addEventListener('click', autenticarGoogle);
   div.id = 'divLogin';
+  olvidoPassword.textContent = '¿Olvidaste tu contraseña?';
+  olvidoPassword.addEventListener('click', restablecerPassword);
+  div.id = 'divLogin';
 
   buttonLogin.textContent = 'INGRESAR';
   buttonLogin.id = 'botonLogin';
@@ -72,7 +81,8 @@ function login() {
   buttonLogin.addEventListener('click', autenticarUsuario);
   section.append(logo);
   spanGoogle.append(imagenGoogle);
-  div.append(title, inputUsuario, inputContraseña, buttonLogin, spanGoogle, crearModal());
+  spanOlvido.append(olvidoPassword);
+  div.append(title, inputUsuario, inputContraseña, buttonLogin, spanGoogle, spanOlvido);
   pagina.push(section, div);
   return pagina;
 }

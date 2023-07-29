@@ -1,14 +1,34 @@
 import * as firebase from '../firebase.js';
 
+function validarUsuario(usuario) {
+  // Expresión regular para validar el formato de un correo electrónico
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Comprueba si el correo coincide con el formato esperado
+  if (regex.test(usuario)) {
+    return true; // El correo es válido
+  }
+  alert('El correo electrónico ingresado no tiene un formato válido.'); // Muestra un mensaje de alerta
+  return false; // El correo no es válido
+}
+
 async function registrarUsuarios() {
   const usuario = document.getElementById('email').value;
   const password = document.getElementById('contraseña').value;
-  const resultado = await firebase.createUser(usuario, password);
-  if (resultado) {
-    alert(`registro exitoso ${resultado}`);
-    window.location.href = '/mapa';
-  } else {
-    alert('datos incorrectos, verifica tu informacion');
+
+  let mensaje = '';
+  if (usuario === '') {
+    mensaje += 'ingrese su usuario ';
+  } else  {
+    validarUsuario(usuario);
+  }
+  if (password === '') {
+    mensaje += 'ingrese su contraseña';
+  }
+  if (mensaje !== '') {
+    alert(mensaje);
+  }
+  if (usuario !== '' && password !== '') {
+    firebase.createUser(usuario, password);
   }
 }
 
