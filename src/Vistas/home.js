@@ -29,7 +29,6 @@ function home(navigateTo) {
   main.id = 'mainHome';
   div.id = 'divHome';
 
-  menu.href = ' ';
   menu.classList.add('icon', 'btnMenu');
   barrasMenu.classList.add('fa', 'fa-bars');
   menu.appendChild(barrasMenu);

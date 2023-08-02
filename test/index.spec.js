@@ -1,4 +1,3 @@
-import home from '../src/Vistas/home';
 /**
  * @jest-environment jsdom
  */

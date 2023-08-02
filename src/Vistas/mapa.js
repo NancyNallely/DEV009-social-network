@@ -24,7 +24,16 @@ function mapa(navigateTo) {
   buttonCerrarSesion.textContent = 'Cerrar Sesión';
   buttonCerrarSesion.addEventListener('click', firebase.cerrarSesion);
   buttonMexico.addEventListener('click', () => {
+    paginaPrincipal.id = 'paginaPrincipal';
     navigateTo('/mexico');
+  });
+  buttonColombia.addEventListener('click', () => {
+    paginaPrincipal.id = 'paginaPrincipal';
+    navigateTo('/colombia');
+  });
+  buttonPeru.addEventListener('click', () => {
+    paginaPrincipal.id = 'paginaPrincipal';
+    navigateTo('/peru');
   });
   mapas.src = './imagenes/logo.jpg';
   section.append(title, mapas, buttonMexico, buttonPeru, buttonColombia);

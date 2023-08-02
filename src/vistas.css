@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+  font-family: "Ysabeau SC", sans-serif;
   color: white;
   font-size: 25px;
   background: url(./imagenes/fondoGif.gif);
@@ -61,10 +61,10 @@ body {
     position: relative;
     width: 100%;
   }
-  
+
   body .bienvenida {
     font-size: 15px;
-    font-family: "Ysabeau SC", Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", sans-serif;
     color: white;
     margin: 9px 103px;
     top: 0px;
@@ -77,26 +77,12 @@ body {
 
   #barraNav a {
     color: white;
-    background-color: #6d1d1d;
+    background-color: rgb(163, 13, 13);
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     display: block;
   }
 
-  #barraNav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  #barraNav div a:hover {
-    background-color: #d49974;
-    color: #fff;
-    height: 31px;
-    width: 51px;
-    display: flex;
-    align-items: center;
-  }
-  
   #barraNav a.icon {
     background: black;
     display: block;
@@ -106,25 +92,39 @@ body {
     right: 18px;
     top: 14px;
   }
-  
-  #barraNav div a.active {
-    background-color: #77150a;
-    color: white;
-  }
-  
+
   #barraNav h1 {
     color: #e9e9e9;
     text-align: center;
     padding: 30px;
     font-size: 25px;
   }
-  
+
   #logohome {
     width: 66px;
     height: 46px;
     top: 40px;
     position: absolute;
     left: 25px;
+  }
+
+  #barraNav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  #barraNav div a:hover {
+    background-color: #d49974;
+    color: #fff;
+    height: 31px;
+    width: 51px;
+    display: flex;
+    align-items: center;
+  }
+
+  #barraNav div a.active {
+    background-color: #77150a;
+    color: white;
   }
 }
   /*---------------------------------Vista Login-----------------------------------*/
@@ -155,7 +155,7 @@ body {
     text-align: center;
     padding: 10px 12px;
     text-decoration: none;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     margin: 0 auto;
     display: grid;
     position: relative;
@@ -251,14 +251,14 @@ body {
     margin-top: 70px;
     color: #e57667;
     text-align: unset;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
 
   }
 
   #paginaprincipalmapa button {
     background-color: #9f1d1d;
     padding: 8px;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     font-size: medium;
     color: #fffbfb;
     border-radius: 20px;
@@ -272,7 +272,7 @@ body {
   #buttonMexico {
     background: url(./imagenes/banderasMexico-07.jpg);
     background-repeat: no-repeat;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     font-size: large;
     background-size: cover;
 
@@ -281,7 +281,7 @@ body {
   #buttonPeru {
     background: url(./imagenes/istockphoto-967321126-612x612.jpg);
     background-repeat: no-repeat;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     font-size: larger;
     background-size: cover;
   }
@@ -289,7 +289,7 @@ body {
   #buttonColombia {
     background: url(./imagenes/descarga.png);
     background-repeat: no-repeat;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     color: #000;
     font-size: large;
     background-size: cover;
@@ -379,6 +379,7 @@ body {
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
+    background: rgba(154, 25, 25, 0.569);
   }
 
   #aside img {
@@ -392,7 +393,7 @@ body {
 
   body .bienvenida {
     font-size: 40px;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     color: white;
     margin: 0 80px;
 
@@ -427,26 +428,6 @@ body {
     display: block;
   }
 
-  #divHome a {
-    font-size: 28px;
-    color: white;
-    float: left;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
-  }
-
-  #barraNav div a:hover {
-    background-color: #aa1606;
-    color: #fff;
-  }
-
-  #barraNav div a.active {
-    background-color: #04AA6D;
-    color: #fff;
-  }
-
   #barraNav a.icon {
     background: #000;
     position: absolute;
@@ -455,7 +436,19 @@ body {
     display: none;
   }
 
-  
+  #divHome {
+    display: block;
+  }
+
+  #divHome a {
+    font-size: 28px;
+    color: white;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: "Ysabeau SC", serif;
+  }
 
   #divHome {
     display: block;
@@ -475,10 +468,8 @@ body {
     color: white;
     float: left;
     background-color: rgba(207, 17, 17, 0.505);
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     margin: 132px 138px;
-    margin-top: 122px;
-    
   }
 
   #botonLogin {
@@ -493,7 +484,7 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-family: "Ysabeau SC", serif;
     margin: 10px 0;
   }
 
@@ -504,5 +495,15 @@ body {
     align-content: center;
     align-items: center;
     position: fixed;
+  }
+
+  #barraNav div a:hover {
+    background-color: #aa1606;
+    color: #fff;
+  }
+
+  #barraNav div a.active {
+    background-color: #04AA6D;
+    color: #fff;
   }
 }

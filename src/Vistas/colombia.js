@@ -20,11 +20,11 @@ function crearPost() {
   const cardFigure = document.createElement('figure');
   cardFigure.className = 'cardFigure';
   const cardImage = document.createElement('img');
-  cardImage.src = '../imagenes/to.png';
+  cardImage.src = '../imagenes/guacamola.png';
   cardImage.alt = 'comida';
   cardImage.className = 'cardImage';
   const imageCaption = document.createElement('figcaption');
-  imageCaption.textContent = 'La casa de toño';
+  imageCaption.textContent = 'Anima';
   cardFigure.append(cardImage, imageCaption);
   const cardComentario = document.createElement('p');
   cardComentario.textContent = 'Es muy buena comida, me gusto mucho, pica poco y sabe bien';
@@ -56,15 +56,15 @@ function crearAside() {
   const tituloAside = document.createElement('h3');
   tituloAside.textContent = 'Platos tipicos';
   const imgAside1 = document.createElement('img');
-  imgAside1.src = '../imagenes/pozole.png';
+  imgAside1.src = '../imagenes/colombiaC.png';
   const imgAside2 = document.createElement('img');
-  imgAside2.src = '../imagenes/mole.png';
+  imgAside2.src = '../imagenes/colombiaH.png';
 
   divAside.append(tituloAside, imgAside1, imgAside2);
   return divAside;
 }
 
-function mexico(navigateTo) {
+function colombia(navigateTo) {
   // Obtener referencia al elemento nav
   const barraNav = document.createElement('nav');
   // Crear los elementos de la navegación
@@ -86,12 +86,12 @@ function mexico(navigateTo) {
   const pagina = [];
 
   barraNav.id = 'barraNav';
-  logo.src = '../imagenes/mexicoLogo.png';
+  logo.src = '../imagenes/colLogo.png';
   logo.id = 'logohome';
   main.id = 'mainHome';
   aside.id = 'aside';
   div.id = 'divHome';
-  title.textContent = 'MÉXICO';
+  title.textContent = 'COLOMBIA';
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
@@ -120,4 +120,4 @@ function mexico(navigateTo) {
   return pagina;
 }
 
-export default mexico;
+export default colombia;
