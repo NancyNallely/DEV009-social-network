@@ -1,40 +1,9 @@
-import * as firebase from '../firebase.js';
-
-function validarUsuario(usuario) {
-  // Expresión regular para validar el formato de un correo electrónico
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // Comprueba si el correo coincide con el formato esperado
-  if (regex.test(usuario)) {
-    return true; // El correo es válido
-  }
-  alert('El correo electrónico ingresado no tiene un formato válido.'); // Muestra un mensaje de alerta
-  return false; // El correo no es válido
-}
-
-async function registrarUsuarios() {
-  const usuario = document.getElementById('email').value;
-  const password = document.getElementById('contraseña').value;
-
-  let mensaje = '';
-  if (usuario === '') {
-    mensaje += 'ingrese su usuario ';
-  } else  {
-    validarUsuario(usuario);
-  }
-  if (password === '') {
-    mensaje += 'ingrese su contraseña';
-  }
-  if (mensaje !== '') {
-    alert(mensaje);
-  }
-  if (usuario !== '' && password !== '') {
-    firebase.createUser(usuario, password);
-  }
-}
+import * as firebase from '../lib/index.js';
 
 function registro() {
   const pagina = [];
   const section = document.createElement('section');
+  section.id = 'registroSection'; // Agregamos un ID al elemento section creado
   const title = document.createElement('h2');
   title.textContent = 'Bienvenidos a la ruta del sabor';
   const name = document.createElement('input');
@@ -55,10 +24,10 @@ function registro() {
   const button = document.createElement('button');
   button.textContent = 'Registrarse';
   button.id = 'Registrarseboton';
-  button.addEventListener('click', registrarUsuarios);
+  button.type = 'button';
+  button.addEventListener('click', firebase.registrarUsuarios);
 
   section.append(title, name, lastname, email, emailagain, newpassword, birthdate, button);
-  section.id = 'registroSection'; // Agregamos un ID al elemento section creado
   pagina.push(section);
   return pagina;
 }

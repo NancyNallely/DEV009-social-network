@@ -29,7 +29,6 @@ function home(navigateTo) {
   main.id = 'mainHome';
   div.id = 'divHome';
 
-  menu.href = 'javascript:void(0);';
   menu.classList.add('icon', 'btnMenu');
   barrasMenu.classList.add('fa', 'fa-bars');
   menu.appendChild(barrasMenu);
@@ -41,7 +40,7 @@ function home(navigateTo) {
   registro.addEventListener('click', () => {
     navigateTo('/registro');
   });
-  
+
   ingreso.textContent = 'Ingresar';
   ingreso.addEventListener('click', () => {
     navigateTo('/Login');
@@ -49,7 +48,7 @@ function home(navigateTo) {
 
   intro.textContent = 'Visitas México, Colombia o Perú pronto. Aqui podrás encontrar recomendaciones para comer según tu presupuesto y también compartirnos tus experiencias propias.';
   div.append(registro, ingreso);
-  barraNav.append( bienvenida, div, menu,logo);
+  barraNav.append(bienvenida, div, menu, logo);
   main.append(intro);
   pagina.push(barraNav);
   pagina.push(main);

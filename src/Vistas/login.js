@@ -1,45 +1,4 @@
-import * as firebase from '../firebase.js';
-
-function validarUsuario(usuario) {
-  // Expresión regular para validar el formato de un correo electrónico
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // Comprueba si el correo coincide con el formato esperado
-  if (regex.test(usuario)) {
-    return true; // El correo es válido
-  }
-  alert('El correo electrónico ingresado no tiene un formato válido.'); // Muestra un mensaje de alerta
-  return false; // El correo no es válido
-}
-
-function autenticarUsuario() {
-  const usuario = document.getElementById('usuario').value;
-  const password = document.getElementById('contraseña').value;
-  let mensaje = '';
-  if (usuario === '') {
-    mensaje += 'ingrese su usuario ';
-  } else {
-    validarUsuario(usuario);
-  }
-  if (password === '') {
-    mensaje += 'ingrese su contraseña';
-  }
-  if (mensaje !== '') {
-    alert(mensaje);
-  }
-
-  if (usuario !== '' && password !== '') {
-    firebase.autenticarUsuarios(usuario, password);
-  }
-}
-
-function autenticarGoogle() {
-  firebase.autenticarGoogle();
-}
-
-function restablecerPassword() {
-  const email = prompt('Ingrese su email');
-  firebase.restaurarPassword(email);
-}
+import * as firebase from '../lib/index.js';
 
 function login() {
   const section = document.createElement('section');
@@ -69,16 +28,16 @@ function login() {
   spanGoogle.textContent = 'Ingresa con Google';
   spanGoogle.id = 'google';
   imagenGoogle.className = 'fa fa-google';
-  imagenGoogle.addEventListener('click', autenticarGoogle);
+  imagenGoogle.addEventListener('click', firebase.autenticarGoogle);
   div.id = 'divLogin';
   olvidoPassword.textContent = '¿Olvidaste tu contraseña?';
-  olvidoPassword.addEventListener('click', restablecerPassword);
+  olvidoPassword.addEventListener('click', firebase.restablecerPassword);
   div.id = 'divLogin';
 
   buttonLogin.textContent = 'INGRESAR';
   buttonLogin.id = 'botonLogin';
   buttonLogin.className = 'ingreso';
-  buttonLogin.addEventListener('click', autenticarUsuario);
+  buttonLogin.addEventListener('click', firebase.autenticarUsuario);
   section.append(logo);
   spanGoogle.append(imagenGoogle);
   spanOlvido.append(olvidoPassword);

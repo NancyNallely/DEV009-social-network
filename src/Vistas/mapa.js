@@ -1,4 +1,4 @@
-import { cerrarSesion } from '../firebase.js';
+import * as firebase from '../lib/index.js';
 
 function mapa(navigateTo) {
   const paginaPrincipal = document.getElementById('paginaPrincipal');
@@ -22,9 +22,18 @@ function mapa(navigateTo) {
   buttonPeru.textContent = 'Perú';
   buttonColombia.textContent = 'Colombia';
   buttonCerrarSesion.textContent = 'Cerrar Sesión';
-  buttonCerrarSesion.addEventListener('click', cerrarSesion);
+  buttonCerrarSesion.addEventListener('click', firebase.cerrarSesion);
   buttonMexico.addEventListener('click', () => {
+    paginaPrincipal.id = 'paginaPrincipal';
     navigateTo('/mexico');
+  });
+  buttonColombia.addEventListener('click', () => {
+    paginaPrincipal.id = 'paginaPrincipal';
+    navigateTo('/colombia');
+  });
+  buttonPeru.addEventListener('click', () => {
+    paginaPrincipal.id = 'paginaPrincipal';
+    navigateTo('/peru');
   });
   mapas.src = './imagenes/logo.jpg';
   section.append(title, mapas, buttonMexico, buttonPeru, buttonColombia);
