@@ -1,18 +1,6 @@
-import * as firebase from '../firebase.js';
+import * as firebase from '../lib/index.js';
 
-async function autenticarUsuario() {
-  const usuario = document.getElementById('usuario').value;
-  const password = document.getElementById('contraseña').value;
-  const resultado = await firebase.autenticar(usuario, password);
-  if (resultado) {
-    alert('bienvenido ' + resultado.usuario);
-    window.location.href = '/mapa';
-  } else {
-    alert('nombre de usuario o contraseña incorrectos');
-  }
-}
-
-function login(navigateTo) {
+function login() {
   const section = document.createElement('section');
   const logo = document.createElement('img');
   const div = document.createElement('div');
@@ -20,6 +8,10 @@ function login(navigateTo) {
   const inputUsuario = document.createElement('input');
   const inputContraseña = document.createElement('input');
   const buttonLogin = document.createElement('button');
+  const spanGoogle = document.createElement('span');
+  const imagenGoogle = document.createElement('i');
+  const spanOlvido = document.createElement('span');
+  const olvidoPassword = document.createElement('a');
   const pagina = [];
 
   logo.src = './imagenes/logo.jpg';
@@ -30,16 +22,26 @@ function login(navigateTo) {
   inputUsuario.id = 'usuario';
   inputUsuario.className = 'ingreso';
   inputContraseña.placeholder = 'escribe tu contraseña';
+  inputContraseña.type = 'password';
   inputContraseña.id = 'contraseña';
   inputContraseña.className = 'ingreso';
+  spanGoogle.textContent = 'Ingresa con Google';
+  spanGoogle.id = 'google';
+  imagenGoogle.className = 'fa fa-google';
+  imagenGoogle.addEventListener('click', firebase.autenticarGoogle);
+  div.id = 'divLogin';
+  olvidoPassword.textContent = '¿Olvidaste tu contraseña?';
+  olvidoPassword.addEventListener('click', firebase.restablecerPassword);
   div.id = 'divLogin';
 
   buttonLogin.textContent = 'INGRESAR';
   buttonLogin.id = 'botonLogin';
   buttonLogin.className = 'ingreso';
-  buttonLogin.addEventListener('click', autenticarUsuario);
+  buttonLogin.addEventListener('click', firebase.autenticarUsuario);
   section.append(logo);
-  div.append(title, inputUsuario, inputContraseña, buttonLogin);
+  spanGoogle.append(imagenGoogle);
+  spanOlvido.append(olvidoPassword);
+  div.append(title, inputUsuario, inputContraseña, buttonLogin, spanGoogle, spanOlvido);
   pagina.push(section, div);
   return pagina;
 }

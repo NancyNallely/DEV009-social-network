@@ -4,6 +4,7 @@ import login from './Vistas/login';
 import error from './Vistas/error';
 import mapa from './Vistas/mapa';
 import registro from './Vistas/registro';
+import mexico from './Vistas/mexico';
 
 const root = document.getElementById('root');
 
@@ -13,6 +14,7 @@ const routes = [
   { path: '/error', vista: error },
   { path: '/mapa', vista: mapa },
   { path: '/registro', vista: registro },
+  { path: '/mexico', vista: mexico },
 ];
 
 const defaultRoute = '/';

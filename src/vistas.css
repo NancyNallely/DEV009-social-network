@@ -6,395 +6,503 @@
 /*-------------------------------------Vista home---------------------------------------*/
 
 #root {
-    position: absolute;
+  position: absolute;
+  width: 100%;
 }
 
 
 body {
-    margin: 0;
-    font-family: "Ysabeau SC";
-    color: white;
-    font-size: 25px;
-    background: url(./imagenes/fondoGif.gif);
+  margin: 0;
+  font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 25px;
+  background: url(./imagenes/fondoGif.gif);
 }
 
 #mainHome {
 
-    background: rgba(163, 23, 7, 0.727);
-    color: white;
-    margin-top: 80px;
-    font-size: 22px;
-    padding: 10px;
-    text-align: center;
+  background: rgba(163, 23, 7, 0.727);
+  color: white;
+  font-size: 22px;
+  padding: 10px;
+  text-align: center;
 }
 
+.fa-google {
+  background: conic-gradient(from -45deg, red 110deg, blue 90deg 180deg, green 180deg 270deg, yellow 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+#google {
+  color: white;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: 900;
+}
+#inputPost{
+  font-size: 14px;
+  width: 100%;
+}
 
 /*---------------------------------Diseño del celular-----------------------------------*/
+ /*----------------------------------------Vista Home-----------------------------------*/
 @media screen and (min-width: 200px) and (max-width: 530px) {
 
-    /*----------------------------------------Vista Home-------------------------------------*/
-
-    /*Barra de navegacion general*/
-    #barraNav {
-        overflow: hidden;
-        background-color: rgb(193, 10, 10);
-        position: relative;
-    }
-
-    body .bienvenida {
-        font-size: 15px;
-        font-family: "Ysabeau SC";
-        color: white;
-        margin: 9px 103px;
-        top: 0px;
-        position: absolute;
-    }
-
-    #barraNav div {
-        display: none;
-    }
-
-    #barraNav div a:hover {
-        background-color: #d49974;
-        color: #fff;
-        height: 31px;
-        width: 51px;
-        display: flex;
-        align-items: center;
-    }
-
-
-    #barraNav a {
-        color: white;
-        background-color: #6d1d1d;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 38px;
-        display: block;
-    }
-
-    #barraNav a.icon {
-        background: black;
-        display: block;
-        position: absolute;
-        width: 35px;
-        height: 30px;
-        right: 0;
-        top: 0;
-    }
-
-    #barraNav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    #barraNav div a.active {
-        background-color: #77150a;
-        color: white;
-    }
-    
-    #barraNav h1{
-        color: #e9e9e9;
-        text-justify: center;
-        padding: 30px;
-    }
-
-  #logohome {
-        width: 80px;
-        height: 60px;
-        top: 0px;
-        position: absolute;
+  /*Barra de navegacion general*/
+  #barraNav {
+    overflow: hidden;
+    background-color: rgb(193, 10, 10);
+    position: relative;
+    width: 100%;
+  }
+  
+  body .bienvenida {
+    font-size: 15px;
+    font-family: "Ysabeau SC", Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 9px 103px;
+    top: 0px;
+    position: absolute;
   }
 
-    /*---------------------------------Vista Login-----------------------------------*/
+  #barraNav div {
+    display: none;
+  }
 
-    
-    #logoLogin {
-        width: 140px;
-        height: 75px;
-       margin-left: 30%;
-       margin-top: 5%;
-       border-radius: 20px;
-    }
+  #barraNav a {
+    color: white;
+    background-color: #6d1d1d;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+  }
 
-    #titleLogin {
-        font-size: 30px;
-        color: #f3eeee;
-        text-shadow: 1px 1px 0 rgb(215, 35, 35),
-               -1px 1px 0 rgb(215, 35, 35),
-               1px -1px 0 rgb(215, 35, 35),
-               -1px -1px 0 rgb(215, 35, 35);
-        text-align: center;
+  #barraNav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  #barraNav div a:hover {
+    background-color: #d49974;
+    color: #fff;
+    height: 31px;
+    width: 51px;
+    display: flex;
+    align-items: center;
+  }
+  
+  #barraNav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    width: 27px;
+    height: 30px;
+    right: 18px;
+    top: 14px;
+  }
+  
+  #barraNav div a.active {
+    background-color: #77150a;
+    color: white;
+  }
+  
+  #barraNav h1 {
+    color: #e9e9e9;
+    text-align: center;
+    padding: 30px;
+    font-size: 25px;
+  }
+  
+  #logohome {
+    width: 66px;
+    height: 46px;
+    top: 40px;
+    position: absolute;
+    left: 25px;
+  }
+}
+  /*---------------------------------Vista Login-----------------------------------*/
+  @media screen and (min-width: 200px) and (max-width: 530px) {
+ 
+  #logoLogin {
+    width: 140px;
+    height: 75px;
+    margin-left: 30%;
+    margin-top: 5%;
+    border-radius: 20px;
+  }
 
-    }
+  #titleLogin {
+    font-size: 30px;
+    color: #f3eeee;
+    text-shadow: 1px 1px 0 rgb(215, 35, 35),
+      -1px 1px 0 rgb(215, 35, 35),
+      1px -1px 0 rgb(215, 35, 35),
+      -1px -1px 0 rgb(215, 35, 35);
+    text-align: center;
 
-    .ingreso {
-        font-size: 20px;
-        color: #000;
-        text-align: center;
-        padding: 10px 12px;
-        text-decoration: none;
-        font-family: "Ysabeau SC";
-        margin: 0 auto;
-        display: grid;
-        position: relative;
-        margin-top: 100px;
-        border: 1px solid;
-        border-radius: 10px;
-    }
-    
-    #botonLogin{
-        background-color: #b22b2b;
-        color: #f3eeee;
-        border-radius: 20px;
-    }
+  }
 
-    /*-------------------------------------Vista registro--------------------------------------*/
-/* Estilos para el elemento 'section' con el ID 'registroSection' */
+  .ingreso {
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    display: grid;
+    position: relative;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+  }
 
-#registroSection  {
-display: flex;
-justify-content: center; /* Centra horizontalmente */
-background: url(./imagenes/fondoGif.gif);
-align-items: center;
-background-size: contain;
-margin: auto;
-height: 667px; ;
-width: 375px;
+  #botonLogin {
+    background-color: #b22b2b;
+    color: #f3eeee;
+    border-radius: 20px;
+  }
 }
 
-#divregistro {
-background-color:#941515;
-flex-direction: column;
-justify-content: center;
-justify-items:center ;
-align-items: center;
-padding: 11px;
-border-radius: 20px; 
+ /*-------------------------------------Vista registro----------------------------------*/
+@media screen and (min-width: 200px) and (max-width: 530px) {
+ 
+  /* Estilos para el elemento 'section' con el ID 'registroSection' */
 
-}
-#registroSection h2{
+  #registroSection {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    background: #cb1f1f80;
+    align-items: center;
+    background-size: contain;
+    margin: auto;
+    height: 667px;
+    width: 375px;
+    flex-wrap: wrap;
+    position: relative;
+    top: 100px;
+  }
+
+  #registroSection input {
+    height: 32px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  #divregistro {
+    background-color: #941515;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 11px;
+    border-radius: 20px;
+
+  }
+
+  #registroSection h2 {
     color: #f5f0f0;
-    justify-self: center;
-}
-.input {
-  width: 100%;
-  padding: 10px;
-  flex-direction: column;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  justify-content: center;
-  border-radius: 20px;
-  font-size: 16px;
-}
+    text-align: center;
+  }
 
-#Registrarseboton {
-background-color: #420f0f;
-color: #f3f3f3;
-border-radius: 20px;
-justify-content: center;
-text-align: center;
-margin: 20px;
+  .input {
+    width: 100%;
+    padding: 10px;
+    flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  #Registrarseboton {
+    background-color: #7e0c0c;
+    color: #f3f3f3;
+    border-radius: 20px;
+    font-size: 19px;
+    text-align: center;
+    width: 150px;
+    height: 48px;
+    border: 1px solid;
+  }
+
 }
-/*--------------------------Vista mapa--------------------------------- */
-#paginaprincipalmapa{
-    display:flex;
+  /*---------------------------------------Vista mapa--------------------------------- */
+  @media screen and (min-width: 200px) and (max-width: 530px) {
+
+  #paginaprincipalmapa {
+    display: flex;
     overflow: hidden;
     background: url(./imagenes/AMERICA\,.jpg);
-    background-size:cover;
+    background-size: cover;
     background-repeat: repeat;
-    margin:10px;
-}
+    margin: 10px;
+  }
 
-#paginaprincipalmapa h1{
+  #paginaprincipalmapa h1 {
     margin-top: 70px;
     color: #e57667;
-    text-align:unset;
-    font-family: "Ysabeau SC";
+    text-align: unset;
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
 
-}
+  }
 
-#paginaprincipalmapa button{
+  #paginaprincipalmapa button {
     background-color: #9f1d1d;
     padding: 8px;
-    font-family: "Ysabeau SC";
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
     font-size: medium;
     color: #fffbfb;
     border-radius: 20px;
     margin-right: 10px;
     margin-left: auto;
     margin-bottom: 1px;
-    
 
-}
-#buttonMexico{
+
+  }
+
+  #buttonMexico {
     background: url(./imagenes/banderasMexico-07.jpg);
     background-repeat: no-repeat;
-    font-family: "Ysabeau SC";
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
     font-size: large;
     background-size: cover;
 
-}
-#buttonPeru {
-    background:url(./imagenes/istockphoto-967321126-612x612.jpg) ;
+  }
+
+  #buttonPeru {
+    background: url(./imagenes/istockphoto-967321126-612x612.jpg);
     background-repeat: no-repeat;
-    font-family: "Ysabeau SC";
-    font-size: large;
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    font-size: larger;
     background-size: cover;
-}
+  }
 
-#buttonColombia{
+  #buttonColombia {
     background: url(./imagenes/descarga.png);
     background-repeat: no-repeat;
-    font-family: "Ysabeau SC";
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
     color: #000;
     font-size: large;
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.5); 
-       
-}
+    background-color: rgba(255, 255, 255, 0.5);
 
-#mapasection button {
+  }
+
+  #mapasection button {
     justify-content: center;
     padding: 20px;
     margin: 10px;
     border-radius: 20px;
     font-size: large;
     text-shadow: 1px 1px 0 rgb(0, 0, 0),
-    -1px 1px 0 rgb(6, 5, 5),
-    1px -1px 0 rgb(0, 0, 0),
-    -1px -1px 0 rgb(4, 3, 3);
-    color:#fffcfc;
-}
+      -1px 1px 0 rgb(6, 5, 5),
+      1px -1px 0 rgb(0, 0, 0),
+      -1px -1px 0 rgb(4, 3, 3);
+    color: #fffcfc;
+  }
 
-#mapasection{
-display: inline;
-}
-#mapasection img{
+  #mapasection {
+    display: inline;
+  }
+
+  #mapasection img {
+    margin: 50px;
     margin-top: 40px;
-    margin:50px;
     border-radius: 20px;
-    border:2px solid #000;
-    height: 140px; ;
+    border: 2px solid #000;
+    height: 140px;
+  }
 
+  #divLogin {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+  }
 }
+
+/* post */
+@media screen and (min-width: 200px) and (max-width: 530px) {
+  .card {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .cardContent {
+    width: 50%;
+  }
+
+  .cardContent img {
+    width: 6rem;
+  }
+  
+  .cardContent p {
+    font-size: 14px;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cardCalificacion {
+    width: 50%;
+  }
+
+  .cardCalificacion p {
+    font-size: 14px;
+  }
+
+  .cardFigure{
+    font-size: 14px;
+  }
+}
+
+/* aside */
+@media screen and (min-width: 200px) and (max-width: 530px) {
+  #aside {
+    width: 100%;
+  }
+
+  #aside div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #aside img {
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 /*---------------------------------Diseño Escritorio-----------------------------------*/
 @media screen and (min-width: 531px) {
 
-    body .bienvenida {
-        font-size: 40px;
-        font-family: "Ysabeau SC";
-        color: white;
-        margin: 0 80px;
+  body .bienvenida {
+    font-size: 40px;
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0 80px;
 
-    }
+  }
 
-    #mainHome {
-        grid-area: main;
-        background: rgba(163, 22, 7, 0.607);
-        color: white;
-        margin-top: 32px;
-        font-size: 20px;
-    }
+  #mainHome {
+    grid-area: main;
+    background: rgba(163, 22, 7, 0.607);
+    color: white;
+    margin-top: 32px;
+    font-size: 20px;
+  }
 
-    #logo {
-        width: 150px;
-        height: 80px;
-        left: 20px;
-        position: absolute;
-        margin-top: -3px;
-    }
+  #logo {
+    width: 150px;
+    height: 80px;
+    left: 20px;
+    position: absolute;
+    margin-top: -3px;
+  }
 
-    #barraNav {
-        background-color: rgb(207, 17, 17);
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        overflow: auto;
-        flex-wrap: wrap;
-    }
+  #barraNav {
+    background-color: rgb(207, 17, 17);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: auto;
+    flex-wrap: wrap;
+  }
 
-    #barraNav div {
-        display: block;
-    }
+  #barraNav div {
+    display: block;
+  }
 
-    #barraNav div a:hover {
-        background-color: #aa1606;
-        color: #fff;
-    }
+  #divHome a {
+    font-size: 28px;
+    color: white;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+  }
 
-    #barraNav div a.active {
-        background-color: #04AA6D;
-        color: #fff;
-    }
+  #barraNav div a:hover {
+    background-color: #aa1606;
+    color: #fff;
+  }
 
-    #barraNav a.icon {
-        background: #000;
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-        display: none;
-    }
+  #barraNav div a.active {
+    background-color: #04AA6D;
+    color: #fff;
+  }
 
-    #divHome {
-        display: block;
-    }
+  #barraNav a.icon {
+    background: #000;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+  }
 
-    #divHome a {
-        font-size: 28px;
-        color: white;
-        float: left;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-family: "Ysabeau SC";
-    }
+  
 
+  #divHome {
+    display: block;
+  }
 
-    /*-------------------------------------Vista login--------------------------------------*/
+  /*-------------------------------------Vista login--------------------------------------*/
+  #logoLogin {
+    width: 180px;
+    height: 100px;
+    left: 380px;
+    position: absolute;
+    margin-top: 20px;
+  }
 
-    #logoLogin {
-        width: 180px;
-        height: 100px;
-        left: 380px;
-        position: absolute;
-        margin-top: 20px;
-    }
+  #titleLogin {
+    font-size: 28px;
+    color: white;
+    float: left;
+    background-color: rgba(207, 17, 17, 0.505);
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    margin: 132px 138px;
+    margin-top: 122px;
+    
+  }
 
-    #titleLogin {
-        font-size: 28px;
-        color: white;
-        float: left;
-        background-color: rgba(207, 17, 17, 0.505);
-        font-family: "Ysabeau SC";
-        margin-top: 122px;
-        margin: 132px 138px;
-    }
+  #botonLogin {
+    color: rgb(19, 2, 2);
+    font-weight: bold;
+  }
 
-    #botonLogin {
-        color: rgb(19, 2, 2);
-        font-weight: bold;
-    }
+  .ingreso {
+    font-size: 20px;
+    color: #000;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: "Ysabeau SC",Arial, Helvetica, sans-serif;
+    margin: 10px 0;
+  }
 
-    .ingreso {
-        font-size: 20px;
-        color: #000;
-        float: left;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-family: "Ysabeau SC";
-        margin: 10px 0;
-    }
-
-    #divLogin {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: center;
-        align-items: center;
-        position: fixed;
-    }
+  #divLogin {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+  }
 }
