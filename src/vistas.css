@@ -450,10 +450,6 @@ body {
     font-family: "Ysabeau SC", serif;
   }
 
-  #divHome {
-    display: block;
-  }
-
   /*-------------------------------------Vista login--------------------------------------*/
   #logoLogin {
     width: 180px;
