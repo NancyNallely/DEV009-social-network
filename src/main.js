@@ -7,6 +7,7 @@ import registro from './Vistas/registro';
 import mexico from './Vistas/mexico';
 import colombia from './Vistas/colombia';
 import peru from './Vistas/peru';
+// import platostipicoscol from './Vistas/platostipicosCol';
 
 const root = document.getElementById('root');
 
@@ -19,6 +20,7 @@ const routes = [
   { path: '/mexico', vista: mexico },
   { path: '/colombia', vista: colombia },
   { path: '/peru', vista: peru },
+  // { path:'/platostipicosCol', vista: platostipicoscol },
 ];
 
 const defaultRoute = '/';

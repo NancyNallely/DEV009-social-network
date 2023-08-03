@@ -16,7 +16,8 @@ body {
   font-family: "Ysabeau SC", sans-serif;
   color: white;
   font-size: 25px;
-  background: url(./imagenes/fondoGif.gif);
+  background-image: url(../src/imagenes/images.jpg);
+  background-size: 100%;
 }
 
 #mainHome {
@@ -337,6 +338,7 @@ body {
   .card {
     display: flex;
     align-items: flex-end;
+    background-color: #77150a;
   }
 
   .cardContent {
@@ -379,7 +381,7 @@ body {
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
-    background: rgba(154, 25, 25, 0.569);
+    background: rgb(0, 0, 0);
   }
 
   #aside img {
@@ -448,10 +450,6 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     font-family: "Ysabeau SC", serif;
-  }
-
-  #divHome {
-    display: block;
   }
 
   /*-------------------------------------Vista login--------------------------------------*/

@@ -1,9 +1,16 @@
+/* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import {
-  getFirestore, getDocs, collection, query, where, limit,
-} from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  query,
+  where,
+  limit,
+} from 'firebase/firestore';
+// otras importaciones...
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

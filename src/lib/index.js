@@ -1,7 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
-} from 'firebase/auth';
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
 import { auth } from '../firebase.js';
 
 // funcion para registrar usuarios

@@ -53,14 +53,25 @@ function agregarPost() {
 
 function crearAside() {
   const divAside = document.createElement('div');
+  divAside.id = 'aside';
   const tituloAside = document.createElement('h3');
-  tituloAside.textContent = 'Platos tipicos';
+  tituloAside.textContent = 'Platos típicos';
+  const aImgAside1 = document.createElement('a');
+  aImgAside1.href = 'https://www.youtube.com/watch?v=P3W6BRM_65U';
+  aImgAside1.target = '_blank';
   const imgAside1 = document.createElement('img');
   imgAside1.src = '../imagenes/colombiaC.png';
-  const imgAside2 = document.createElement('img');
-  imgAside2.src = '../imagenes/colombiaH.png';
+  aImgAside1.appendChild(imgAside1);
 
-  divAside.append(tituloAside, imgAside1, imgAside2);
+  const aImgAside2 = document.createElement('a');
+  aImgAside2.href = 'https://www.youtube.com/watch?v=R2DAkW3N_JY';
+  aImgAside2.target = '_blank';
+  const imgAside2 = document.createElement('img');
+  imgAside2.src = '../imagenes/guacamola.png';
+  aImgAside2.appendChild(imgAside2);
+
+  divAside.append(tituloAside, aImgAside1, aImgAside2);
+
   return divAside;
 }
 
@@ -74,7 +85,6 @@ function colombia(navigateTo) {
   const deLujo = document.createElement('a');
   const paraTodos = document.createElement('a');
   const cocinaEconomica = document.createElement('a');
-  const promociones = document.createElement('a');
   const perfil = document.createElement('a');
   const buscar = document.createElement('a');
   const inicio = document.createElement('a');
@@ -95,7 +105,6 @@ function colombia(navigateTo) {
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
-  promociones.textContent = 'PROMOCIONES';
   perfil.textContent = 'PERFIL';
   buscar.textContent = 'BUSCAR';
   inicio.textContent = 'INICIO';
@@ -111,7 +120,7 @@ function colombia(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', mostrarMenu);
 
-  div.append(deLujo, paraTodos, cocinaEconomica, promociones, perfil, buscar, inicio, cerrarSesion);
+  div.append(deLujo, paraTodos, cocinaEconomica, perfil, buscar, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu);
   main.append(crearPost());
   aside.append(crearAside());
