@@ -5,7 +5,7 @@
 // importamos la funcion que vamos a testear
 import { auth } from '../src/firebase.js';
 import { createUser, cerrarSesion } from '../src/lib/index';
-
+import home from '../src/Vistas/home.js';
 
 jest.mock('../src/lib/index', () => ({
   createUser: jest.fn(),
