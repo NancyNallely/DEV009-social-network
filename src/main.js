@@ -1,12 +1,12 @@
 // Importa las vistas
-import home from './Vistas/home';
-import login from './Vistas/login';
-import error from './Vistas/error';
-import mapa from './Vistas/mapa';
-import registro from './Vistas/registro';
-import mexico from './Vistas/mexico';
-import colombia from './Vistas/colombia';
-import peru from './Vistas/peru';
+import home from './Vistas/home.js';
+import login from './Vistas/login.js';
+import error from './Vistas/error.js';
+import mapa from './Vistas/mapa.js';
+import registro from './Vistas/registro.js';
+import mexico from './Vistas/mexico.js';
+import colombia from './Vistas/colombia.js';
+import peru from './Vistas/peru.js';
 
 const root = document.getElementById('root');
 
