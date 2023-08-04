@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,

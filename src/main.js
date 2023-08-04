@@ -7,6 +7,7 @@ import registro from './Vistas/registro.js';
 import mexico from './Vistas/mexico.js';
 import colombia from './Vistas/colombia.js';
 import peru from './Vistas/peru.js';
+import publicaciones from './Vistas/publicaciones.js';
 
 const root = document.getElementById('root');
 
@@ -19,6 +20,7 @@ const routes = [
   { path: '/mexico', vista: mexico },
   { path: '/colombia', vista: colombia },
   { path: '/peru', vista: peru },
+  { path: '/publicaciones', vista: publicaciones },
 ];
 
 const defaultRoute = '/';

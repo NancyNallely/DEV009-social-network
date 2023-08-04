@@ -46,6 +46,9 @@ function crearPost() {
 
 function agregarPost() {
   const informacion = document.createElement('input');
+  informacion.addEventListener('click', () => {
+    window.location.href = '/publicaciones';
+  });
   informacion.id = 'inputPost';
   informacion.placeholder = 'Cuentanos tu experiencia en aquel lugar';
   return informacion;
@@ -74,7 +77,6 @@ function peru(navigateTo) {
   const deLujo = document.createElement('a');
   const paraTodos = document.createElement('a');
   const cocinaEconomica = document.createElement('a');
-  const promociones = document.createElement('a');
   const perfil = document.createElement('a');
   const buscar = document.createElement('a');
   const inicio = document.createElement('a');
@@ -95,7 +97,6 @@ function peru(navigateTo) {
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
-  promociones.textContent = 'PROMOCIONES';
   perfil.textContent = 'PERFIL';
   buscar.textContent = 'BUSCAR';
   inicio.textContent = 'INICIO';
@@ -111,7 +112,7 @@ function peru(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', mostrarMenu);
 
-  div.append(deLujo, paraTodos, cocinaEconomica, promociones, perfil, buscar, inicio, cerrarSesion);
+  div.append(deLujo, paraTodos, cocinaEconomica, perfil, buscar, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu);
   main.append(crearPost());
   aside.append(crearAside());
