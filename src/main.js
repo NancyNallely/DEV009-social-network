@@ -20,7 +20,7 @@ const routes = [
   { path: '/mexico', vista: mexico },
   { path: '/colombia', vista: colombia },
   { path: '/peru', vista: peru },
-  { path: '/publicaciones', vista: publicaciones },
+  // { path:'/platostipicosCol', vista: platostipicoscol },
 ];
 
 const defaultRoute = '/';

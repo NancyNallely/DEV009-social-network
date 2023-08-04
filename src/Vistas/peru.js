@@ -56,14 +56,23 @@ function agregarPost() {
 
 function crearAside() {
   const divAside = document.createElement('div');
+  divAside.id = 'aside';
   const tituloAside = document.createElement('h3');
-  tituloAside.textContent = 'Platos tipicos';
+  tituloAside.textContent = 'Platos típicos';
+  const aImgAside1 = document.createElement('a');
+  aImgAside1.href = 'https://www.youtube.com/watch?v=VdncHbR6-yk';
+  aImgAside1.target = '_blank';
   const imgAside1 = document.createElement('img');
   imgAside1.src = '../imagenes/peru1.png';
+  aImgAside1.appendChild(imgAside1);
+  const aImgAside2 = document.createElement('a');
+  aImgAside2.href = 'https://www.youtube.com/watch?v=Bb83VID7cyk';
+  aImgAside2.target = '_blank';
   const imgAside2 = document.createElement('img');
   imgAside2.src = '../imagenes/peru2.png';
+  aImgAside2.appendChild(imgAside2);
+  divAside.append(tituloAside, aImgAside1, aImgAside2);
 
-  divAside.append(tituloAside, imgAside1, imgAside2);
   return divAside;
 }
 
