@@ -8,11 +8,24 @@ function mostrarMenu() {
     menu.style.display = 'block';
   }
 }
+function publicarDatos() {
+  const formulario = document.querySelectorAll('.formInput');
+  const usuarioActual = firebase.obtenerUsuario();
+  const resultado = firebase.guardarRegistros(formulario, usuarioActual);
+  if (resultado) {
+    alert('publicacion realizada con exito');
+  } else {
+    alert('error de publicacion');
+  }
+}
 
 function publicaciones(navigateTo) {
   // Obtener referencia al elemento nav
   const barraNav = document.createElement('nav');
   // Crear los elementos de la navegación
+  const mex = document.createElement('img');
+  const per = document.createElement('img');
+  const col = document.createElement('img');
   const title = document.createElement('h1');
   const logo = document.createElement('img');
   const div = document.createElement('div');
@@ -29,7 +42,6 @@ function publicaciones(navigateTo) {
   const main = document.createElement('main');
   const formulario = document.createElement('form');
   const lugar = document.createElement('input');
-  const usuario = document.createElement('input');
   const pais = document.createElement('select');
   const mexico = document.createElement('option');
   const colombia = document.createElement('option');
@@ -57,6 +69,12 @@ function publicaciones(navigateTo) {
   const pagina = [];
 
   barraNav.id = 'barraNav';
+  mex.src = '../imagenes/mexicoLogo.png';
+  mex.id = 'logom';
+  per.src = '../imagenes/peruLogo.png';
+  per.id = 'logop';
+  col.src = '../imagenes/colLogo.png';
+  col.id = 'logoc';
   logo.src = '../imagenes/logo.jpg';
   logo.id = 'logohome';
   main.id = 'mainHome';
@@ -73,9 +91,9 @@ function publicaciones(navigateTo) {
   formulario.id = 'form';
   lugar.placeholder = 'nombre del lugar';
   lugar.type = 'text';
-  usuario.placeholder = 'nombre de usuario';
-  usuario.type = 'text';
+  lugar.className = 'formInput';
   pais.name = 'paises';
+  pais.className = 'formInput';
   mexico.value = 'México';
   mexico.textContent = 'México';
   colombia.value = 'Colombia';
@@ -83,6 +101,7 @@ function publicaciones(navigateTo) {
   peru.value = 'Perú';
   peru.textContent = 'Perú';
   tipo.name = 'tipos';
+  tipo.className = 'formInput';
   lujo.value = 'de lujo';
   lujo.textContent = 'de lujo';
   todos.value = 'para todos';
@@ -90,6 +109,7 @@ function publicaciones(navigateTo) {
   economica.value = 'cocina económica';
   economica.textContent = 'cocina económica';
   servicio.name = 'niveles';
+  servicio.className = 'formInput';
   excelente.value = 'servicio excelente';
   excelente.textContent = 'servicio excelente';
   bueno.value = 'servicio bueno';
@@ -97,6 +117,7 @@ function publicaciones(navigateTo) {
   malo.value = 'servicio malo';
   malo.textContent = 'servicio malo';
   precio.name = 'precios';
+  precio.className = 'formInput';
   caro.value = 'caro';
   caro.textContent = 'caro';
   medio.value = 'costo medio';
@@ -104,6 +125,7 @@ function publicaciones(navigateTo) {
   barato.value = 'barato';
   barato.textContent = 'barato';
   nivelPicante.name = 'picante';
+  nivelPicante.className = 'formInput';
   alto.value = 'picante alto';
   alto.textContent = 'picante alto';
   intermedio.value = 'picante intermedio';
@@ -111,15 +133,23 @@ function publicaciones(navigateTo) {
   bajo.value = 'picante bajo';
   bajo.textContent = 'picante bajo';
   comentario.placeholder = 'comparte tu experiencia';
+  comentario.className = 'formInput';
   comentario.type = 'text';
   foto.accept = 'image/*';
   foto.type = 'file';
+  foto.className = 'formInput';
+  foto.placeholder = 'Ingrese una imagen';
+  publicar.type = 'button';
   publicar.textContent = 'publicar';
+  publicar.id = 'publicar';
+  main.id = 'mainP';
 
   cerrarSesion.addEventListener('click', firebase.cerrarSesion);
   inicio.addEventListener('click', () => {
     navigateTo('/mapa');
   });
+
+  publicar.addEventListener('click', publicarDatos);
 
   menu.classList.add('icon', 'btnMenu');
   barrasMenu.classList.add('fa', 'fa-bars');
@@ -127,7 +157,7 @@ function publicaciones(navigateTo) {
   menu.addEventListener('click', mostrarMenu);
 
   div.append(deLujo, paraTodos, cocinaEconomica, promociones, perfil, buscar, inicio, cerrarSesion);
-  barraNav.append(title, logo, div, menu);
+  barraNav.append(title, logo, div, menu, mex, per, col);
   pais.append(mexico, colombia, peru);
   tipo.append(lujo, todos, economica);
   servicio.append(excelente, bueno, malo);
@@ -135,7 +165,6 @@ function publicaciones(navigateTo) {
   nivelPicante.append(alto, intermedio, bajo);
   formulario.append(
     lugar,
-    usuario,
     pais,
     tipo,
     servicio,

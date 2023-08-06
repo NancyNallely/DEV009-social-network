@@ -3,7 +3,11 @@ import {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
-import { auth } from '../firebase.js';
+import { addDoc, collection } from 'firebase/firestore';
+import {
+  getStorage, ref, uploadBytes, getDownloadURL,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
+import { auth, db } from '../firebase.js';
 
 // funcion para registrar usuarios
 export async function createUser(email, password) {
@@ -140,5 +144,36 @@ export async function registrarUsuarios() {
   }
   if (usuario !== '' && password !== '') {
     createUser(usuario, password);
+  }
+}
+
+export function obtenerUsuario() {
+  const usuario = auth.currentUser;
+  if (usuario !== null) {
+    return usuario.email;
+  }
+  return null;
+}
+
+// funcion para subir una publicacion a firestore
+export async function guardarRegistros(formulario, usuario) {
+  try {
+    const docRef = await addDoc(collection(db, 'publicacionesMuros'), {
+      nombreLugar: formulario[0].value,
+      tipo: formulario[2].value,
+      pais: formulario[1].value,
+      servicio: formulario[3].value,
+      precio: formulario[4].value,
+      nivelPicante: formulario[5].value,
+      comentario: formulario[6].value,
+      foto: formulario[7].value,
+      usuario: usuario,
+      likes: 0,
+    });
+    console.log(docRef);
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
   }
 }
