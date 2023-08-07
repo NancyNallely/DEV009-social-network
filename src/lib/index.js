@@ -3,11 +3,8 @@ import {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
-import { addDoc, collection } from 'firebase/firestore';
-import {
-  getStorage, ref, uploadBytes, getDownloadURL,
-} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
-import { auth, db } from '../firebase.js';
+
+import { auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection } from '../firebase.js';
 
 // funcion para registrar usuarios
 export async function createUser(email, password) {
@@ -147,6 +144,7 @@ export async function registrarUsuarios() {
   }
 }
 
+// funcion para obtener el usuario que se encuentra logueado
 export function obtenerUsuario() {
   const usuario = auth.currentUser;
   if (usuario !== null) {
@@ -156,17 +154,18 @@ export function obtenerUsuario() {
 }
 
 // funcion para subir una publicacion a firestore
-export async function guardarRegistros(formulario, usuario) {
+export async function guardarRegistros(formulario, foto, usuario) {
+  console.log(formulario);
   try {
     const docRef = await addDoc(collection(db, 'publicacionesMuros'), {
-      nombreLugar: formulario[0].value,
-      tipo: formulario[2].value,
-      pais: formulario[1].value,
-      servicio: formulario[3].value,
-      precio: formulario[4].value,
-      nivelPicante: formulario[5].value,
-      comentario: formulario[6].value,
-      foto: formulario[7].value,
+      nombreLugar: formulario[1].value,
+      tipo: formulario[3].value,
+      pais: formulario[2].value,
+      servicio: formulario[4].value,
+      precio: formulario[5].value,
+      nivelPicante: formulario[6].value,
+      comentario: formulario[7].value,
+      foto: foto,
       usuario: usuario,
       likes: 0,
     });
@@ -176,4 +175,25 @@ export async function guardarRegistros(formulario, usuario) {
     console.log(e);
     return false;
   }
+}
+
+// funcion para guardar imagen
+export function guardarImg(archivo, nombreArchivo) {
+  const storageRef = ref(storage, nombreArchivo);
+
+  uploadBytes(storageRef, archivo).then((snapshot) => {
+    console.log('se subio la imagen', snapshot);
+  });
+}
+
+// funcion para obtener el enlace de la imagen
+export async function getImgUrl(archivo, nombreArchivo) {
+  await guardarImg(archivo, nombreArchivo);
+  getDownloadURL(ref(storage, nombreArchivo))
+    .then((url) => {
+      localStorage.setItem('imgUrl', url);
+    })
+    .catch((error) => {
+      console.log(error.errorMessage);
+    });
 }

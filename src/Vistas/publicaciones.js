@@ -11,12 +11,17 @@ function mostrarMenu() {
 function publicarDatos() {
   const formulario = document.querySelectorAll('.formInput');
   const usuarioActual = firebase.obtenerUsuario();
-  const resultado = firebase.guardarRegistros(formulario, usuarioActual);
+  const resultado = firebase.guardarRegistros(formulario, localStorage.getItem('imgUrl'), usuarioActual);
   if (resultado) {
     alert('publicacion realizada con exito');
   } else {
     alert('error de publicacion');
   }
+}
+
+async function subirImg() {
+  const img = document.querySelector('.updloadedImg');
+  await firebase.getImgUrl(img.files[0], img.files[0].name);
 }
 
 function publicaciones(navigateTo) {
@@ -137,12 +142,14 @@ function publicaciones(navigateTo) {
   comentario.type = 'text';
   foto.accept = 'image/*';
   foto.type = 'file';
-  foto.className = 'formInput';
+  foto.className = 'formInput updloadedImg';
   foto.placeholder = 'Ingrese una imagen';
   publicar.type = 'button';
   publicar.textContent = 'publicar';
   publicar.id = 'publicar';
   main.id = 'mainP';
+
+  foto.addEventListener('change', subirImg);
 
   cerrarSesion.addEventListener('click', firebase.cerrarSesion);
   inicio.addEventListener('click', () => {
@@ -164,6 +171,7 @@ function publicaciones(navigateTo) {
   precio.append(caro, medio, barato);
   nivelPicante.append(alto, intermedio, bajo);
   formulario.append(
+    foto,
     lugar,
     pais,
     tipo,
@@ -171,7 +179,6 @@ function publicaciones(navigateTo) {
     precio,
     nivelPicante,
     comentario,
-    foto,
     publicar,
   );
   main.append(formulario);

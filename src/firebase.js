@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
 import {
   getFirestore,
   getDocs,
@@ -9,7 +9,11 @@ import {
   query,
   where,
   limit,
-} from 'firebase/firestore';
+  addDoc,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
+import {
+  getStorage, ref, uploadBytes, getDownloadURL,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
 // otras importaciones...
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,6 +34,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth();
+
+export const storage = getStorage();
+export {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  addDoc,
+  collection,
+};
 
 // funcion para autenticar usuarios
 export async function autenticar(usuario, password) {
