@@ -4,9 +4,7 @@ import login from './Vistas/login.js';
 import error from './Vistas/error.js';
 import mapa from './Vistas/mapa.js';
 import registro from './Vistas/registro.js';
-import mexico from './Vistas/mexico.js';
-import colombia from './Vistas/colombia.js';
-import peru from './Vistas/peru.js';
+import muro from './Vistas/muro.js';
 import publicaciones from './Vistas/publicaciones.js';
 
 const root = document.getElementById('root');
@@ -17,17 +15,18 @@ const routes = [
   { path: '/error', vista: error },
   { path: '/mapa', vista: mapa },
   { path: '/registro', vista: registro },
-  { path: '/mexico', vista: mexico },
-  { path: '/colombia', vista: colombia },
-  { path: '/peru', vista: peru },
+  { path: '/muro?pais=mexico', vista: muro },
+  { path: '/muro?pais=colombia', vista: muro },
+  { path: '/muro?pais=peru', vista: muro },
   { path: '/publicaciones', vista: publicaciones },
   // { path:'/platostipicosCol', vista: platostipicoscol },
 ];
 
 const defaultRoute = '/';
 
-function navigateTo(hash) {
+async function navigateTo(hash) {
   const route = routes.find((routeFind) => routeFind.path === hash);
+  console.log('route: ', route);
 
   if (route && route.vista) {
     window.history.pushState(
@@ -40,7 +39,7 @@ function navigateTo(hash) {
         root.removeChild(root.lastChild);
       }
     }
-    root.append(...route.vista(navigateTo));
+    root.append(...await route.vista(navigateTo));
   } else {
     navigateTo('/error');
   }

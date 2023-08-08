@@ -1,10 +1,14 @@
 /* eslint-disable import/no-unresolved */
+// se importa desde la pagina web de from
 import {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
 
-import { auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection } from '../firebase.js';
+// importar desde la clase de firebase
+import {
+  auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where, query, getDocs,
+} from '../firebase.js';
 
 // funcion para registrar usuarios
 export async function createUser(email, password) {
@@ -165,8 +169,8 @@ export async function guardarRegistros(formulario, foto, usuario) {
       precio: formulario[5].value,
       nivelPicante: formulario[6].value,
       comentario: formulario[7].value,
-      foto: foto,
-      usuario: usuario,
+      foto,
+      usuario,
       likes: 0,
     });
     console.log(docRef);
@@ -196,4 +200,18 @@ export async function getImgUrl(archivo, nombreArchivo) {
     .catch((error) => {
       console.log(error.errorMessage);
     });
+}
+
+// funcion para buscar los registros por pais
+export async function registrosPais(pais) {
+  const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs;
+}
+
+// funcion para obtener registros por tipo de lugar
+export async function registrosTipo(tipo, pais) {
+  const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais), where('tipo', '==', tipo));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs;
 }

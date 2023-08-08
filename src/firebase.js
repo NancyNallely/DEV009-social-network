@@ -42,6 +42,9 @@ export {
   getDownloadURL,
   addDoc,
   collection,
+  getDocs,
+  query,
+  where,
 };
 
 // funcion para autenticar usuarios

@@ -9,39 +9,52 @@ function mostrarMenu() {
   }
 }
 
-function crearPost() {
-  const card = document.createElement('div');
-  card.className = 'card';
+async function crearPost(paisSeleccionado) {
+  const listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+  const contenedor = document.createElement('div');
+  contenedor.className = 'contenedor';
+  if (listaPublicaciones.length > 0) {
+    listaPublicaciones.forEach((doc) => {
+      const publicacionesPaises = doc.data();
+      const card = document.createElement('div');
+      card.className = 'card';
 
-  const cardContent = document.createElement('div');
-  cardContent.className = 'cardContent';
-  const cardTitulo = document.createElement('h3');
-  cardTitulo.className = 'cardTitulo';
-  const cardFigure = document.createElement('figure');
-  cardFigure.className = 'cardFigure';
-  const cardImage = document.createElement('img');
-  cardImage.src = '../imagenes/guacamola.png';
-  cardImage.alt = 'comida';
-  cardImage.className = 'cardImage';
-  const imageCaption = document.createElement('figcaption');
-  imageCaption.textContent = 'Anima';
-  cardFigure.append(cardImage, imageCaption);
-  const cardComentario = document.createElement('p');
-  cardComentario.textContent = 'Es muy buena comida, me gusto mucho, pica poco y sabe bien';
-  cardContent.append(cardTitulo, cardFigure, cardComentario);
+      const cardContent = document.createElement('div');
+      cardContent.className = 'cardContent';
+      const cardTitulo = document.createElement('h3');
+      cardTitulo.className = 'cardTitulo';
+      const cardFigure = document.createElement('figure');
+      cardFigure.className = 'cardFigure';
+      const cardImage = document.createElement('img');
+      cardImage.src = publicacionesPaises.foto;
+      cardImage.alt = 'comida';
+      cardImage.className = 'cardImage';
+      const imageCaption = document.createElement('figcaption');
+      imageCaption.textContent = publicacionesPaises.nombreLugar;
+      cardFigure.append(cardImage, imageCaption);
+      const cardComentario = document.createElement('p');
+      cardComentario.textContent = publicacionesPaises.comentario;
+      cardContent.append(cardTitulo, cardFigure, cardComentario);
 
-  const cardCalificacion = document.createElement('div');
-  cardCalificacion.className = 'cardCalificacion';
-  const cardPrecio = document.createElement('p');
-  cardPrecio.textContent = 'Precio';
-  const cardServicio = document.createElement('p');
-  cardServicio.textContent = 'Servicio';
-  const cardPicante = document.createElement('p');
-  cardPicante.textContent = 'Picante';
-  cardCalificacion.append(cardPrecio, cardServicio, cardPicante);
+      const cardCalificacion = document.createElement('div');
+      cardCalificacion.className = 'cardCalificacion';
+      const cardPrecio = document.createElement('p');
+      cardPrecio.textContent = publicacionesPaises.precio;
+      const cardServicio = document.createElement('p');
+      cardServicio.textContent = publicacionesPaises.servicio;
+      const cardPicante = document.createElement('p');
+      cardPicante.textContent = publicacionesPaises.nivelPicante;
+      cardCalificacion.append(cardPrecio, cardServicio, cardPicante);
 
-  card.append(cardContent, cardCalificacion);
-  return card;
+      card.append(cardContent, cardCalificacion);
+      contenedor.appendChild(card);
+    });
+  } else {
+    const mensaje = document.createElement('p');
+    mensaje.textContent = 'no se encontraron publicaciones';
+    contenedor.appendChild(mensaje);
+  }
+  return contenedor;
 }
 
 function agregarPost() {
@@ -60,25 +73,23 @@ function crearAside() {
   const tituloAside = document.createElement('h3');
   tituloAside.textContent = 'Platos típicos';
   const aImgAside1 = document.createElement('a');
-  aImgAside1.href = 'https://www.youtube.com/watch?v=P3W6BRM_65U';
+  aImgAside1.href = 'https://www.youtube.com/watch?v=-Bi0cC6uzDs';
   aImgAside1.target = '_blank';
   const imgAside1 = document.createElement('img');
-  imgAside1.src = '../imagenes/colombiaC.png';
+  imgAside1.src = '../imagenes/pozole.png';
   aImgAside1.appendChild(imgAside1);
-
   const aImgAside2 = document.createElement('a');
-  aImgAside2.href = 'https://www.youtube.com/watch?v=R2DAkW3N_JY';
+  aImgAside2.href = 'https://www.youtube.com/watch?v=CiazCXbgg7A';
   aImgAside2.target = '_blank';
   const imgAside2 = document.createElement('img');
-  imgAside2.src = '../imagenes/guacamola.png';
+  imgAside2.src = '../imagenes/mole.png';
   aImgAside2.appendChild(imgAside2);
-
   divAside.append(tituloAside, aImgAside1, aImgAside2);
 
   return divAside;
 }
 
-function colombia(navigateTo) {
+async function muro(navigateTo) {
   // Obtener referencia al elemento nav
   const barraNav = document.createElement('nav');
   // Crear los elementos de la navegación
@@ -98,13 +109,15 @@ function colombia(navigateTo) {
   const aside = document.createElement('aside');
   const pagina = [];
 
+  console.log('tipo pagina muro' + typeof pagina);
+
   barraNav.id = 'barraNav';
-  logo.src = '../imagenes/colLogo.png';
+  logo.src = '../imagenes/mexicoLogo.png';
   logo.id = 'logohome';
   main.id = 'mainHome';
   aside.id = 'aside';
   div.id = 'divHome';
-  title.textContent = 'COLOMBIA';
+  title.textContent = 'MÉXICO';
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
@@ -125,11 +138,12 @@ function colombia(navigateTo) {
 
   div.append(deLujo, paraTodos, cocinaEconomica, perfil, buscar, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu);
-  main.append(crearPost());
+  main.append(await crearPost(localStorage.getItem('paisSeleccionado')));
+  console.log('tipo main muro' + typeof main);
   aside.append(crearAside());
   pagina.push(barraNav, aside, agregarPost(), main);
-
+  console.log('tipo pagina muro' + typeof pagina);
   return pagina;
 }
 
-export default colombia;
+export default muro;

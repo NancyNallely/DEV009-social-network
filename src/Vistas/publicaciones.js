@@ -99,12 +99,12 @@ function publicaciones(navigateTo) {
   lugar.className = 'formInput';
   pais.name = 'paises';
   pais.className = 'formInput';
-  mexico.value = 'México';
-  mexico.textContent = 'México';
+  mexico.value = 'Mexico';
+  mexico.textContent = 'Mexico';
   colombia.value = 'Colombia';
   colombia.textContent = 'Colombia';
-  peru.value = 'Perú';
-  peru.textContent = 'Perú';
+  peru.value = 'Peru';
+  peru.textContent = 'Peru';
   tipo.name = 'tipos';
   tipo.className = 'formInput';
   lujo.value = 'de lujo';
