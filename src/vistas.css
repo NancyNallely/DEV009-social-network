@@ -97,8 +97,8 @@ body {
   #barraNav h1 {
     color: #e9e9e9;
     text-align: center;
-    padding: 50px;
-    font-size: 20px;
+    padding: 9px;
+    font-size: 28px;
   }
 
   #logohome {
@@ -337,17 +337,24 @@ body {
 /* post */
 @media screen and (min-width: 200px) and (max-width: 530px) {
   .card {
-    display: flex;
-    align-items: flex-end;
-    background-color: #77150a;
+    display: grid;
+    grid-template-columns: 58% 20% 20% 20% 20%;
+    background-color: rgba(255, 255, 255, 0.608);
+    justify-items: center;
+    align-items: center;
+    margin: 12px;
+    box-shadow: rgba(1, 1, 19, 0.462) 0px 4px 16px, rgba(216, 38, 25, 0.69) 0px 8px 24px, rgba(238, 238, 242, 0.69) 0px 16px 56px;
   }
 
   .cardContent {
-    width: 50%;
+    width: 90%;
+    color: #000;
   }
 
   .cardContent img {
-    width: 6rem;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 5px;
   }
   
   .cardContent p {
@@ -356,6 +363,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000;
   }
 
   .cardCalificacion {
@@ -364,6 +372,7 @@ body {
 
   .cardCalificacion p {
     font-size: 14px;
+    color: #000;
   }
 
   .cardFigure{
@@ -383,6 +392,9 @@ body {
     flex-wrap: wrap;
     align-items: center;
     background: rgb(0, 0, 0);
+  }
+  #aside h3{
+    font-size: 1.5rem;
   }
 
   #aside img {

@@ -16,13 +16,15 @@ async function crearPost(paisSeleccionado) {
   if (listaPublicaciones.length > 0) {
     listaPublicaciones.forEach((doc) => {
       const publicacionesPaises = doc.data();
+      console.log('publicacionesPaises', publicacionesPaises);
       const card = document.createElement('div');
       card.className = 'card';
 
       const cardContent = document.createElement('div');
       cardContent.className = 'cardContent';
-      const cardTitulo = document.createElement('h3');
+      const cardTitulo = document.createElement('h6');
       cardTitulo.className = 'cardTitulo';
+      cardTitulo.textContent = publicacionesPaises.usuario;
       const cardFigure = document.createElement('figure');
       cardFigure.className = 'cardFigure';
       const cardImage = document.createElement('img');
@@ -67,22 +69,50 @@ function agregarPost() {
   return informacion;
 }
 
-function crearAside() {
+function crearAside(pais) {
+  let imgPlato1 = '';
+  let imgPlato2 = '';
+  let video1 = '';
+  let video2 = '';
+  switch (pais) {
+    case 'Mexico':
+      imgPlato1 = '../imagenes/mole.png';
+      imgPlato2 = '../imagenes/pozole.png';
+      video1 = 'https://www.youtube.com/watch?v=CiazCXbgg7A';
+      video2 = 'https://www.youtube.com/watch?v=-Bi0cC6uzDs';
+      break;
+    case 'Colombia':
+      imgPlato1 = '../imagenes/colombiaC.png';
+      imgPlato2 = '../imagenes/guacamola.png';
+      video1 = 'https://www.youtube.com/watch?v=P3W6BRM_65U';
+      video2 = 'https://www.youtube.com/watch?v=R2DAkW3N_JY';
+      break;
+    case 'Peru':
+      imgPlato1 = '../imagenes/peru1.png';
+      imgPlato2 = '../imagenes/peru2.png';
+      video1 = 'https://www.youtube.com/watch?v=VdncHbR6-yk';
+      video2 = 'https://www.youtube.com/watch?v=Bb83VID7cyk';
+      break;
+
+    default:
+      break;
+  }
+
   const divAside = document.createElement('div');
   divAside.id = 'aside';
   const tituloAside = document.createElement('h3');
   tituloAside.textContent = 'Platos típicos';
   const aImgAside1 = document.createElement('a');
-  aImgAside1.href = 'https://www.youtube.com/watch?v=-Bi0cC6uzDs';
+  aImgAside1.href = video1;
   aImgAside1.target = '_blank';
   const imgAside1 = document.createElement('img');
-  imgAside1.src = '../imagenes/pozole.png';
+  imgAside1.src = imgPlato1;
   aImgAside1.appendChild(imgAside1);
   const aImgAside2 = document.createElement('a');
-  aImgAside2.href = 'https://www.youtube.com/watch?v=CiazCXbgg7A';
+  aImgAside2.href = video2;
   aImgAside2.target = '_blank';
   const imgAside2 = document.createElement('img');
-  imgAside2.src = '../imagenes/mole.png';
+  imgAside2.src = imgPlato2;
   aImgAside2.appendChild(imgAside2);
   divAside.append(tituloAside, aImgAside1, aImgAside2);
 
@@ -109,15 +139,30 @@ async function muro(navigateTo) {
   const aside = document.createElement('aside');
   const pagina = [];
 
-  console.log('tipo pagina muro' + typeof pagina);
-
   barraNav.id = 'barraNav';
-  logo.src = '../imagenes/mexicoLogo.png';
+
+  const pais = localStorage.getItem('paisSeleccionado');
+  let imglogo = '';
+  switch (pais) {
+    case 'Mexico':
+      imglogo = '../imagenes/mexicoLogo.png';
+      break;
+    case 'Colombia':
+      imglogo = '../imagenes/colLogo.png';
+      break;
+    case 'Peru':
+      imglogo = '../imagenes/peruLogo.png';
+      break;
+
+    default:
+      break;
+  }
+  logo.src = imglogo;
   logo.id = 'logohome';
   main.id = 'mainHome';
   aside.id = 'aside';
   div.id = 'divHome';
-  title.textContent = 'MÉXICO';
+  title.textContent = pais;
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
@@ -138,11 +183,9 @@ async function muro(navigateTo) {
 
   div.append(deLujo, paraTodos, cocinaEconomica, perfil, buscar, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu);
-  main.append(await crearPost(localStorage.getItem('paisSeleccionado')));
-  console.log('tipo main muro' + typeof main);
-  aside.append(crearAside());
+  main.append(await crearPost(pais));
+  aside.append(crearAside(pais));
   pagina.push(barraNav, aside, agregarPost(), main);
-  console.log('tipo pagina muro' + typeof pagina);
   return pagina;
 }
 

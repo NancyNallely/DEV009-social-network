@@ -26,7 +26,6 @@ const defaultRoute = '/';
 
 async function navigateTo(hash) {
   const route = routes.find((routeFind) => routeFind.path === hash);
-  console.log('route: ', route);
 
   if (route && route.vista) {
     window.history.pushState(
