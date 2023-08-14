@@ -37,9 +37,7 @@ function publicaciones(navigateTo) {
   const deLujo = document.createElement('a');
   const paraTodos = document.createElement('a');
   const cocinaEconomica = document.createElement('a');
-  const promociones = document.createElement('a');
-  const perfil = document.createElement('a');
-  const buscar = document.createElement('a');
+  const todosTipos = document.createElement('a');
   const inicio = document.createElement('a');
   const cerrarSesion = document.createElement('a');
   const menu = document.createElement('a');
@@ -69,6 +67,8 @@ function publicaciones(navigateTo) {
   const bajo = document.createElement('option');
   const comentario = document.createElement('input');
   const foto = document.createElement('input');
+  const spanLikes = document.createElement('span');
+  const likes = document.createElement('i');
   const publicar = document.createElement('button');
 
   const pagina = [];
@@ -88,9 +88,7 @@ function publicaciones(navigateTo) {
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
-  promociones.textContent = 'PROMOCIONES';
-  perfil.textContent = 'PERFIL';
-  buscar.textContent = 'BUSCAR';
+  todosTipos.textContent = 'TODOS';
   inicio.textContent = 'INICIO';
   cerrarSesion.textContent = 'CERRAR SESIÓN';
   formulario.id = 'form';
@@ -147,6 +145,9 @@ function publicaciones(navigateTo) {
   publicar.type = 'button';
   publicar.textContent = 'publicar';
   publicar.id = 'publicar';
+  spanLikes.id = 'spanLikes';
+  likes.className = 'fa fa-thumbs-up';
+  likes.textContent = 'me gusta';
   main.id = 'mainP';
 
   foto.addEventListener('change', subirImg);
@@ -163,13 +164,14 @@ function publicaciones(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', mostrarMenu);
 
-  div.append(deLujo, paraTodos, cocinaEconomica, promociones, perfil, buscar, inicio, cerrarSesion);
+  div.append(deLujo, paraTodos, cocinaEconomica, todosTipos, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu, mex, per, col);
   pais.append(mexico, colombia, peru);
   tipo.append(lujo, todos, economica);
   servicio.append(excelente, bueno, malo);
   precio.append(caro, medio, barato);
   nivelPicante.append(alto, intermedio, bajo);
+  spanLikes.append(likes);
   formulario.append(
     foto,
     lugar,
@@ -179,6 +181,7 @@ function publicaciones(navigateTo) {
     precio,
     nivelPicante,
     comentario,
+    spanLikes,
     publicar,
   );
   main.append(formulario);

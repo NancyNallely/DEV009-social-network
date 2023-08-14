@@ -1,13 +1,10 @@
 /* eslint-disable import/no-unresolved */
-// se importa desde la pagina web de from
-import {
-  createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
-} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
-
 // importar desde la clase de firebase
 import {
-  auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where, query, getDocs,
+  auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where,
+  query, getDocs, doc, updateDoc, increment, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail,
+  signOut, browserPopupRedirectResolver,
 } from '../firebase.js';
 
 // funcion para registrar usuarios
@@ -48,7 +45,7 @@ async function autenticarUsuarios(email, password) {
 
 // funcion para autenticar con google
 export async function autenticarGoogle() {
-  await signInWithPopup(auth, new GoogleAuthProvider())
+  await signInWithPopup(auth, new GoogleAuthProvider(), browserPopupRedirectResolver)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access Google APIs.
       const user = result.user;
@@ -86,7 +83,7 @@ export async function cerrarSesion() {
     alert(error);
   });
 }
-
+// funcion para validar usuario
 function validarUsuario(usuario) {
   // Expresión regular para validar el formato de un correo electrónico
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,7 +95,7 @@ function validarUsuario(usuario) {
   return false; // El correo no es válido
 }
 
-// funcion para autenticar usuarios y validad su informacion
+// funcion para autenticar usuarios y validar su informacion
 export function autenticarUsuario() {
   const usuario = document.getElementById('usuario').value;
   const password = document.getElementById('contraseña').value;
@@ -214,4 +211,12 @@ export async function registrosTipo(tipo, pais) {
   const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais), where('tipo', '==', tipo));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs;
+}
+
+// funcion para incrementar el numero de likes
+export async function aumentoLikes(id) {
+  const refPublicaciones = doc(db, 'publicacionesMuros', id);
+  await updateDoc(refPublicaciones, {
+    likes: increment(1),
+  });
 }

@@ -1,19 +1,18 @@
 /* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
+import { initializeApp } from 'firebase/app';
 import {
-  getFirestore,
-  getDocs,
-  collection,
-  query,
-  where,
-  limit,
-  addDoc,
-} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
+  browserPopupRedirectResolver,
+} from 'firebase/auth';
+import {
+  getFirestore, getDocs, collection, query, where, addDoc,
+  updateDoc, increment, doc,
+} from 'firebase/firestore';
 import {
   getStorage, ref, uploadBytes, getDownloadURL,
-} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
+} from 'firebase/storage';
 // otras importaciones...
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -45,15 +44,10 @@ export {
   getDocs,
   query,
   where,
+  updateDoc,
+  increment,
+  doc,
+  createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
+  browserPopupRedirectResolver,
 };
-
-// funcion para autenticar usuarios
-export async function autenticar(usuario, password) {
-  const consulta = query(collection(db, 'usuarios'), where('usuario', '==', usuario), where('password', '==', password), limit(1));
-  const resultado = await getDocs(consulta);
-  let datos;
-  resultado.forEach((documento) => {
-    datos = documento.data();
-  });
-  return datos;
-}
