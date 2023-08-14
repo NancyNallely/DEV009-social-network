@@ -471,6 +471,15 @@ body {
   #mainP{
     display: flex;
   }
+
+  .spanLikes{
+    color: #000;
+    font-size: 1.4rem;
+  }
+
+  .spanLikes i::before{
+    margin-right: 7px;
+  }
 }
 
 /*---------------------------------Diseño Escritorio-----------------------------------*/
