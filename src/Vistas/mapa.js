@@ -18,22 +18,22 @@ function mapa(navigateTo) {
   section.id = 'mapasection';
 
   title.textContent = 'Selecciona tu país de destino';
-  buttonMexico.textContent = 'México';
-  buttonPeru.textContent = 'Perú';
-  buttonColombia.textContent = 'Colombia';
   buttonCerrarSesion.textContent = 'Cerrar Sesión';
   buttonCerrarSesion.addEventListener('click', firebase.cerrarSesion);
   buttonMexico.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
-    navigateTo('/mexico');
+    localStorage.setItem('paisSeleccionado', 'Mexico');
+    navigateTo('/muro?pais=mexico');
   });
   buttonColombia.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
-    navigateTo('/colombia');
+    localStorage.setItem('paisSeleccionado', 'Colombia');
+    navigateTo('/muro?pais=colombia');
   });
   buttonPeru.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
-    navigateTo('/peru');
+    localStorage.setItem('paisSeleccionado', 'Peru');
+    navigateTo('/muro?pais=peru');
   });
   mapas.src = './imagenes/logo.jpg';
   section.append(title, mapas, buttonMexico, buttonPeru, buttonColombia);

@@ -1,9 +1,14 @@
 /* eslint-disable import/no-unresolved */
+// se importa desde la pagina web de from
 import {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
   signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
-import { auth } from '../firebase.js';
+
+// importar desde la clase de firebase
+import {
+  auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where, query, getDocs,deleteDoc, doc,
+} from '../firebase.js';
 
 // funcion para registrar usuarios
 export async function createUser(email, password) {
@@ -81,7 +86,7 @@ export async function cerrarSesion() {
     alert(error);
   });
 }
-
+// funcion para validar usuario
 function validarUsuario(usuario) {
   // Expresión regular para validar el formato de un correo electrónico
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -93,7 +98,7 @@ function validarUsuario(usuario) {
   return false; // El correo no es válido
 }
 
-// funcion para autenticar usuarios y validad su informacion
+// funcion para autenticar usuarios y validar su informacion
 export function autenticarUsuario() {
   const usuario = document.getElementById('usuario').value;
   const password = document.getElementById('contraseña').value;
@@ -140,5 +145,87 @@ export async function registrarUsuarios() {
   }
   if (usuario !== '' && password !== '') {
     createUser(usuario, password);
+  }
+}
+
+// funcion para obtener el usuario que se encuentra logueado
+export function obtenerUsuario() {
+  const usuario = auth.currentUser;
+  if (usuario !== null) {
+    return usuario.email;
+  }
+  return null;
+}
+
+// funcion para subir una publicacion a firestore
+export async function guardarRegistros(formulario, foto, usuario) {
+  console.log(formulario);
+  try {
+    const docRef = await addDoc(collection(db, 'publicacionesMuros'), {
+      nombreLugar: formulario[1].value,
+      tipo: formulario[3].value,
+      pais: formulario[2].value,
+      servicio: formulario[4].value,
+      precio: formulario[5].value,
+      nivelPicante: formulario[6].value,
+      comentario: formulario[7].value,
+      foto,
+      usuario,
+      likes: 0,
+    });
+    console.log(docRef);
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+}
+
+// funcion para guardar imagen
+export function guardarImg(archivo, nombreArchivo) {
+  const storageRef = ref(storage, nombreArchivo);
+
+  uploadBytes(storageRef, archivo).then((snapshot) => {
+    console.log('se subio la imagen', snapshot);
+  });
+}
+
+// funcion para obtener el enlace de la imagen
+export async function getImgUrl(archivo, nombreArchivo) {
+  await guardarImg(archivo, nombreArchivo);
+  getDownloadURL(ref(storage, nombreArchivo))
+    .then((url) => {
+      localStorage.setItem('imgUrl', url);
+    })
+    .catch((error) => {
+      console.log(error.errorMessage);
+    });
+}
+
+// funcion para buscar los registros por pais
+export async function registrosPais(pais) {
+  const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs;
+}
+
+// funcion para obtener registros por tipo de lugar
+export async function registrosTipo(tipo, pais) {
+  const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais), where('tipo', '==', tipo));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs;
+}
+
+// funcion para buscar//
+export async function buscar(collectionToSearch, buscartodo) {
+  return collectionToSearch.filter((item) => item.toLowerCase().includes(buscartodo.toLowerCase()));
+}
+
+// Función para eliminar un documento
+export async function docDelete(docId) {
+  try {
+    const result = await deleteDoc(doc (db, 'publicacionesMuros', docId));
+  } catch (error) {
+    alert(error);
   }
 }
