@@ -4,7 +4,7 @@
 
 // importamos la funcion que vamos a testear
 import { auth } from '../src/firebase.js';
-import { createUser, cerrarSesion } from '../src/lib/index';
+import { createUser, cerrarSesion, obtenerUsuario } from '../src/lib/index';
 import home from '../src/Vistas/home.js';
 
 jest.mock('../src/lib/index', () => ({
@@ -37,5 +37,29 @@ describe('home', () => {
     home(navigateToMock);
     navigateToMock('/registro');
     expect(navigateToMock).toHaveBeenCalledWith('/registro');
+  });
+});
+
+describe('funcion para obtener un usuario', () => {
+  it('should handle cases where auth.currentUser.email is undefined', () => {
+    const mockUser = {
+      displayName: 'John Doe',
+      email: undefined,
+    };
+    auth.currentUser = mockUser;
+
+    const result = obtenerUsuario();
+
+    expect(result).toBe('John Doe');
+  });
+  it('should return the display name when the user is not null', () => {
+    const mockUser = {
+      displayName: 'John Doe',
+    };
+    auth.currentUser = mockUser;
+
+    const result = obtenerUsuario();
+
+    expect(result).toBe('John Doe');
   });
 });

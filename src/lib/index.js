@@ -86,7 +86,7 @@ export async function cerrarSesion() {
     alert(error);
   });
 }
-
+// funcion para validar usuario
 function validarUsuario(usuario) {
   // Expresión regular para validar el formato de un correo electrónico
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
