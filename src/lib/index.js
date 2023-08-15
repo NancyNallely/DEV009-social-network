@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 // se importa desde la pagina web de from
 import {
@@ -159,7 +161,6 @@ export function obtenerUsuario() {
 
 // funcion para subir una publicacion a firestore
 export async function guardarRegistros(formulario, foto, usuario) {
-  console.log(formulario);
   try {
     const docRef = await addDoc(collection(db, 'publicacionesMuros'), {
       nombreLugar: formulario[1].value,
@@ -176,7 +177,6 @@ export async function guardarRegistros(formulario, foto, usuario) {
     console.log(docRef);
     return true;
   } catch (e) {
-    console.log(e);
     return false;
   }
 }

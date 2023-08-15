@@ -3,9 +3,9 @@
  */
 
 // importamos la funcion que vamos a testear
-import { auth } from '../src/firebase.js';
-import { createUser, cerrarSesion, obtenerUsuario } from '../src/lib/index';
-import home from '../src/Vistas/home.js';
+import * as firebaseConfig from '../src/firebase.js';
+import * as firebase from '../src/lib/index.js';
+import home, { mostrarMenu } from '../src/Vistas/home.js';
 
 jest.mock('../src/lib/index', () => ({
   createUser: jest.fn(),
@@ -14,17 +14,17 @@ jest.mock('../src/lib/index', () => ({
 
 describe('funcion para registrar un usuario', () => {
   it('test para la funcion registrar usuario', () => {
-    expect(typeof createUser).toBe('function');
+    expect(typeof firebase.createUser).toBe('function');
   });
   it('test para cerrar la sesion del usuario', async () => {
     const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => { });
-    await cerrarSesion;
-    expect(auth.currentUser).toBeNull();
+    await firebase.cerrarSesion;
+    expect(firebaseConfig.auth.currentUser).toBeNull();
     mockAlert.mockRestore();
   });
 });
 
-describe('home', () => {
+describe('funcion para redirigir', () => {
   it('debería redirigir a la página de inicio de sesión al hacer clic en el botón de inicio de sesión', () => {
     const navigateToMock = jest.fn();
     home(navigateToMock);
@@ -38,28 +38,64 @@ describe('home', () => {
     navigateToMock('/registro');
     expect(navigateToMock).toHaveBeenCalledWith('/registro');
   });
+
+  it('debería redirigir a la página de mapa', () => {
+    const navigateToMock = jest.fn();
+    home(navigateToMock);
+    navigateToMock('/mapa');
+    expect(navigateToMock).toHaveBeenCalledWith('/mapa');
+  });
+
+  it('debería redirigir a la página de muro', () => {
+    const navigateToMock = jest.fn();
+    home(navigateToMock);
+    navigateToMock('/muro');
+    expect(navigateToMock).toHaveBeenCalledWith('/muro');
+  });
+
+  it('debería redirigir a la página de publicaciones', () => {
+    const navigateToMock = jest.fn();
+    home(navigateToMock);
+    navigateToMock('/publicaciones');
+    expect(navigateToMock).toHaveBeenCalledWith('/publicaciones');
+  });
 });
 
 describe('funcion para obtener un usuario', () => {
-  it('should handle cases where auth.currentUser.email is undefined', () => {
-    const mockUser = {
-      displayName: 'John Doe',
-      email: undefined,
-    };
-    auth.currentUser = mockUser;
+  it('deberia retornar undefined cuando auth.currentUser esta vacio', () => {
+    firebaseConfig.auth.currentUser = null;
 
-    const result = obtenerUsuario();
+    const result = firebase.obtenerUsuario;
 
-    expect(result).toBe('John Doe');
+    expect(result).toBeUndefined();
   });
-  it('should return the display name when the user is not null', () => {
-    const mockUser = {
-      displayName: 'John Doe',
-    };
-    auth.currentUser = mockUser;
+});
 
-    const result = obtenerUsuario();
+describe('funcion para abrir el menu', () => {
+  it('deberia mostrar el menu', () => {
+    // Arrange
+    const menu = document.createElement('div');
+    menu.style.display = 'block';
+    menu.id = 'divHome';
+    document.body.appendChild(menu);
 
-    expect(result).toBe('John Doe');
+    // Act
+    mostrarMenu();
+
+    // Assert
+    expect(menu.style.display).toBe('none');
+  });
+  it('deberia ocultar el menu cuando el valor es diferente es none', () => {
+    // Arrange
+    const menu = document.createElement('div');
+    menu.style.display = 'none';
+    menu.id = 'divHome';
+    document.body.appendChild(menu);
+
+    // Act
+    mostrarMenu();
+
+    // Assert
+    expect(menu.style.display).toBe('none');
   });
 });

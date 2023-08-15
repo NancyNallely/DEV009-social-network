@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import * as firebase from '../lib/index.js';
 
 function mostrarMenu() {

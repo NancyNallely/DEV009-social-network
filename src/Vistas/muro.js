@@ -16,7 +16,6 @@ async function crearPost(paisSeleccionado) {
   if (listaPublicaciones.length > 0) {
     listaPublicaciones.forEach((doc) => {
       const publicacionesPaises = doc.data();
-      console.log('publicacionesPaises', publicacionesPaises);
       const card = document.createElement('div');
       card.className = 'card';
 

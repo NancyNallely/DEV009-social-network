@@ -1,4 +1,4 @@
-function mostrarMenu() {
+export function mostrarMenu() {
   const menu = document.getElementById('divHome');
   if (menu.style.display === 'block') {
     menu.style.display = 'none';
