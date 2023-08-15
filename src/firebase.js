@@ -1,14 +1,14 @@
 /* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 import {
-  getFirestore,
-  getDocs,
-  collection,
-  query,
-  where,
-  addDoc,
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
+  browserPopupRedirectResolver,
+} from 'firebase/auth';
+import {
+  getFirestore, getDocs, collection, query, where, addDoc,
+  updateDoc, increment, doc,
 } from 'firebase/firestore';
 import {
   getStorage, ref, uploadBytes, getDownloadURL,
@@ -44,4 +44,10 @@ export {
   getDocs,
   query,
   where,
+  updateDoc,
+  increment,
+  doc,
+  createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
+  browserPopupRedirectResolver,
 };

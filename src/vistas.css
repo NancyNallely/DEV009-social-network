@@ -46,6 +46,8 @@ body {
   align-items: center;
   font-weight: 900;
 }
+
+
 #inputPost{
   font-size: 14px;
   width: 100%;
@@ -361,8 +363,6 @@ body {
     font-size: 14px;
     text-align: justify;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     color: #000;
   }
 
@@ -377,6 +377,16 @@ body {
 
   .cardFigure{
     font-size: 14px;
+  }
+
+  #spanLikes i{
+    color: rgb(31, 15, 15);
+    font-size: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    font-weight: 900;
   }
 }
 
@@ -460,6 +470,15 @@ body {
   }
   #mainP{
     display: flex;
+  }
+
+  .spanLikes{
+    color: #000;
+    font-size: 1.4rem;
+  }
+
+  .spanLikes i::before{
+    margin-right: 7px;
   }
 }
 

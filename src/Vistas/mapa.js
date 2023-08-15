@@ -1,6 +1,7 @@
 import * as firebase from '../lib/index.js';
 
 function mapa(navigateTo) {
+  localStorage.clear();
   const paginaPrincipal = document.getElementById('paginaPrincipal');
   const section = document.createElement('section');
   const buttonMexico = document.createElement('button');
@@ -26,17 +27,17 @@ function mapa(navigateTo) {
   buttonMexico.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
     localStorage.setItem('paisSeleccionado', 'Mexico');
-    navigateTo('/muro?pais=mexico');
+    navigateTo('/muro');
   });
   buttonColombia.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
     localStorage.setItem('paisSeleccionado', 'Colombia');
-    navigateTo('/muro?pais=colombia');
+    navigateTo('/muro');
   });
   buttonPeru.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
     localStorage.setItem('paisSeleccionado', 'Peru');
-    navigateTo('/muro?pais=peru');
+    navigateTo('/muro');
   });
   mapas.src = './imagenes/logo.jpg';
   section.append(title, mapas, buttonMexico, buttonPeru, buttonColombia);

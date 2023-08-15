@@ -9,8 +9,13 @@ function mostrarMenu() {
   }
 }
 
-async function crearPost(paisSeleccionado) {
-  const listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+async function crearPost(paisSeleccionado, tipo) {
+  let listaPublicaciones;
+  if (tipo == null) {
+    listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+  } else {
+    listaPublicaciones = await firebase.registrosTipo(tipo, paisSeleccionado);
+  }
   const contenedor = document.createElement('div');
   contenedor.className = 'contenedor';
   if (listaPublicaciones.length > 0) {
@@ -45,10 +50,25 @@ async function crearPost(paisSeleccionado) {
       cardServicio.textContent = publicacionesPaises.servicio;
       const cardPicante = document.createElement('p');
       cardPicante.textContent = publicacionesPaises.nivelPicante;
-      cardCalificacion.append(cardPrecio, cardServicio, cardPicante);
+      const spanLikes = document.createElement('span');
+      // spanLikes.textContent = 'Me gusta';
+      spanLikes.className = 'spanLikes';
+      const cardLikes = document.createElement('i');
+      cardLikes.id = doc.id;
+      cardLikes.className = 'fa fa-thumbs-up';
+      cardLikes.textContent = publicacionesPaises.likes;
 
+      spanLikes.append(cardLikes);
+      cardCalificacion.append(cardPrecio, cardServicio, cardPicante, spanLikes);
       card.append(cardContent, cardCalificacion);
       contenedor.appendChild(card);
+
+      spanLikes.addEventListener('click', () => {
+        firebase.aumentoLikes(doc.id);
+        let numLikes = Number(document.getElementById(doc.id).textContent);
+        numLikes += 1;
+        document.getElementById(doc.id).textContent = numLikes;
+      });
     });
   } else {
     const mensaje = document.createElement('p');
@@ -128,8 +148,7 @@ async function muro(navigateTo) {
   const deLujo = document.createElement('a');
   const paraTodos = document.createElement('a');
   const cocinaEconomica = document.createElement('a');
-  const perfil = document.createElement('a');
-  const buscar = document.createElement('a');
+  const todosTipos = document.createElement('a');
   const inicio = document.createElement('a');
   const cerrarSesion = document.createElement('a');
   const menu = document.createElement('a');
@@ -141,6 +160,7 @@ async function muro(navigateTo) {
   barraNav.id = 'barraNav';
 
   const pais = localStorage.getItem('paisSeleccionado');
+  const tipo = localStorage.getItem('tipo');
   let imglogo = '';
   switch (pais) {
     case 'Mexico':
@@ -165,14 +185,34 @@ async function muro(navigateTo) {
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
-  perfil.textContent = 'PERFIL';
-  buscar.textContent = 'BUSCAR';
+  todosTipos.textContent = 'TODOS';
   inicio.textContent = 'INICIO';
   cerrarSesion.textContent = 'CERRAR SESIÓN';
 
   cerrarSesion.addEventListener('click', firebase.cerrarSesion);
+
   inicio.addEventListener('click', () => {
     navigateTo('/mapa');
+  });
+
+  deLujo.addEventListener('click', () => {
+    localStorage.setItem('tipo', 'de lujo');
+    navigateTo('/muro');
+  });
+
+  paraTodos.addEventListener('click', () => {
+    localStorage.setItem('tipo', 'para todos');
+    navigateTo('/muro');
+  });
+
+  cocinaEconomica.addEventListener('click', () => {
+    localStorage.setItem('tipo', 'cocina economica');
+    navigateTo('/muro');
+  });
+
+  todosTipos.addEventListener('click', () => {
+    localStorage.removeItem('tipo');
+    navigateTo('/muro');
   });
 
   menu.classList.add('icon', 'btnMenu');
@@ -180,9 +220,9 @@ async function muro(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', mostrarMenu);
 
-  div.append(deLujo, paraTodos, cocinaEconomica, perfil, buscar, inicio, cerrarSesion);
+  div.append(deLujo, paraTodos, cocinaEconomica, todosTipos, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu);
-  main.append(await crearPost(pais));
+  main.append(await crearPost(pais, tipo));
   aside.append(crearAside(pais));
   pagina.push(barraNav, aside, agregarPost(), main);
   return pagina;
