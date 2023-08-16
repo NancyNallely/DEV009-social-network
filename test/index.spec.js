@@ -79,23 +79,18 @@ describe('funcion para abrir el menu', () => {
     menu.id = 'divHome';
     document.body.appendChild(menu);
 
-    // Act
     mostrarMenu();
 
-    // Assert
     expect(menu.style.display).toBe('none');
   });
   it('deberia ocultar el menu cuando el valor es diferente es none', () => {
-    // Arrange
     const menu = document.createElement('div');
     menu.style.display = 'none';
     menu.id = 'divHome';
     document.body.appendChild(menu);
 
-    // Act
     mostrarMenu();
 
-    // Assert
     expect(menu.style.display).toBe('none');
   });
 });
