@@ -1,6 +1,5 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
-/* eslint-disable import/no-unresolved */
 // importar desde la clase de firebase
 import {
   auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where,
@@ -228,7 +227,7 @@ export async function buscar(collectionToSearch, buscartodo) {
 // Función para eliminar un documento
 export async function docDelete(docId) {
   try {
-    const result = await deleteDoc(doc (db, 'publicacionesMuros', docId));
+    await deleteDoc(doc(db, 'publicacionesMuros', docId));
   } catch (error) {
     alert(error);
   }

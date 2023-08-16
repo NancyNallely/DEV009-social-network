@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 // Importa las vistas
 import home from './Vistas/home.js';
 import login from './Vistas/login.js';

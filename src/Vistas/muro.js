@@ -1,5 +1,8 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable func-names */
 import * as firebase from '../lib/index.js';
-import * as getFirestore from '../firebase.js';
 
 function mostrarMenu() {
   const menu = document.getElementById('divHome');
@@ -10,6 +13,54 @@ function mostrarMenu() {
   }
 }
 
+function createDropDown(doc) {
+  function myFunction() {
+    document.getElementById('myDropdown').classList.toggle('show');
+  }
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+      const dropdowns = document.getElementsByClassName('dropdown-content');
+      let i;
+      for (i = 0; i < dropdowns.length; i++) {
+        const openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  };
+  const dropdown = document.createElement('div');
+  dropdown.className = 'dropdown';
+  const dropbtn = document.createElement('button');
+  dropbtn.className = 'dropbtn';
+  dropbtn.textContent = '...';
+  dropbtn.addEventListener('click', myFunction);
+  const myDropdown = document.createElement('div');
+  myDropdown.id = 'myDropdown';
+  myDropdown.className = 'dropdown-content';
+  const editLink = document.createElement('a');
+  editLink.textContent = 'Editar';
+  const deleteLink = document.createElement('a');
+  deleteLink.textContent = 'Eliminar';
+  deleteLink.addEventListener('click', async () => {
+    if (confirm('¿Desea borrar este post?')) {
+      const postId = doc.id; // Reemplaza con el ID del post que deseas eliminar
+      try {
+        await firebase.docDelete(postId);
+        console.log('Documento eliminado correctamente');
+        window.location.href = '/muro';
+        // Puedes actualizar la interfaz o realizar otras acciones después de eliminar
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  });
+  myDropdown.append(editLink, deleteLink);
+  dropdown.append(dropbtn, myDropdown);
+  return dropdown;
+}
+
 async function crearPost(paisSeleccionado, tipo) {
   let listaPublicaciones;
   if (tipo == null) {
@@ -17,56 +68,8 @@ async function crearPost(paisSeleccionado, tipo) {
   } else {
     listaPublicaciones = await firebase.registrosTipo(tipo, paisSeleccionado);
   }
-function createDropDown(){
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-	const dropdown = document.createElement('div');
-    dropdown.className = 'dropdown';
-    const dropbtn = document.createElement('button');
-    dropbtn.className = 'dropbtn';
-    dropbtn.textContent = '...';
-    dropbtn.addEventListener('click', myFunction);
-    const myDropdown = document.createElement('div');
-    myDropdown.id = 'myDropdown';
-    myDropdown.className = 'dropdown-content';
-    const editLink = document.createElement('a');
-    editLink.textContent = 'Editar';
-    const deleteLink = document.createElement('a');
-    deleteLink.textContent = 'Eliminar';
-    deleteLink.addEventListener('click', async () => {
-      if ( confirm ('¿Desea borrar este post?')){
-        const postId = doc.id; // Reemplaza con el ID del post que deseas eliminar
-        try {
-          await firebase.docDelete(postId);
-          console.log('Documento eliminado correctamente');
-          location.href = '/muro';
-          // Puedes actualizar la interfaz o realizar otras acciones después de eliminar
-        } catch (error) {
-          console.log (error);
-        }  
-      }
-    });
-    myDropdown.append(editLink,deleteLink);
-    dropdown.append(dropbtn, myDropdown);
-    return dropdown;
-}
 
-async function crearPost(paisSeleccionado) {
-  const listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+  listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
   const contenedor = document.createElement('div');
   contenedor.className = 'contenedor';
   if (listaPublicaciones.length > 0) {
@@ -92,12 +95,8 @@ async function crearPost(paisSeleccionado) {
       const cardComentario = document.createElement('p');
       cardComentario.textContent = publicacionesPaises.comentario;
 
+      const Divbotton = createDropDown(doc);
 
-
-
-
-      const Divbotton = createDropDown();
-      
       cardContent.append(Divbotton, cardTitulo, cardFigure, cardComentario);
 
       const cardCalificacion = document.createElement('div');
@@ -207,7 +206,6 @@ async function muro(navigateTo) {
   const paraTodos = document.createElement('a');
   const cocinaEconomica = document.createElement('a');
   const todosTipos = document.createElement('a');
-  const perfil = document.createElement('a');
   const buscarto = document.createElement('input');
   const inicio = document.createElement('a');
   const cerrarSesion = document.createElement('a');

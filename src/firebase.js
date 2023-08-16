@@ -50,14 +50,3 @@ export {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail,
   signOut, browserPopupRedirectResolver,
 };
-
-// funcion para autenticar usuarios
-export async function autenticar(usuario, password) {
-  const consulta = query(collection(db, 'usuarios'), where('usuario', '==', usuario), where('password', '==', password), limit(1));
-  const resultado = await getDocs(consulta);
-  let datos;
-  resultado.forEach((documento) => {
-    datos = documento.data();
-  });
-  return datos;
-}
