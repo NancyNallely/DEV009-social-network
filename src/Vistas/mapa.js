@@ -19,9 +19,6 @@ function mapa(navigateTo) {
   section.id = 'mapasection';
 
   title.textContent = 'Selecciona tu país de destino';
-  buttonMexico.textContent = 'México';
-  buttonPeru.textContent = 'Perú';
-  buttonColombia.textContent = 'Colombia';
   buttonCerrarSesion.textContent = 'Cerrar Sesión';
   buttonCerrarSesion.addEventListener('click', firebase.cerrarSesion);
   buttonMexico.addEventListener('click', () => {

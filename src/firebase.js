@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 import {
   getFirestore, getDocs, collection, query, where, addDoc,
-  updateDoc, increment, doc,
+  updateDoc, increment, doc, deleteDoc,
 } from 'firebase/firestore';
 import {
   getStorage, ref, uploadBytes, getDownloadURL,
@@ -44,10 +44,20 @@ export {
   getDocs,
   query,
   where,
-  updateDoc,
-  increment,
+  deleteDoc,
   doc,
-  createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
-  browserPopupRedirectResolver,
+  updateDoc, increment, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail,
+  signOut, browserPopupRedirectResolver,
 };
+
+// funcion para autenticar usuarios
+export async function autenticar(usuario, password) {
+  const consulta = query(collection(db, 'usuarios'), where('usuario', '==', usuario), where('password', '==', password), limit(1));
+  const resultado = await getDocs(consulta);
+  let datos;
+  resultado.forEach((documento) => {
+    datos = documento.data();
+  });
+  return datos;
+}

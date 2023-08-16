@@ -6,7 +6,7 @@ import {
   auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where,
   query, getDocs, doc, updateDoc, increment, createUserWithEmailAndPassword,
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail,
-  signOut, browserPopupRedirectResolver,
+  signOut, browserPopupRedirectResolver, deleteDoc,
 } from '../firebase.js';
 
 // funcion para registrar usuarios
@@ -219,4 +219,17 @@ export async function aumentoLikes(id) {
   await updateDoc(refPublicaciones, {
     likes: increment(1),
   });
+}
+// funcion para buscar//
+export async function buscar(collectionToSearch, buscartodo) {
+  return collectionToSearch.filter((item) => item.toLowerCase().includes(buscartodo.toLowerCase()));
+}
+
+// Función para eliminar un documento
+export async function docDelete(docId) {
+  try {
+    const result = await deleteDoc(doc (db, 'publicacionesMuros', docId));
+  } catch (error) {
+    alert(error);
+  }
 }
