@@ -381,11 +381,12 @@ body {
   .dropbtn {
     background-color: #050505;
     color: white;
-    padding: 16px;
+    padding: 10px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    
+    text-align: center;
+    writing-mode: vertical-lr;
   }
   
   .dropbtn:hover, .dropbtn:focus {
