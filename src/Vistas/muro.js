@@ -1,5 +1,8 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable func-names */
 import * as firebase from '../lib/index.js';
-import * as getFirestore from '../firebase.js';
 
 function mostrarMenu() {
   const menu = document.getElementById('divHome');
@@ -9,57 +12,84 @@ function mostrarMenu() {
     menu.style.display = 'block';
   }
 }
-
-function createDropDown(){
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+async function EditarComentario (nuevoComentario, doc) {
+  const postId = doc.id; // Reemplaza con el ID del post que deseas editar
+  const nuevosDatos = {
+  comentario: nuevoComentario,
+  };
+  const resultado = await firebase.editarDocumento(postId, nuevosDatos);
+  console.log (resultado);
+  if (resultado){
+    window.location.href = '/muro';
   }
+}
+
+function createDropDown(doc) {
+  function myFunction() {
+    document.getElementById('myDropdown').classList.toggle('show');
+  }
+
   // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
+      const dropdowns = document.getElementsByClassName('dropdown-content');
+      let i;
       for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
+        const openDropdown = dropdowns[i];
         if (openDropdown.classList.contains('show')) {
           openDropdown.classList.remove('show');
         }
       }
     }
-  }
-	const dropdown = document.createElement('div');
-    dropdown.className = 'dropdown';
-    const dropbtn = document.createElement('button');
-    dropbtn.className = 'dropbtn';
-    dropbtn.textContent = '...';
-    dropbtn.addEventListener('click', myFunction);
-    const myDropdown = document.createElement('div');
-    myDropdown.id = 'myDropdown';
-    myDropdown.className = 'dropdown-content';
-    const editLink = document.createElement('a');
-    editLink.textContent = 'Editar';
-    const deleteLink = document.createElement('a');
-    deleteLink.textContent = 'Eliminar';
-    deleteLink.addEventListener('click', async () => {
-      if ( confirm ('¿Desea borrar este post?')){
-        const postId = doc.id; // Reemplaza con el ID del post que deseas eliminar
-        try {
-          await firebase.docDelete(postId);
-          console.log('Documento eliminado correctamente');
-          location.href = '/muro';
-          // Puedes actualizar la interfaz o realizar otras acciones después de eliminar
-        } catch (error) {
-          console.log (error);
-        }  
+  };
+
+  const dropdown = document.createElement('div');
+  dropdown.className = 'dropdown';
+  const dropbtn = document.createElement('button');
+  dropbtn.className = 'dropbtn';
+  dropbtn.textContent = '...';
+  dropbtn.addEventListener('click', myFunction);
+  const myDropdown = document.createElement('div');
+  myDropdown.id = 'myDropdown';
+  myDropdown.className = 'dropdown-content';
+  const editLink = document.createElement('a');
+  editLink.textContent = 'Editar';
+  const deleteLink = document.createElement('a');
+  deleteLink.textContent = 'Eliminar';
+  deleteLink.addEventListener('click', async () => {
+    if (confirm('¿Desea borrar este post?')) {
+      const postId = doc.id; // Reemplaza con el ID del post que deseas eliminar
+      try {
+        await firebase.docDelete(postId);
+        console.log('Documento eliminado correctamente');
+        window.location.href = '/muro';
+      } catch (error) {
+        console.log(error);
       }
-    });
-    myDropdown.append(editLink,deleteLink);
-    dropdown.append(dropbtn, myDropdown);
-    return dropdown;
+    }
+  });
+
+  editLink.addEventListener('click', async () => {
+    if (confirm('¿Deseas editar este post?')) {
+    const comentario = document.getElementById ('comentario_'+ doc.id);
+    comentario.disabled = false;
+    }
+  });
+  
+  myDropdown.append(editLink, deleteLink);
+  dropdown.append(dropbtn, myDropdown);
+  return dropdown;
 }
 
-async function crearPost(paisSeleccionado) {
-  const listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+async function crearPost(paisSeleccionado, tipo) {
+  let listaPublicaciones;
+  if (tipo == null) {
+    listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+  } else {
+    listaPublicaciones = await firebase.registrosTipo(tipo, paisSeleccionado);
+  }
+
+  listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
   const contenedor = document.createElement('div');
   contenedor.className = 'contenedor';
   if (listaPublicaciones.length > 0) {
@@ -67,7 +97,6 @@ async function crearPost(paisSeleccionado) {
       const publicacionesPaises = doc.data();
       const card = document.createElement('div');
       card.className = 'card';
-
       const cardContent = document.createElement('div');
       cardContent.className = 'cardContent';
       const cardTitulo = document.createElement('h6');
@@ -82,15 +111,12 @@ async function crearPost(paisSeleccionado) {
       const imageCaption = document.createElement('figcaption');
       imageCaption.textContent = publicacionesPaises.nombreLugar;
       cardFigure.append(cardImage, imageCaption);
-      const cardComentario = document.createElement('p');
-      cardComentario.textContent = publicacionesPaises.comentario;
+      const cardComentario = document.createElement('input');
+      cardComentario. id = 'comentario_' + doc.id;
+      cardComentario.value = publicacionesPaises.comentario;
+      cardComentario.disabled = true;
 
-
-
-
-
-      const Divbotton = createDropDown();
-      
+      const Divbotton = createDropDown(doc);
       cardContent.append(Divbotton, cardTitulo, cardFigure, cardComentario);
 
       const cardCalificacion = document.createElement('div');
@@ -101,10 +127,34 @@ async function crearPost(paisSeleccionado) {
       cardServicio.textContent = publicacionesPaises.servicio;
       const cardPicante = document.createElement('p');
       cardPicante.textContent = publicacionesPaises.nivelPicante;
-      cardCalificacion.append(cardPrecio, cardServicio, cardPicante);
+      const spanLikes = document.createElement('span');
+      // spanLikes.textContent = 'Me gusta';
+      spanLikes.className = 'spanLikes';
+      const cardLikes = document.createElement('i');
+      cardLikes.id = doc.id;
+      cardLikes.className = 'fa fa-thumbs-up';
+      cardLikes.textContent = publicacionesPaises.likes;
 
-      card.append(cardContent, cardCalificacion);
+      const botonGuardar = document.createElement ('button');
+      botonGuardar.type = 'button';
+      botonGuardar.id = 'botonGuardar';
+      botonGuardar.textContent = 'Guardar';
+      botonGuardar.addEventListener ('click', () => {
+        EditarComentario(cardComentario.value, doc);
+      }); 
+
+
+      spanLikes.append(cardLikes);
+      cardCalificacion.append(cardPrecio, cardServicio, cardPicante, spanLikes);
+      card.append(cardContent, cardCalificacion, botonGuardar);
       contenedor.appendChild(card);
+
+      spanLikes.addEventListener('click', () => {
+        firebase.aumentoLikes(doc.id);
+        let numLikes = Number(document.getElementById(doc.id).textContent);
+        numLikes += 1;
+        document.getElementById(doc.id).textContent = numLikes;
+      });
     });
   } else {
     const mensaje = document.createElement('p');
@@ -184,7 +234,7 @@ async function muro(navigateTo) {
   const deLujo = document.createElement('a');
   const paraTodos = document.createElement('a');
   const cocinaEconomica = document.createElement('a');
-  const perfil = document.createElement('a');
+  const todosTipos = document.createElement('a');
   const buscarto = document.createElement('input');
   const inicio = document.createElement('a');
   const cerrarSesion = document.createElement('a');
@@ -197,6 +247,7 @@ async function muro(navigateTo) {
   barraNav.id = 'barraNav';
 
   const pais = localStorage.getItem('paisSeleccionado');
+  const tipo = localStorage.getItem('tipo');
   let imglogo = '';
   switch (pais) {
     case 'Mexico':
@@ -221,6 +272,7 @@ async function muro(navigateTo) {
   deLujo.textContent = 'DE LUJO';
   paraTodos.textContent = 'PARA TODOS';
   cocinaEconomica.textContent = 'COCINA ECONOMICA';
+  todosTipos.textContent = 'TODOS';
   buscarto.placeholder = 'BUSCAR';
   buscarto.id = 'buscartodo';
   inicio.textContent = 'INICIO';
@@ -231,33 +283,34 @@ async function muro(navigateTo) {
     navigateTo('/mapa');
   });
 
+  deLujo.addEventListener('click', () => {
+    localStorage.setItem('tipo', 'de lujo');
+    navigateTo('/muro');
+  });
+
+  paraTodos.addEventListener('click', () => {
+    localStorage.setItem('tipo', 'para todos');
+    navigateTo('/muro');
+  });
+
+  cocinaEconomica.addEventListener('click', () => {
+    localStorage.setItem('tipo', 'cocina economica');
+    navigateTo('/muro');
+  });
+
+  todosTipos.addEventListener('click', () => {
+    localStorage.removeItem('tipo');
+    navigateTo('/muro');
+  });
+
   menu.classList.add('icon', 'btnMenu');
   barrasMenu.classList.add('fa', 'fa-bars');
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', mostrarMenu);
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const buscarElement = document.getElementById('buscartodo');
-    buscarElement.addEventListener('keydown', async (event) => {
-      if (event.key === 'Enter') {
-        const busquedaInputValue = buscarElement.value;
-        try {
-          // Realiza la consulta a Firestore para buscar en la colección 'publicacionesMuro'
-          const querySnapshot = await getFirestore.collection('publicacionesMuro')
-            .where('comentario', 'pais','nombreLugar', '>=', busquedaInputValue)
-            .where('comentario', 'pais','nombreLugar','<=', `${busquedaInputValue}\uf8ff`)
-            .get();
-          const resultados = querySnapshot.docs.map((doc) => (doc.data()));
-          console.log('Resultados de la búsqueda:', resultados);
-        } catch (error) {
-          console.error('Error al realizar la búsqueda:', error);
-        }
-      }
-    });
-  });
-  div.append(deLujo, paraTodos, cocinaEconomica, perfil, inicio, cerrarSesion);
-  barraNav.append(title, logo, div, menu, buscarto);
-  main.append(await crearPost(pais));
+  div.append(deLujo, paraTodos, cocinaEconomica, todosTipos, inicio, cerrarSesion);
+  barraNav.append(title, logo, div, menu);
+  main.append(await crearPost(pais, tipo));
   aside.append(crearAside(pais));
   pagina.push(barraNav, aside, agregarPost(), main);
   return pagina;

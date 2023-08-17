@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 // Importa las vistas
 import home from './Vistas/home.js';
 import login from './Vistas/login.js';
@@ -15,9 +16,7 @@ const routes = [
   { path: '/error', vista: error },
   { path: '/mapa', vista: mapa },
   { path: '/registro', vista: registro },
-  { path: '/muro?pais=mexico', vista: muro },
-  { path: '/muro?pais=colombia', vista: muro },
-  { path: '/muro?pais=peru', vista: muro },
+  { path: '/muro', vista: muro },
   { path: '/publicaciones', vista: publicaciones },
   // { path:'/platostipicosCol', vista: platostipicoscol },
 ];

@@ -1,7 +1,4 @@
 .DS_Store
 *.swp
 coverage/
-node_modules/
 .yarn.lock
-package-lock.json
-dist/

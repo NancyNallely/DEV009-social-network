@@ -1,13 +1,12 @@
-/* eslint-disable import/no-unresolved */
-// se importa desde la pagina web de from
-import {
-  createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, signOut,
-} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
-
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 // importar desde la clase de firebase
+import { async } from 'regenerator-runtime';
 import {
-  auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where, query, getDocs,deleteDoc, doc,
+  auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where,
+  query, getDocs, doc, updateDoc, increment, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail,
+  signOut, browserPopupRedirectResolver, deleteDoc,
 } from '../firebase.js';
 
 // funcion para registrar usuarios
@@ -48,7 +47,7 @@ async function autenticarUsuarios(email, password) {
 
 // funcion para autenticar con google
 export async function autenticarGoogle() {
-  await signInWithPopup(auth, new GoogleAuthProvider())
+  await signInWithPopup(auth, new GoogleAuthProvider(), browserPopupRedirectResolver)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access Google APIs.
       const user = result.user;
@@ -159,7 +158,6 @@ export function obtenerUsuario() {
 
 // funcion para subir una publicacion a firestore
 export async function guardarRegistros(formulario, foto, usuario) {
-  console.log(formulario);
   try {
     const docRef = await addDoc(collection(db, 'publicacionesMuros'), {
       nombreLugar: formulario[1].value,
@@ -176,7 +174,6 @@ export async function guardarRegistros(formulario, foto, usuario) {
     console.log(docRef);
     return true;
   } catch (e) {
-    console.log(e);
     return false;
   }
 }
@@ -216,6 +213,13 @@ export async function registrosTipo(tipo, pais) {
   return querySnapshot.docs;
 }
 
+// funcion para incrementar el numero de likes
+export async function aumentoLikes(id) {
+  const refPublicaciones = doc(db, 'publicacionesMuros', id);
+  await updateDoc(refPublicaciones, {
+    likes: increment(1),
+  });
+}
 // funcion para buscar//
 export async function buscar(collectionToSearch, buscartodo) {
   return collectionToSearch.filter((item) => item.toLowerCase().includes(buscartodo.toLowerCase()));
@@ -224,8 +228,22 @@ export async function buscar(collectionToSearch, buscartodo) {
 // Función para eliminar un documento
 export async function docDelete(docId) {
   try {
-    const result = await deleteDoc(doc (db, 'publicacionesMuros', docId));
+    await deleteDoc(doc(db, 'publicacionesMuros', docId));
   } catch (error) {
     alert(error);
   }
+}
+
+//función para editar un documento 
+export async function editarDocumento(docId, nuevosDatos) {
+  try {
+    const docRef = doc(db,'publicacionesMuros',docId);
+    
+    await updateDoc(docRef,nuevosDatos); 
+    console.log('Documento editado correctamente');
+    return true;
+  } catch (error) {
+    console.log(error);
+    alert('Error al editar el documento: ' + error.message);
+  } return false;
 }
