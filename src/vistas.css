@@ -546,27 +546,26 @@ body {
 @media screen and (min-width: 531px) {
 
   body .bienvenida {
-    font-size: 70px;
+    font-size: 60px;
     font-family: "Ysabeau SC", serif;
     text-align: center;
     color: white;
     margin-left: 10px;
-
   }
 
   #mainHome {
     grid-area: main;
-    background: rgba(163, 22, 7, 0.607);
+    background: rgba(126, 102, 15, 0.607);
     color: white;
-    margin-top: 170px;
+    margin-top: 120px;
     font-size: 40px;
   }
 
-  #logo {
+  #logohome {
     width: 150px;
     height: 80px;
     position: absolute;
-    margin-top: -3px;
+    margin-top: 0px;
   }
 
   #barraNav {
@@ -577,6 +576,7 @@ body {
     overflow: auto;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 10px;
   }
 
   #barraNav div {
@@ -607,54 +607,436 @@ body {
 
   /* /-------------------------------------Vista login--------------------------------------/ */
   #logoLogin {
-    width: 180px;
-    height: 100px;
-    left: 380px;
-    position: absolute;
-    margin-top: 20px;
+    width: 140px;
+    height: 75px;
+    margin-left: 45%;
+    margin-top: 10%;
+    border-radius: 20px;
+
   }
 
   #titleLogin {
-    font-size: 28px;
-    color: white;
-    float: left;
-    background-color: rgba(207, 17, 17, 0.505);
-    font-family: "Ysabeau SC", serif;
-    margin: 132px 138px;
-  }
-
-  #botonLogin {
-    color: rgb(19, 2, 2);
-    font-weight: bold;
+    font-size: 30px;
+    color: #f3eeee;
+    text-shadow: 1px 1px 0 rgb(215, 35, 35),
+      -1px 1px 0 rgb(215, 35, 35),
+      1px -1px 0 rgb(215, 35, 35),
+      -1px -1px 0 rgb(215, 35, 35);
+    text-align: center;
+    margin-left: 50px;
   }
 
   .ingreso {
     font-size: 20px;
     color: #000;
-    float: left;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 12px;
     text-decoration: none;
     font-family: "Ysabeau SC", serif;
-    margin: 10px 0;
+    margin: 0 auto;
+    display: grid;
+    position: relative;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 10px;
   }
 
-  #divLogin {
+  #botonLogin {
+    background-color: #b22b2b;
+    color: #f3eeee;
+    border-radius: 20px;
+  }
+ 
+  a {
+    text-align: center;
+    margin-left:40%;
+
+  }
+  /*Vista registro*/
+   /* Estilos para el elemento 'section' con el ID 'registroSection' */
+
+   #registroSection {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
+    justify-content: center;
+    /* Centra horizontalmente */
+    background: #473a0980;
     align-items: center;
-    position: fixed;
+    background-size: contain;
+    margin: auto;
+    height: 567px;
+    width: 655px;
+    flex-wrap: wrap;
+    position: relative;
+    top: 60px;
+    font-size: 40px;
+    padding: 20px;
   }
 
-  #barraNav div a:hover {
-    background-color: #aa1606;
-    color: #fff;
+  #registroSection input {
+    height: 32px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    font-size: 26px;
+    font-family: "Ysabeau SC", serif;
   }
 
-  #barraNav div a.active {
-    background-color: #04AA6D;
-    color: #fff;
+  #divregistro {
+    background-color: #94151589;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 11px;
+    border-radius: 20px;
+
   }
+
+  #registroSection h2 {
+    color: #f5f0f0;
+    text-align: center;
+  }
+
+  .input {
+    width: 100%;
+    padding: 10px;
+    flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  #Registrarseboton {
+    background-color: #7e0c0c;
+    color: #f3f3f3;
+    border-radius: 20px;
+    font-size: 19px;
+    text-align: center;
+    width: 150px;
+    height: 48px;
+    border: 1px solid;
+  }
+
+  /*------Vista mapa-------*/
+  #paginaprincipalmapa {
+    display: flex;
+    overflow: hidden;
+    background: url(./imagenes/AMERICA\,.jpg);
+    background-repeat: repeat;
+    margin: 10px;
+    align-content: center;
+  }
+
+  #paginaprincipalmapa h1 {
+    margin-top: 70px;
+    margin-left: 37%;
+    color: #e2432e;
+    text-align: unset;
+    font-family: "Ysabeau SC", serif;
+
+  }
+
+  #paginaprincipalmapa button {
+    background-color: #9f1d1d;
+    padding: 8px;
+    font-family: "Ysabeau SC", serif;
+    font-size: medium;
+    color: #fffbfb;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-left: 90%;
+    margin-bottom: 1px;
+  }
+
+  #buttonMexico {
+    background: url(./imagenes/banderasMexico-07.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+  }
+
+  #buttonPeru {
+    background: url(./imagenes/istockphoto-967321126-612x612.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+  }
+
+  #buttonColombia {
+    background: url(./imagenes/descarga.png);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+  }
+
+  #mapasection button {
+    justify-content: center;
+    padding: 50px;
+    margin:0%;
+    margin-left: 18%;
+    margin-top: 20%;
+    border-radius: 20px;
+    width: 10%;
+  }
+
+  #mapasection {
+    display: inline;
+  }
+
+  #mapasection img {
+    position: absolute;
+    margin: 5px;
+    margin-top: 35px;
+    margin-left: 44%;
+    border-radius: 20px;
+    border: 2px solid #000;
+    height: 130px;
+  }
+
+  /*--------Vista Muro---------*/
+  /*------Post-----*/
+  .card {
+    display: grid;
+    grid-template-columns: 56% 20% 20% 20% 20%;
+    background-color: rgba(255, 255, 255, 0.608);
+    justify-items: center;
+    align-items: center;
+    margin: 8px;
+    box-shadow: rgba(1, 1, 19, 0.462) 0px 4px 16px, rgba(227, 117, 6, 0.69) 0px 8px 24px, rgba(238, 238, 242, 0.69) 0px 16px 56px;
+  }
+
+  .cardContent {
+    width: 90%;
+    color: #000;
+  }
+
+  .cardContent img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 5px;
+  }
+  
+  .cardContent p {
+    font-size: 20px;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #674d06;
+  }
+
+  .cardCalificacion {
+    width: 50%;
+  }
+
+  .cardCalificacion p {
+    font-size: 20px;
+    color: #000;
+  }
+
+  .cardFigure{
+    font-size: 14px;
+  }
+
+  #spanLikes i{
+    color: rgb(135, 77, 18);
+    font-size: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    font-weight: 900;
+  }
+  .dropbtn {
+    background-color: #7a5018;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    writing-mode: vertical-lr;
+    place-items: center;
+    margin-left: -500px;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #9c6517;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right:120px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #825214;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(18, 18, 18, 0.878);
+    z-index: 1;
+    margin-left:150px; ;
+  }
+  
+  .dropdown-content a {
+    color: rgb(255, 249, 249);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #fffcfc;}
+  
+  .show {display: block;}
+  
+  #botonGuardar{
+    margin-bottom: 310px;
+    margin-right: -50px;
+    color:#efefef;
+    background-color:#bc2e2e;
+    font-size: 30px;
+  }
+
+  #inputPost{
+    height: 40px;
+    font-size: 27px;
+    color: #000;
+  }
+/*------vista aside ------*/
+#aside {
+  width: 100%;
+  grid-template-rows: 1fr;
+}
+
+#aside div {
+  display: flex;
+  background: rgba(74, 12, 6, 0.688);
+  grid-template-columns: 1fr;
+  padding: 5px;
+}
+#aside h3{
+  font-size: 30px;
+}
+
+#aside img {
+  width: 140px;
+  height: 140px;
+  margin-top:10px;
+  margin-left: -100px;
+}
+
+/*------Vista publicaciones */
+#form {
+  display: grid;
+  background: #a81e0be1;
+  border-radius: 12px;
+  padding: 50px;
+  border: 3px solid #604907;
+  justify-items: stretch;
+  align-content: center;
+  margin: 12px;
+  margin-left:25%;
+}
+
+#form select, input, button{
+  font-size: 30px;
+  font-family: "Ysabeau SC", serif;
+  color:#000;
+  margin: -3px;
+  border-radius:10px;
+  background-color: #f9f9f9;
+}
+
+#publicar{
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  background: rgba(96, 29, 14, 0.788);
+  color:#fff;
+  border: 3px solid rgba(18, 4, 4, 0.827);
+  display: inline-block;
+  font-family: "Ysabeau SC", serif;
+  letter-spacing: 2px;
+  box-shadow: inset 0 0 0 0 #a53611cd;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+#logom {
+  width: 60px;
+  height: 50px;
+  top: 139px;
+  position: absolute;
+  margin-left: 2600px;
+  align-content: center;
+}
+
+#logop {
+  width: 70px;
+  height: 50px;
+  top: 75px;
+  margin-left:2600px;
+
+  position:absolute;
+}
+
+#logoc {
+  width: 70px;
+  height: 50px;
+  top: 5px;
+  position: absolute;
+  margin-left:2600px
+}
+
+#logohome {
+  width: 130px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-left:15%;
+}
+#mainP{
+  display: flex;
+}
+
+.spanLikes{
+  color: #0c0b07;
+  font-size: 1.4rem;
+}
+
+.spanLikes i::before{
+  margin-right: 7px;
+}
+
+/*barra nava*/
+#barraNav {
+  background-color: rgba(175, 51, 13, 0.885);
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  overflow: auto;
+  flex-wrap: wrap;
+  padding: 2px;
+}
+
+#barraNav div {
+  width: 100%;
+  display: flex;
+  overflow-x:hidden;
+  flex-direction: row;
+}
+
+#barraNav img{
+ margin-right: 80%; 
+}
+#barraNav a{
+  font-size: 25px;
+  margin:0;
+}
 }
