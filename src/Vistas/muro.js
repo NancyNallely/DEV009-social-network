@@ -63,11 +63,13 @@ function createDropDown(doc) {
         await firebase.docDelete(postId);
         console.log('Documento eliminado correctamente');
         window.location.href = '/muro';
+        // Puedes actualizar la interfaz o realizar otras acciones después de eliminar
       } catch (error) {
         console.log(error);
       }
     }
   });
+
 
   editLink.addEventListener('click', async () => {
     if (confirm('¿Deseas editar este post?')) {
@@ -111,12 +113,14 @@ async function crearPost(paisSeleccionado, tipo) {
       const imageCaption = document.createElement('figcaption');
       imageCaption.textContent = publicacionesPaises.nombreLugar;
       cardFigure.append(cardImage, imageCaption);
+
       const cardComentario = document.createElement('input');
       cardComentario. id = 'comentario_' + doc.id;
       cardComentario.value = publicacionesPaises.comentario;
       cardComentario.disabled = true;
 
       const Divbotton = createDropDown(doc);
+
       cardContent.append(Divbotton, cardTitulo, cardFigure, cardComentario);
 
       const cardCalificacion = document.createElement('div');
@@ -135,6 +139,7 @@ async function crearPost(paisSeleccionado, tipo) {
       cardLikes.className = 'fa fa-thumbs-up';
       cardLikes.textContent = publicacionesPaises.likes;
 
+
       const botonGuardar = document.createElement ('button');
       botonGuardar.type = 'button';
       botonGuardar.id = 'botonGuardar';
@@ -147,6 +152,7 @@ async function crearPost(paisSeleccionado, tipo) {
       spanLikes.append(cardLikes);
       cardCalificacion.append(cardPrecio, cardServicio, cardPicante, spanLikes);
       card.append(cardContent, cardCalificacion, botonGuardar);
+
       contenedor.appendChild(card);
 
       spanLikes.addEventListener('click', () => {
