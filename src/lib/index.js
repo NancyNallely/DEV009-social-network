@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 // importar desde la clase de firebase
+import { async } from 'regenerator-runtime';
 import {
   auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where,
   query, getDocs, doc, updateDoc, increment, createUserWithEmailAndPassword,

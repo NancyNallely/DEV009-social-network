@@ -28,6 +28,7 @@ export function createDropDown(doc) {
       }
     }
   };
+
   const dropdown = document.createElement('div');
   dropdown.className = 'dropdown';
   const dropbtn = document.createElement('button');
@@ -85,7 +86,6 @@ export async function crearPost(paisSeleccionado, tipo) {
       const publicacionesPaises = doc.data();
       const card = document.createElement('div');
       card.className = 'card';
-
       const cardContent = document.createElement('div');
       cardContent.className = 'cardContent';
       const cardTitulo = document.createElement('h6');
