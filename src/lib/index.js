@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 // importar desde la clase de firebase
+import { async } from 'regenerator-runtime';
 import {
   auth, db, storage, ref, uploadBytes, getDownloadURL, addDoc, collection, where,
   query, getDocs, doc, updateDoc, increment, createUserWithEmailAndPassword,
@@ -231,4 +232,18 @@ export async function docDelete(docId) {
   } catch (error) {
     alert(error);
   }
+}
+
+//función para editar un documento 
+export async function editarDocumento(docId, nuevosDatos) {
+  try {
+    const docRef = doc(db,'publicacionesMuros',docId);
+    
+    await updateDoc(docRef,nuevosDatos); 
+    console.log('Documento editado correctamente');
+    return true;
+  } catch (error) {
+    console.log(error);
+    alert('Error al editar el documento: ' + error.message);
+  } return false;
 }

@@ -34,7 +34,7 @@ function home(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', mostrarMenu);
 
-  bienvenida.textContent = 'BIENVENIDO(A)';
+  bienvenida.textContent = 'BIENVENIDO';
   bienvenida.className = 'Bienvenida';
   registro.textContent = 'Registrarse';
   registro.addEventListener('click', () => {

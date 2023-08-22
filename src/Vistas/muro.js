@@ -12,11 +12,23 @@ function mostrarMenu() {
     menu.style.display = 'block';
   }
 }
+async function EditarComentario (nuevoComentario, doc) {
+  const postId = doc.id; // Reemplaza con el ID del post que deseas editar
+  const nuevosDatos = {
+  comentario: nuevoComentario,
+  };
+  const resultado = await firebase.editarDocumento(postId, nuevosDatos);
+  console.log (resultado);
+  if (resultado){
+    window.location.href = '/muro';
+  }
+}
 
 function createDropDown(doc) {
   function myFunction() {
     document.getElementById('myDropdown').classList.toggle('show');
   }
+
   // Close the dropdown if the user clicks outside of it
   window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
@@ -30,6 +42,7 @@ function createDropDown(doc) {
       }
     }
   };
+
   const dropdown = document.createElement('div');
   dropdown.className = 'dropdown';
   const dropbtn = document.createElement('button');
@@ -56,6 +69,15 @@ function createDropDown(doc) {
       }
     }
   });
+
+
+  editLink.addEventListener('click', async () => {
+    if (confirm('¿Deseas editar este post?')) {
+    const comentario = document.getElementById ('comentario_'+ doc.id);
+    comentario.disabled = false;
+    }
+  });
+  
   myDropdown.append(editLink, deleteLink);
   dropdown.append(dropbtn, myDropdown);
   return dropdown;
@@ -77,7 +99,6 @@ async function crearPost(paisSeleccionado, tipo) {
       const publicacionesPaises = doc.data();
       const card = document.createElement('div');
       card.className = 'card';
-
       const cardContent = document.createElement('div');
       cardContent.className = 'cardContent';
       const cardTitulo = document.createElement('h6');
@@ -92,8 +113,11 @@ async function crearPost(paisSeleccionado, tipo) {
       const imageCaption = document.createElement('figcaption');
       imageCaption.textContent = publicacionesPaises.nombreLugar;
       cardFigure.append(cardImage, imageCaption);
-      const cardComentario = document.createElement('p');
-      cardComentario.textContent = publicacionesPaises.comentario;
+
+      const cardComentario = document.createElement('input');
+      cardComentario. id = 'comentario_' + doc.id;
+      cardComentario.value = publicacionesPaises.comentario;
+      cardComentario.disabled = true;
 
       const Divbotton = createDropDown(doc);
 
@@ -115,9 +139,20 @@ async function crearPost(paisSeleccionado, tipo) {
       cardLikes.className = 'fa fa-thumbs-up';
       cardLikes.textContent = publicacionesPaises.likes;
 
+
+      const botonGuardar = document.createElement ('button');
+      botonGuardar.type = 'button';
+      botonGuardar.id = 'botonGuardar';
+      botonGuardar.textContent = 'Guardar';
+      botonGuardar.addEventListener ('click', () => {
+        EditarComentario(cardComentario.value, doc);
+      }); 
+
+
       spanLikes.append(cardLikes);
       cardCalificacion.append(cardPrecio, cardServicio, cardPicante, spanLikes);
-      card.append(cardContent, cardCalificacion);
+      card.append(cardContent, cardCalificacion, botonGuardar);
+
       contenedor.appendChild(card);
 
       spanLikes.addEventListener('click', () => {
