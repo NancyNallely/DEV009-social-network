@@ -12,11 +12,9 @@ import {
 export async function createUser(email, password) {
   await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
+      // Registrado
       const user = userCredential.user;
-      // eslint-disable-next-line no-alert, prefer-template
-      alert('Bienvenido(a) ' + user.email);
-      // eslint-disable-next-line func-names
+      alert(`Bienvenido(a) ${user.email}`);
       setTimeout(() => {
         window.location.href = './mapa';
       }, 2000);
@@ -26,7 +24,15 @@ export async function createUser(email, password) {
       alert(errorMessage);
     });
 }
-
+// funcion para mostrar menu
+export function mostrarMenu() {
+  const menu = document.getElementById('divHome');
+  if (menu.style.display === 'block') {
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'block';
+  }
+}
 // funcion para autenticar usuarios
 async function autenticarUsuarios(email, password) {
   await signInWithEmailAndPassword(auth, email, password)
@@ -219,10 +225,6 @@ export async function aumentoLikes(id) {
     likes: increment(1),
   });
 }
-// funcion para buscar//
-export async function buscar(collectionToSearch, buscartodo) {
-  return collectionToSearch.filter((item) => item.toLowerCase().includes(buscartodo.toLowerCase()));
-}
 
 // Función para eliminar un documento
 export async function docDelete(docId) {
@@ -231,4 +233,18 @@ export async function docDelete(docId) {
   } catch (error) {
     alert(error);
   }
+}
+
+// función para editar un documento
+export async function editarDocumento(docId, nuevosDatos) {
+  try {
+    const docRef = doc(db, 'publicacionesMuros', docId);
+
+    await updateDoc(docRef, nuevosDatos);
+    console.log('Documento editado correctamente');
+    return true;
+  } catch (error) {
+    console.log(error);
+    alert(`Error al editar el documento: ${error.message}`);
+  } return false;
 }

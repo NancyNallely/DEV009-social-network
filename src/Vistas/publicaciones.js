@@ -1,14 +1,6 @@
 /* eslint-disable no-alert */
 import * as firebase from '../lib/index.js';
 
-function mostrarMenu() {
-  const menu = document.getElementById('divHome');
-  if (menu.style.display === 'block') {
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'block';
-  }
-}
 function publicarDatos() {
   const formulario = document.querySelectorAll('.formInput');
   const usuarioActual = firebase.obtenerUsuario();
@@ -68,8 +60,6 @@ function publicaciones(navigateTo) {
   const bajo = document.createElement('option');
   const comentario = document.createElement('input');
   const foto = document.createElement('input');
-  const spanLikes = document.createElement('span');
-  const likes = document.createElement('i');
   const publicar = document.createElement('button');
 
   const pagina = [];
@@ -146,9 +136,6 @@ function publicaciones(navigateTo) {
   publicar.type = 'button';
   publicar.textContent = 'publicar';
   publicar.id = 'publicar';
-  spanLikes.id = 'spanLikes';
-  likes.className = 'fa fa-thumbs-up';
-  likes.textContent = 'me gusta';
   main.id = 'mainP';
 
   foto.addEventListener('change', subirImg);
@@ -163,7 +150,7 @@ function publicaciones(navigateTo) {
   menu.classList.add('icon', 'btnMenu');
   barrasMenu.classList.add('fa', 'fa-bars');
   menu.appendChild(barrasMenu);
-  menu.addEventListener('click', mostrarMenu);
+  menu.addEventListener('click', firebase.mostrarMenu);
 
   div.append(deLujo, paraTodos, cocinaEconomica, todosTipos, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu, mex, per, col);
@@ -172,7 +159,6 @@ function publicaciones(navigateTo) {
   servicio.append(excelente, bueno, malo);
   precio.append(caro, medio, barato);
   nivelPicante.append(alto, intermedio, bajo);
-  spanLikes.append(likes);
   formulario.append(
     foto,
     lugar,
@@ -182,7 +168,6 @@ function publicaciones(navigateTo) {
     precio,
     nivelPicante,
     comentario,
-    spanLikes,
     publicar,
   );
   main.append(formulario);

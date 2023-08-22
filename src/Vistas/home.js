@@ -1,11 +1,4 @@
-export function mostrarMenu() {
-  const menu = document.getElementById('divHome');
-  if (menu.style.display === 'block') {
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'block';
-  }
-}
+import * as firebase from '../lib/index.js';
 
 function home(navigateTo) {
   // Obtener referencia al elemento nav
@@ -32,7 +25,7 @@ function home(navigateTo) {
   menu.classList.add('icon', 'btnMenu');
   barrasMenu.classList.add('fa', 'fa-bars');
   menu.appendChild(barrasMenu);
-  menu.addEventListener('click', mostrarMenu);
+  menu.addEventListener('click', firebase.mostrarMenu);
 
   bienvenida.textContent = 'BIENVENIDO(A)';
   bienvenida.className = 'Bienvenida';
