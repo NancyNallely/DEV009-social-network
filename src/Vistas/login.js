@@ -1,4 +1,5 @@
 import * as firebase from '../lib/index.js';
+import logoImg from '../imagenes/logo.jpg';
 
 function login() {
   const section = document.createElement('section');
@@ -14,7 +15,7 @@ function login() {
   const olvidoPassword = document.createElement('a');
   const pagina = [];
 
-  logo.src = './imagenes/logo.jpg';
+  logo.src = logoImg;
   logo.id = 'logoLogin';
   title.textContent = 'Un mundo de sabores a un clic de distancia';
   title.id = 'titleLogin';

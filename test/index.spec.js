@@ -254,8 +254,8 @@ describe('funcion para crear aside', () => {
 it('debe devolver un elemento aparte con los platos típicos correspondientes y enlaces a videos cuando se le da un nombre de país válido', () => {
 
   const country = 'Mexico';
-  const expectedImgPlato1 = 'http://localhost/imagenes/mole.png';
-  const expectedImgPlato2 = 'http://localhost/imagenes/pozole.png';
+  const expectedImgPlato1 = 'http://localhost/';
+  const expectedImgPlato2 = 'http://localhost/';
   const expectedVideo1 = 'https://www.youtube.com/watch?v=CiazCXbgg7A';
   const expectedVideo2 = 'https://www.youtube.com/watch?v=-Bi0cC6uzDs';
 

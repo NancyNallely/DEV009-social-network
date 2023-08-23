@@ -3,6 +3,15 @@
 /* eslint-disable no-console */
 /* eslint-disable func-names */
 import * as firebase from '../lib/index.js';
+import mole from '../imagenes/mole.png';
+import pozole from '../imagenes/pozole.png';
+import colombiaC from '../imagenes/colombiaC.png';
+import guacamola from '../imagenes/guacamola.png';
+import peru1 from '../imagenes/peru1.png';
+import peru2 from '../imagenes/peru2.png';
+import mexicoLogo from '../imagenes/mexicoLogo.png';
+import colLogo from '../imagenes/colLogo.png';
+import peruLogo from '../imagenes/peruLogo.png';
 
 export async function EditarComentario(nuevoComentario, doc) {
   const postId = doc.id; // Reemplaza con el ID del post que deseas editar
@@ -62,6 +71,8 @@ export function createDropDown(doc) {
   editLink.addEventListener('click', async () => {
     if (confirm('¿Deseas editar este post?')) {
       const comentario = document.getElementById(`comentario_${doc.id}`);
+      const btnGuardar = document.querySelector('#botonGuardar');
+      btnGuardar.style.display = 'block';
       comentario.disabled = false;
     }
   });
@@ -174,20 +185,20 @@ export function crearAside(pais) {
   let video2 = '';
   switch (pais) {
     case 'Mexico':
-      imgPlato1 = '../imagenes/mole.png';
-      imgPlato2 = '../imagenes/pozole.png';
+      imgPlato1 = mole;
+      imgPlato2 = pozole;
       video1 = 'https://www.youtube.com/watch?v=CiazCXbgg7A';
       video2 = 'https://www.youtube.com/watch?v=-Bi0cC6uzDs';
       break;
     case 'Colombia':
-      imgPlato1 = '../imagenes/colombiaC.png';
-      imgPlato2 = '../imagenes/guacamola.png';
+      imgPlato1 = colombiaC;
+      imgPlato2 = guacamola;
       video1 = 'https://www.youtube.com/watch?v=P3W6BRM_65U';
       video2 = 'https://www.youtube.com/watch?v=R2DAkW3N_JY';
       break;
     case 'Peru':
-      imgPlato1 = '../imagenes/peru1.png';
-      imgPlato2 = '../imagenes/peru2.png';
+      imgPlato1 = peru1;
+      imgPlato2 = peru2;
       video1 = 'https://www.youtube.com/watch?v=VdncHbR6-yk';
       video2 = 'https://www.youtube.com/watch?v=Bb83VID7cyk';
       break;
@@ -244,13 +255,13 @@ async function muro(navigateTo) {
   let imglogo = '';
   switch (pais) {
     case 'Mexico':
-      imglogo = '../imagenes/mexicoLogo.png';
+      imglogo = mexicoLogo;
       break;
     case 'Colombia':
-      imglogo = '../imagenes/colLogo.png';
+      imglogo = colLogo;
       break;
     case 'Peru':
-      imglogo = '../imagenes/peruLogo.png';
+      imglogo = peruLogo;
       break;
 
     default:

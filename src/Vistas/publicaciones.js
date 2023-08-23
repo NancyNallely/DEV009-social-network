@@ -1,5 +1,9 @@
 /* eslint-disable no-alert */
 import * as firebase from '../lib/index.js';
+import mexicoLogo from '../imagenes/mexicoLogo.png';
+import colLogo from '../imagenes/colLogo.png';
+import peruLogo from '../imagenes/peruLogo.png';
+import logoImg from '../imagenes/logo.jpg';
 
 function publicarDatos() {
   const formulario = document.querySelectorAll('.formInput');
@@ -65,13 +69,13 @@ function publicaciones(navigateTo) {
   const pagina = [];
 
   barraNav.id = 'barraNav';
-  mex.src = '../imagenes/mexicoLogo.png';
+  mex.src = mexicoLogo;
   mex.id = 'logom';
-  per.src = '../imagenes/peruLogo.png';
+  per.src = peruLogo;
   per.id = 'logop';
-  col.src = '../imagenes/colLogo.png';
+  col.src = colLogo;
   col.id = 'logoc';
-  logo.src = '../imagenes/logo.jpg';
+  logo.src = logoImg;
   logo.id = 'logohome';
   main.id = 'mainHome';
   div.id = 'divHome';

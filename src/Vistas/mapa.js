@@ -1,4 +1,5 @@
 import * as firebase from '../lib/index.js';
+import logoImg from '../imagenes/logo.jpg';
 
 function mapa(navigateTo) {
   localStorage.clear();
@@ -36,7 +37,7 @@ function mapa(navigateTo) {
     localStorage.setItem('paisSeleccionado', 'Peru');
     navigateTo('/muro');
   });
-  mapas.src = './imagenes/logo.jpg';
+  mapas.src = logoImg;
   section.append(title, mapas, buttonMexico, buttonPeru, buttonColombia);
   paginaPrincipal.append(section);
   pagina.push(buttonCerrarSesion, section);

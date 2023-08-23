@@ -1,4 +1,5 @@
 import * as firebase from '../lib/index.js';
+import logoImg from '../imagenes/logo.jpg';
 
 function home(navigateTo) {
   // Obtener referencia al elemento nav
@@ -17,7 +18,7 @@ function home(navigateTo) {
   const pagina = [];
 
   barraNav.id = 'barraNav';
-  logo.src = './imagenes/logo.jpg';
+  logo.src = logoImg;
   logo.id = 'logohome';
   main.id = 'mainHome';
   div.id = 'divHome';

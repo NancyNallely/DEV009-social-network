@@ -1,25 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@300&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@300&display=swap');
 
 /* //-------------------------------------Vista home---------------------------------------/ */
-
 #root {
   position: absolute;
   width: 100%;
 }
-
-
 body {
   margin: 0;
   font-family: "Ysabeau SC", sans-serif;
   color: white;
   font-size: 25px;
-  background-image: url(../src/imagenes/HD-wallpaper-breakfast-dish-drink-table-food.jpg);
+  background-image: url(/assets/HD-wallpaper-breakfast-dish-drink-table-food.9698f064.jpg);
   background-size: 100%;
 }
-
 #mainHome {
 
   background: rgba(161, 108, 23, 0.727);
@@ -29,7 +22,6 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-
 .fa-google {
   background: conic-gradient(from -45deg, red 110deg, blue 90deg 180deg, green 180deg 270deg, yellow 270deg) 73% 55%/150% 150% no-repeat;
   -webkit-background-clip: text;
@@ -37,7 +29,6 @@ body {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
-
 #google {
   color: white;
   font-size: 24px;
@@ -47,13 +38,10 @@ body {
   align-items: center;
   font-weight: 900;
 }
-
-
 #inputPost{
   font-size: 14px;
   width: 100%;
 }
-
 /* /---------------------------------Diseño del celular-----------------------------------/
  /----------------------------------------Vista Home-----------------------------------/ */
 @media screen and (min-width: 200px) and (max-width: 530px) {
@@ -131,8 +119,8 @@ body {
     color: white;
   }
 }
-  /* /---------------------------------Vista Login-----------------------------------/ */
-  @media screen and (min-width: 200px) and (max-width: 530px) {
+/* /---------------------------------Vista Login-----------------------------------/ */
+@media screen and (min-width: 200px) and (max-width: 530px) {
  
   #logoLogin {
     width: 140px;
@@ -174,8 +162,7 @@ body {
     border-radius: 20px;
   }
 }
-
- /* /-------------------------------------Vista registro----------------------------------/ */
+/* /-------------------------------------Vista registro----------------------------------/ */
 @media screen and (min-width: 200px) and (max-width: 530px) {
  
   /* Estilos para el elemento 'section' con el ID 'registroSection' */
@@ -248,13 +235,13 @@ body {
   }
 
 }
-  /*---------------------------------------Vista mapa--------------------------------- */
-  @media screen and (min-width: 200px) and (max-width: 530px) {
+/*---------------------------------------Vista mapa--------------------------------- */
+@media screen and (min-width: 200px) and (max-width: 530px) {
 
   #paginaprincipalmapa {
     display: flex;
     overflow: hidden;
-    background: url(./imagenes/america.jpg);
+    background: url(/assets/america.9cb43bf7.jpg);
     background-size: cover;
     background-repeat: repeat;
     margin: 10px;
@@ -283,7 +270,7 @@ body {
   }
 
   #buttonMexico {
-    background: url(./imagenes/banderasMexico-07.jpg);
+    background: url(/assets/banderasMexico-07.ada6ad91.jpg);
     background-repeat: no-repeat;
     font-family: "Ysabeau SC", serif;
     font-size: large;
@@ -292,7 +279,7 @@ body {
   }
 
   #buttonPeru {
-    background: url(./imagenes/istockphoto-967321126-612x612.jpg);
+    background: url(/assets/istockphoto-967321126-612x612.1cb9fc86.jpg);
     background-repeat: no-repeat;
     font-family: "Ysabeau SC", serif;
     font-size: larger;
@@ -301,7 +288,7 @@ body {
   }
 
   #buttonColombia {
-    background: url(./imagenes/descarga.png);
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAG1BMVEX/zQDIEC4AMIf/0QCljVgAJYoAMYusGUbKDys+wJaHAAAA0klEQVR4nO3QsQGCABAAsRcE3X9i+r+WMhkhMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC852ebLNhfbHGxOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSc3NNj+2+bPNh81JOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSf1AHEKrxrr7OT9AAAAAElFTkSuQmCC);
     background-repeat: no-repeat;
     font-family: "Ysabeau SC", serif;
     color: #000;
@@ -345,7 +332,6 @@ body {
     background: rgba(160, 12, 12, 0.515);
   }
 }
-
 /* post */
 @media screen and (min-width: 200px) and (max-width: 530px) {
   
@@ -449,11 +435,9 @@ body {
     margin-right: 20px;
     color:#efefef;
     background-color:#bc2e2e;
-    display: none;
   }
   
 }
-
 /* aside */
 @media screen and (min-width: 200px) and (max-width: 530px) {
   #aside {
@@ -476,7 +460,6 @@ body {
     height: 5rem;
   }
 }
-
 /* publicaciones */
 @media screen and (min-width: 200px) and (max-width: 530px) {
  
@@ -550,7 +533,6 @@ body {
     margin-right: 7px;
   }
 }
-
 /*---------------------------------Diseño Escritorio-----------------------------------*/
 @media screen and (min-width: 531px) {
 
@@ -737,7 +719,7 @@ body {
   #paginaprincipalmapa {
     display: flex;
     overflow: hidden;
-    background: url(./imagenes/america.jpg);
+    background: url(/assets/america.9cb43bf7.jpg);
     background-repeat: repeat;
     margin: 10px;
     align-content: center;
@@ -770,21 +752,21 @@ body {
   }
 
   #buttonMexico {
-    background: url(./imagenes/banderasMexico-07.jpg);
+    background: url(/assets/banderasMexico-07.ada6ad91.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 100% 100%;
   }
 
   #buttonPeru {
-    background: url(./imagenes/istockphoto-967321126-612x612.jpg);
+    background: url(/assets/istockphoto-967321126-612x612.1cb9fc86.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 100% 100%;
   }
 
   #buttonColombia {
-    background: url(./imagenes/descarga.png);
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAG1BMVEX/zQDIEC4AMIf/0QCljVgAJYoAMYusGUbKDys+wJaHAAAA0klEQVR4nO3QsQGCABAAsRcE3X9i+r+WMhkhMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC852ebLNhfbHGxOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSc3NNj+2+bPNh81JOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSf1AHEKrxrr7OT9AAAAAElFTkSuQmCC);
     background-repeat:no-repeat;
     background-size: cover;
     background-size: 100% 100%;
@@ -877,6 +859,7 @@ body {
     text-align: center;
     writing-mode: vertical-lr;
     place-items: center;
+    margin-left: -500px;
   }
   
   .dropbtn:hover, .dropbtn:focus {
@@ -886,7 +869,7 @@ body {
   .dropdown {
     position: relative;
     display: inline-block;
-    right: 40%;
+    margin-right:120px;
   }
   
   .dropdown-content {
@@ -907,7 +890,6 @@ body {
     color:#efefef;
     background-color:#bc2e2e;
     font-size: 30px;
-    display: none;
   }
 
   #inputPost{
