@@ -1,558 +1,212 @@
-# Creando una Red Social
+# La ruta del sabor
 
 ## Índice
 
-* [1. Preámbulo](#1-preámbulo)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones generales](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Hacker edition](#6-hacker-edition)
-* [7. Entrega](#7-entrega)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
 
-## 1. Preámbulo
+Definición del producto.
+* [1. Definición del producto](#1-Definición-del-producto)
+* [2. Proceso de diseño.](#2-Proceso-de-diseño.)
+* [3. ¿Como el producto resulve los problemas que tiene el usuario?](#3-Como-el-producto-resulve-los-problemas-que-tiene-el-usuario.)
+* [4. Historias de usuario](#4-Historias-de-usuario)
+* [5. Prototipo de baja fidelidad](#5-Prototipo-de-baja-fidelidad)
+* [6. Test usabilidad](#6-Test-usabilidad)
+* [7. Prototipo de alta fidelidad](#7-Prototipo-de-alta-fidelidad)
+* [8. Pruebas unitarias](#8-Pruebas-unitarias)
+* [9. Producto final](#9-Producto-final)
 
-Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes
-sociales han invadido nuestras vidas. Las amamos u odiamos, y muchos no podemos
-vivir sin ellas.
+## 1. Definición del producto
 
-![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
+La ruta del sabor es una innovadora aplicación de críticas y recomendaciones gastronómicas que permite a los usuarios explorar y compartir experiencias en una variedad de restaurantes en diferentes países. Con una interfaz intuitiva y amigable, los usuarios pueden subir reseñas detalladas, otorgar puntuaciones y expresar sus opiniones sobre los restaurantes que visitan.
 
-Hay redes sociales de todo tipo y para todo tipo de intereses. Por ejemplo,
-en una ronda de financiamiento con inversionistas, se presentó una red social
-para químicos en la que los usuarios podían publicar artículos sobre sus
-investigaciones, comentar en los artículos de sus colegas, y filtrar artículos
-de acuerdo a determinadas etiquetas o su popularidad, lo más reciente, o lo
-más comentado.
+La característica distintiva de La ruta del sabor, radica en su capacidad para llevar la experiencia culinaria a un nivel global. La aplicación cuenta con un mapa interactivo que permite a los usuarios navegar por diferentes países, como México, Perú y Colombia, y explorar reseñas y recomendaciones de restaurantes en cada uno de estos lugares. Esta función es perfecta para aquellos que buscan aventuras gastronómicas en el extranjero o simplemente desean conocer las opciones culinarias en diferentes culturas.
 
-## 2. Resumen del proyecto
+La aplicación también ofrece una clasificación inteligente de restaurantes en tres categorías principales: "Lujo", "Para Todos" y "Cocina Económica". Esto garantiza que los usuarios puedan filtrar sus búsquedas según sus preferencias y presupuestos, asegurando que encuentren las opciones que mejor se adapten a sus necesidades.
 
-En este proyecto construirás una Red Social sobre lo que decidan tú y tu equipo.
-Podría ser, por ejemplo, sobre alimentación saludable, feminismo, educación,
-salud, energías renovables, amantes de las [Empanadas](https://es.wikipedia.org/wiki/Empanada)
-o de los [Tacos de Canasta](https://es.wikipedia.org/wiki/Taco),
-de la [Feijoada](https://es.wikipedia.org/wiki/Feijoada), o de lo que sea.
+## 2. Proceso de diseño
 
-Tu Red Social tendrá que permitir a cualquier usuario crear una cuenta de acceso
-y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
+El proceso de diseño de la aplicación "La Ruta del Sabor" fue un viaje emocionante que comenzó con una idea que unió la pasión por la comida y la diversidad cultural de tres países. Aquí está el resumen de cómo se desarrolló la aplicación desde la concepción hasta la realización:
 
-Por lo tanto, en este proyecto construirás una
-[Single-page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
-[_responsive_](https://curriculum.laboratoria.la/es/topics/css/02-responsive) (con más de una vista / página)
-en la que podamos **leer y escribir datos**.
+1. Generación de Ideas
+El equipo se reunió y discutió ideas que podrían atraer a un público amplio y conectar los elementos culturales de México, Perú y Colombia. La comida emergió como un tema valioso y emocionante para explorar, ya que era un punto en común que resonaba con muchas personas.
 
-### Los objetivos generales de este proyecto son los siguientes
+2. Conceptualización y Prototipo de Baja Fidelidad
+El equipo comenzó a trabajar en la idea de "La Ruta del Sabor", una aplicación para explorar y revisar restaurantes en los tres países. Se creó un prototipo de baja fidelidad que capturó las ideas principales de la interfaz y la funcionalidad. Este prototipo permitió al equipo visualizar y discutir cómo se vería y se sentiría la aplicación.
 
-* Desarrollar una SPA con temática de red social
-* Aplicar los conceptos de responsividad en el desarrollo de las vistas (templates)
-* Implementar un router para la navegación entre las diferentes vistas de la aplicación
-* Emplear un servicio externo para la persistencia de datos de la aplicación
-* Crear una suite de pruebas unitarias que permitan testear código asíncrono
+3. Testeo de Usabilidad
+El prototipo de baja fidelidad se sometió a pruebas de usabilidad con personas externas al equipo. Estas pruebas ayudaron a identificar puntos débiles en la usabilidad y a recoger comentarios valiosos de los usuarios sobre la experiencia general. Se realizaron ajustes basados en estos comentarios para mejorar la aplicación.
 
-Para lograr estos objetivos, deberás aprender y hacer uso de las siguientes
-herramientas o habilidades técnicas:
+4. Prototipo de Alta Fidelidad en Figma
+Utilizando las lecciones aprendidas del testeo de usabilidad, el equipo creó un prototipo de alta fidelidad en Figma. Esto incluyó detalles visuales, diseño de interfaz y flujo de usuario más elaborados. El prototipo se compartió con el equipo y otros para obtener comentarios adicionales.
 
-## 3. Objetivos de aprendizaje
+5. Pruebas de Usabilidad en el Prototipo de Alta Fidelidad
+El prototipo de alta fidelidad se sometió a pruebas de usabilidad similares a las realizadas con el prototipo de baja fidelidad. Los comentarios recopilados permitieron al equipo refinar aún más la interfaz y la experiencia del usuario.
 
-Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en tu proyecto. Piensa en eso al decidir tu estrategia de trabajo.
+6. Investigación sobre Firebase y Firestore
+El equipo investigó y se capacitó en Firebase y Firestore, que serían las herramientas de enrutamiento y almacenamiento de datos para la aplicación. Esto aseguró que el equipo estuviera preparado para implementar la funcionalidad principal de la aplicación.
 
-### HTML
+7. Iteración y Mejoras
+Basándose en el feedback de los usuarios y en la retroalimentación de los compañeros de equipo y coaches, se realizaron ajustes y mejoras continuas en la aplicación. Esto incluyó cambios en el diseño, la usabilidad y la funcionalidad en función de las necesidades y expectativas de los usuarios.
 
-- [ ] **Uso de HTML semántico**
+8. Lanzamiento y Conclusión
+A pesar de los desafíos, como la pérdida de un miembro del equipo, el grupo perseveró y logró finalizar la aplicación "La Ruta del Sabor". El resultado fue una aplicación que permitía a los usuarios explorar, revisar y descubrir restaurantes en México, Perú y Colombia, fusionando la pasión por la comida y la cultura de estos países en una experiencia única y valiosa.
 
-  <details><summary>Links</summary><p>
+El proceso de diseño de "La Ruta del Sabor" demostró la importancia de la iteración constante, la escucha activa a los usuarios y la adaptación a medida que surgían desafíos. El equipo logró superar obstáculos y construir con orgullo una aplicación que celebraba la riqueza culinaria y cultural de los tres países.
 
-  * [HTML semántico](https://curriculum.laboratoria.la/es/topics/html/02-html5/02-semantic-html)
-  * [Semantics - MDN Web Docs Glossary](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
-</p></details>
+## 3. ¿Como nuestra app soluciona los problemas del usuario?
 
-### CSS
+Problemas del Usuario:
+1. Falta de Conexión con la Oferta Gastronómica: Los usuarios pueden tener dificultades para descubrir nuevos restaurantes y opciones culinarias en sus países o en destinos extranjeros.
 
-- [ ] **Uso de selectores de CSS**
+2. Falta de Información Confiable: Los usuarios pueden enfrentar dificultades para encontrar reseñas y recomendaciones confiables de restaurantes que se ajusten a sus preferencias y presupuesto.
 
-  <details><summary>Links</summary><p>
+3. Falta de Diversidad Culinaria: Pueden sentir que su oferta culinaria es limitada y quieran explorar platos y sabores de otras culturas.
 
-  * [Intro a CSS](https://curriculum.laboratoria.la/es/topics/css/01-css/01-intro-css)
-  * [CSS Selectors - MDN](https://developer.mozilla.org/es/docs/Web/CSS/CSS_Selectors)
-</p></details>
+Soluciones Proporcionadas por "La Ruta del Sabor":
 
-- [ ] **Modelo de caja (box model): borde, margen, padding**
+1. Exploración Global y Local: La aplicación ofrece a los usuarios la capacidad de explorar restaurantes tanto en sus países de origen como en otros países. El mapa interactivo les permite navegar por México, Perú y Colombia, brindando una experiencia global de las diversas ofertas culinarias.
 
-  <details><summary>Links</summary><p>
+2. Reseñas y Recomendaciones Personalizadas: Los usuarios pueden acceder a reseñas y recomendaciones detalladas de otros usuarios que han visitado los restaurantes. Estas opiniones auténticas ayudan a los usuarios a tomar decisiones informadas al elegir dónde comer. Además, las categorías de lujo, para todos y cocina económica permiten a los usuarios filtrar las opciones según sus preferencias.
 
-  * [Box Model & Display](https://curriculum.laboratoria.la/es/topics/css/01-css/02-boxmodel-and-display)
-  * [The box model - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-  * [Introduction to the CSS box model - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-  * [CSS display - MDN](https://developer.mozilla.org/pt-BR/docs/Web/CSS/display)
-  * [display - CSS Tricks](https://css-tricks.com/almanac/properties/d/display/)
-</p></details>
+3. Exploración Cultural y Culminación: "La Ruta del Sabor" promueve la diversidad culinaria al permitir a los usuarios explorar platos y sabores auténticos de México, Perú y Colombia. Los usuarios pueden experimentar y aprender sobre diferentes tradiciones culinarias, lo que fomenta la conexión cultural y la apreciación de la comida de cada país.
 
-- [ ] **Uso de flexbox en CSS**
+## 4. Historia de usuario
+Las siguientes historias de usuario capturan las diversas necesidades y deseos de nuestros usuarios al interactuar con la aplicación "La Ruta del Sabor". Estas historias reflejan cómo la aplicación aborda problemas comunes relacionados con la exploración culinaria, la búsqueda de recomendaciones y la conexión con la riqueza gastronómica de México, Perú y Colombia. Cada historia destaca una función específica de la aplicación que permite a los usuarios disfrutar de una experiencia gastronómica enriquecedora y satisfactoria. A través de estas historias, ilustramos cómo "La Ruta del Sabor" se convierte en el compañero ideal para los amantes de la comida que desean explorar nuevos sabores y tradiciones culinarias.
 
-  <details><summary>Links</summary><p>
+### HU1: INGRESO Y REGISTRO
 
-  * [A Complete Guide to Flexbox - CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-  * [Flexbox Froggy](https://flexboxfroggy.com/#es)
-  * [Flexbox - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-</p></details>
+Como catadora de restaurante deseo una aplicación en la que pueda tener una comunidad, en donde pueda registrarme, ingresar y compartir mis experiencias en el mundo culinario. Espero encontrar un espacio donde se visualicen las opciones de ingreso y registro.
 
-- [ ] **Uso de CSS Grid Layout**
+Criterios de aceptación: 
+1. Para el ingreso de la aplicación deberá ser necesario la autenticación con una cuenta de google o con correo y  contraseña.
+2. Este ingreso solo permitirá cuentas válidas.
+3. Es necesario que el campo de input de contraseña sea secreto. 
+4. Al enviar el formulario de registro se validará antes de ingresar.
+5. Si hay errores debe mostrar mensajes descriptivos para poder corregirlos.
 
-  <details><summary>Links</summary><p>
+Definición de terminado 
 
-  * [A Complete Guide to Grid - CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)
-  * [Grids - MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
-</p></details>
+[✔️] En la pantalla inicial se encuentra la descripción de la aplicación.
 
-### Web APIs
+[✔️] Hay dos botones que direccionan a  registrar o ingresar.
 
-- [ ] **Uso de selectores del DOM**
+[✔️] El espacio de registro cuenta con una vista donde el usuario agrega sus datos personales como (nombre, apellido, correo, contraseña y fecha de nacimiento).
 
-  <details><summary>Links</summary><p>
+[✔️] El espacio de ingreso tiene una vista con las opciones de correo y contraseña o vinculación con una cuenta google.
 
-  * [Manipulación del DOM](https://curriculum.laboratoria.la/es/topics/browser/02-dom/03-1-dom-methods-selection)
-  * [Introducción al DOM - MDN](https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction)
-  * [Localizando elementos DOM usando selectores - MDN](https://developer.mozilla.org/es/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors)
-</p></details>
+[✔️] Para agregar la contraseña salen los números o las letras enmascaradas para que solo el usuario la conozca.
 
-- [ ] **Manejo de eventos del DOM (listeners, propagación, delegación)**
+[✔️] Se autentica la información proporcionada por el usuario en el formulario de ingreso.
 
-  <details><summary>Links</summary><p>
+[✔️] Cuenta con alertas en caso de que el usuario deba realizar modificaciones para ingresar. 
 
-  * [Introducción a eventos - MDN](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Events)
-  * [EventTarget.addEventListener() - MDN](https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener)
-  * [EventTarget.removeEventListener() - MDN](https://developer.mozilla.org/es/docs/Web/API/EventTarget/removeEventListener)
-  * [El objeto Event](https://developer.mozilla.org/es/docs/Web/API/Event)
-</p></details>
+### HU2: PUBLICACIONES 
 
-- [ ] **Manipulación dinámica del DOM**
+Yo, como ama de casa deseo una aplicación en la que pueda compartir y revisar recomendaciones  de otros usuarios, que como yo probamos diferentes restaurantes en esta aplicación debe permitirme realizar publicaciones y revisar las publicaciones de los demás.
 
-  <details><summary>Links</summary><p>
+Criterios de aceptación: 
+1. En la app debe existir un espacio en donde se creen los post de los usuarios.
+2. La app muestra información relevante que el usuario debe completar para compartir su post.
+3. Deben ser visibles las publicaciones de los usuarios en un muro de inicio. 
 
-  * [Introducción al DOM](https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction)
-  * [Node.appendChild() - MDN](https://developer.mozilla.org/es/docs/Web/API/Node/appendChild)
-  * [Document.createElement() - MDN](https://developer.mozilla.org/es/docs/Web/API/Document/createElement)
-  * [Document.createTextNode()](https://developer.mozilla.org/es/docs/Web/API/Document/createTextNode)
-  * [Element.innerHTML - MDN](https://developer.mozilla.org/es/docs/Web/API/Element/innerHTML)
-  * [Node.textContent - MDN](https://developer.mozilla.org/es/docs/Web/API/Node/textContent)
-</p></details>
+Definición de terminado:
 
-- [ ] **Ruteado (History API, evento hashchange, window.location)**
+[✔️] Existencia de un input donde el usuario pueda compartir sus experiencias.
 
-  <details><summary>Links</summary><p>
+[✔️] La información relevante que debe completar el usuario para poder compartir su post es: País, nombre del restaurante, calificar la experiencia en servicio (por medio de tenedores, 1 siendo el más malo y 5 el mejor) el rango económico que se llevará  a cabo con los signos pesos (siendo 1 el más barato y 5 el más caro) y el nivel de picante que se tomar con un ají/chile en donde 1 será menos picantes y 5 siendo el más picante.
 
-  * [Manipulando el historial del navegador - MDN](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
-</p></details>
+[✔️] En el muro de inicio deben ser visibles todas las publicaciones realizadas por otros usuarios sobre el país y restaurante mencionado.
 
-### JavaScript
+### HU3:VISTAS SECCION: PAÍSES
 
-- [ ] **Arrays (arreglos)**
+Yo, como viajera, deseo una app en donde pueda revisar las recomendaciones de restaurantes y comidas típicas que hay en cada país disponible en la app. Dicha app debe tener una vista para cada país en donde pueda visualizar un espacio exclusivo de las comidas típicas en dicho país, y un muro donde vea las recomendaciones exclusivas de dicho país.
 
-  <details><summary>Links</summary><p>
+Criterios de aceptación 
+1. En la página de inicio es posible dirigirse a un país en específico y encontrar las recomendaciones y comida típica de cada país.
+2. Cada publicación será visible en el muro del país mencionado en el post del usuario.
+3. El usuario puede acceder al espacio de platos típicos para detallar más la información.
+4. El usuario cuenta con un menú desplegable en el que le dará la posibilidad al usuario de navegar sitios como: búsqueda de restaurantes específico, su perfil, los restaurantes que por su precio son considerados de lujo, para todos, o cocinas económicas, las promociones existentes en los diferentes establecimientos y un botón para volver al muro actual.
+5. En el muro el usuario encontrará un botón que lo llevará al espacio del mapa en donde podrá elegir cualquier otro país que desee o cerrar sesión de la app.
 
-  * [Arreglos](https://curriculum.laboratoria.la/es/topics/javascript/04-arrays)
-  * [Array - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/)
-  * [Array.prototype.sort() - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
-  * [Array.prototype.forEach() - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
-  * [Array.prototype.map() - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-  * [Array.prototype.filter() - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-  * [Array.prototype.reduce() - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
-</p></details>
+Definición de terminado:
 
-- [ ] **Objetos (key, value)**
+[✔️] Se visualizan los países claramente para que puedan ser seleccionados por los usuarios. (mapa y cerrar sesión)
 
-  <details><summary>Links</summary><p>
+[✔️] En la sesión de platos típicos, los usuarios visualizarán 3 platos típicos según el país al que hayan ingresado y podrá entrar a ese espacio  y encontrar más recomendaciones de platos típicos que otros usuarios o el mismo pueda poner allí.
 
-  * [Objetos en JavaScript](https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects)
-</p></details>
+[✔️] El usuario puede acceder a un menú desplegable, para poder dirigirse a distintas recomendaciones según sea su interés.
 
-- [ ] **Diferenciar entre tipos de datos primitivos y no primitivos**
+[✔️] El usuario encontrará un botón que lo llevará al espacio del mapamundi en donde podrá elegir otro país para acceder o si desea podrá cerrar sesión de la aplicación.
+ 
+### HU4:EDITAR Y BORRAR PUBLICACIONES
 
-- [ ] **Variables (declaración, asignación, ámbito)**
+Como joven que usa redes sociales continuamente deseo una aplicación en la que las publicaciones que ya no me representen puedan ser editadas o  eliminadas de mi perfil, esta aplicación debe tener un botón claro que me indique donde y cuando puedo editar o borrar dicha publicación de mi perfil.
 
-  <details><summary>Links</summary><p>
+Criterio de aceptación:
 
-  * [Valores, tipos de datos y operadores](https://curriculum.laboratoria.la/es/topics/javascript/01-basics/01-values-variables-and-types)
-  * [Variables](https://curriculum.laboratoria.la/es/topics/javascript/01-basics/02-variables)
-</p></details>
+1. Hay un botón para editar la publicación. 
+2. Cuando se realice los cambios debe haber un botón para guardar los cambios
+3. Hay un botón para borrar una publicación 
+4. Hay un prompt que le solicite confirmación para borrar dicha publicación.
+ 
+Definición de terminado:
 
-- [ ] **Uso de condicionales (if-else, switch, operador ternario, lógica booleana)**
+[✔️] El usuario tendrá un botón de editar donde al oprimirlo lo direccione a un input donde se pueda realizar los cambios.
 
-  <details><summary>Links</summary><p>
+[✔️] Al guardar cambios el texto vuelve a su formato inicial pero solamente con los cambios realizados, dichos cambios son guardados y vistos hasta en el muro del país seleccionado y en perfil del usuario.
 
-  * [Estructuras condicionales y repetitivas](https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/01-conditionals-and-loops)
-  * [Tomando decisiones en tu código — condicionales - MDN](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/conditionals)
-</p></details>
+[✔️] El usuario tiene un botón de borrado en las publicaciones que acaba de hacer o las que realiza con anterioridad, dicha eliminación debe mantenerse después de la confirmación del usuario y no podrá verse en ninguna sección de la app.
 
-- [ ] **Uso de bucles/ciclos (while, for, for..of)**
+### HU5:ME GUSTAS (LIKES ⭐) 
 
-  <details><summary>Links</summary><p>
+Como emprendedor de pequeña empresa, deseo una app en donde pueda revisar los likes de mis propias recomendaciones o de otros usuarios para ver el alcance de reconocimiento que está teniendo mi negocio.
 
-  * [Bucles (Loops)](https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/02-loops)
-  * [Bucles e iteración - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Loops_and_iteration)
-</p></details>
+Criterios de aceptación:
+1. En la publicación encontramos el símbolo de la estrella que se usará para dar like a las publicaciones.
+2. Aparecerá el número de likes de cada publicación.
 
-- [ ] **Funciones (params, args, return)**
+Definición de terminado:  
 
-  <details><summary>Links</summary><p>
+[✔️] Se podrá dar like a cada publicación (aparecerá el símbolo usado para ello).
 
-  * [Funciones (control de flujo)](https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/03-functions)
-  * [Funciones clásicas](https://curriculum.laboratoria.la/es/topics/javascript/03-functions/01-classic)
-  * [Arrow Functions](https://curriculum.laboratoria.la/es/topics/javascript/03-functions/02-arrow)
-  * [Funciones — bloques de código reutilizables - MDN](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions)
-</p></details>
+[✔️] Se podrá quitar este like y el contador responderá a este cambio.
 
-- [ ] **Pruebas unitarias (unit tests)**
+[✔️] Se mostrará el total de likes de cada publicación.
 
-  <details><summary>Links</summary><p>
+#### 5. Prototipo de baja fidelidad 
+El proceso de diseño de "La Ruta del Sabor" comenzó con la etapa de baja fidelidad, donde exploramos y plasmamos las ideas iniciales de la aplicación en prototipos simples pero efectivos. Esta etapa fue esencial para visualizar la estructura, el flujo de usuario y las interacciones básicas que conformarían la experiencia general de la aplicación. A través del diseño de baja fidelidad, pudimos experimentar con diferentes enfoques y evaluar rápidamente cómo se comportaría la aplicación en sus primeras etapas. 
 
-  * [Empezando con Jest - Documentación oficial](https://jestjs.io/docs/es-ES/getting-started)
-</p></details>
+![Prototipo de baja fidelidad](./src/imagenes/prorotipodebaja.png)
 
-- [ ] **Pruebas asíncronas**
+### 6. Test usabilidad 
+En nuestro compromiso por ofrecer una experiencia excepcional a nuestros usuarios, el equipo de desarrollo de "La Ruta del Sabor" ha realizado un exhaustivo test de usabilidad. Este proceso ha sido esencial para evaluar la facilidad de uso, la navegación y la satisfacción general de los usuarios al interactuar con nuestra aplicación. A través del test de usabilidad, hemos tenido la oportunidad de obtener valiosos comentarios y comprender cómo los usuarios experimentan cada aspecto de "La Ruta del Sabor". En esta presentación, compartiremos los resultados clave del test de usabilidad y destacaremos las áreas en las que hemos realizado mejoras significativas para garantizar una experiencia fluida y placentera para nuestros usuarios.
 
-  <details><summary>Links</summary><p>
+![Test de Usabilidad](./src/imagenes/test%20usabilidad%201.png)
+![Test de usabilidad](./src/imagenes/test%20usabilidad%202.png)
 
-  * [Tests de código asincrónico con Jest - Documentación oficial](https://jestjs.io/docs/es-ES/asynchronous)
-</p></details>
+### 7. Prototipo de alta fidelidad 
 
-- [ ] **Uso de mocks y espías**
+El prototipo de alta fidelidad de la aplicación "La Ruta del Sabor" marca un emocionante paso adelante en el proceso de diseño. En esta etapa, hemos llevado las ideas y conceptos iniciales a un nivel visualmente impactante y funcionalmente realista. Este prototipo detallado refleja la interacción precisa de los elementos de la interfaz y la experiencia del usuario en su totalidad. A través del diseño de alta fidelidad, hemos dado vida a las funciones clave de la aplicación y hemos establecido una representación visual cercana a la versión final. A continuación, compartimos el proceso y la importancia de nuestro prototipo de alta fidelidad.
 
-  <details><summary>Links</summary><p>
+link figma escritorio: https://www.figma.com/proto/ZRXxlx2k3wQpiv43gza5gr/Ruta-del-Sabor?type=design&node-id=6-269&t=JsoZtF0fhw0xjlYs-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=6%3A269
 
-  * [Manual Mocks con Jest - Documentación oficial](https://jestjs.io/docs/es-ES/manual-mocks)
-</p></details>
+link figma tablet:https://www.figma.com/proto/br2sso8CZhGw2jTN7HM6fV/Untitled?type=design&node-id=1-2&t=2BY4ZEl6eKPyGaXM-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2
 
-- [ ] **Módulos de ECMAScript (ES Modules)**
+link figma mobile: https://www.figma.com/proto/wFmTXQl1X01635IinNGBES/Untitled?type=design&node-id=1-2&t=hAMMqmvtUht9ctr7-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2
 
-  <details><summary>Links</summary><p>
+### 8. Pruebas unitarias
 
-  * [import - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/import)
-  * [export - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/export)
-</p></details>
+En la búsqueda de crear una aplicación robusta y confiable, el equipo de desarrollo de "La Ruta del Sabor" ha implementado un conjunto de test unitarios utilizando Jest y mocks. Estos tests desempeñan un papel esencial al asegurarse de que cada función y componente de la aplicación funcione según lo previsto. A través de los test unitarios, hemos podido identificar y solucionar problemas en el código, garantizando una experiencia de usuario fluida y sin fallos. A continuación, exploramos la importancia de los test unitarios y cómo han contribuido al éxito de nuestra aplicación.
 
-- [ ] **Uso de linter (ESLINT)**
+![Test unitarios](./src/imagenes/test%20unitarios.png)
 
-- [ ] **Uso de identificadores descriptivos (Nomenclatura y Semántica)**
+### 9. Producto final 
 
-- [ ] **Diferenciar entre expresiones (expressions) y sentencias (statements)**
+En la vibrante travesía de la aplicación "La Ruta del Sabor", las imágenes cobran vida para llevar a nuestros usuarios en un recorrido visual por las emocionantes características y la experiencia única que ofrece nuestra aplicación. Estas imágenes capturan la esencia de la aplicación y reflejan el resultado de un esfuerzo conjunto para crear una interfaz visualmente atractiva y funcional. A través de esta presentación de imágenes, les invitamos a sumergirse en la exquisita variedad culinaria y la experiencia gastronómica que "La Ruta del Sabor" tiene para ofrecer. Acompáñennos mientras exploramos visualmente las distintas facetas de nuestra aplicación.
 
-- [ ] **Callbacks**
-
-  <details><summary>Links</summary><p>
-
-  * [Función Callback - MDN](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
-</p></details>
-
-- [ ] **Promesas**
-
-  <details><summary>Links</summary><p>
-
-  * [Promise - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-  * [How to Write a JavaScript Promise - freecodecamp (en inglés)](https://www.freecodecamp.org/news/how-to-write-a-javascript-promise-4ed8d44292b8/)
-</p></details>
-
-### Control de Versiones (Git y GitHub)
-
-- [ ] **Git: Instalación y configuración**
-
-- [ ] **Git: Control de versiones con git (init, clone, add, commit, status, push, pull, remote)**
-
-- [ ] **Git: Integración de cambios entre ramas (branch, checkout, fetch, merge, reset, rebase, tag)**
-
-- [ ] **GitHub: Creación de cuenta y repos, configuración de llaves SSH**
-
-- [ ] **GitHub: Despliegue con GitHub Pages**
-
-  <details><summary>Links</summary><p>
-
-  * [Sitio oficial de GitHub Pages](https://pages.github.com/)
-</p></details>
-
-- [ ] **GitHub: Colaboración en Github (branches | forks | pull requests | code review | tags)**
-
-- [ ] **GitHub: Organización en Github (projects | issues | labels | milestones | releases)**
-
-### Centrado en el usuario
-
-- [ ] **Diseñar y desarrollar un producto o servicio poniendo a las usuarias en el centro**
-
-### Diseño de producto
-
-- [ ] **Crear prototipos de alta fidelidad que incluyan interacciones**
-
-- [ ] **Seguir los principios básicos de diseño visual**
-
-### Investigación
-
-- [ ] **Planear y ejecutar testeos de usabilidad de prototipos en distintos niveles de fidelidad**
-
-  <details><summary>Links</summary><p>
-
-  * [Intro a testeos usabilidad](https://coda.io/@bootcamp-laboratoria/contenido-ux/test-de-usabilidad-15)
-  * [Pruebas con Usuarios 1 — ¿Qué, cuándo y para qué testeamos?](https://eugeniacasabona.medium.com/pruebas-con-usuarios-1-qu%C3%A9-cu%C3%A1ndo-y-para-qu%C3%A9-testeamos-7c3a89b4b5e7)
-</p></details>
-
-### Firebase
-
-- [ ] **Firebase Auth**
-
-  <details><summary>Links</summary><p>
-
-  * [Primeros pasos con Firebase Authentication en sitios web - Documentación oficial](https://firebase.google.com/docs/auth/web/start?hl=es)
-  * [Administra usuarios en Firebase (onAuthStateChanged)](https://firebase.google.com/docs/auth/web/manage-users?hl=es#get_the_currently_signed-in_user)
-</p></details>
-
-- [ ] **Firestore**
-
-  <details><summary>Links</summary><p>
-
-  * [Firestore - Documentación oficial](https://firebase.google.com/docs/firestore?hl=es)
-  * [Reglas de seguridad de Firestore - Documentación oficial](https://firebase.google.com/docs/rules?hl=es)
-  * [Obtén actualizaciones en tiempo real con Cloud Firestore - Documentación oficial](https://firebase.google.com/docs/firestore/query-data/listen?hl=es)
-</p></details>
-
-## 4. Consideraciones generales
-
-* Este proyecto se debe trabajar en equipos de tres.
-
-* El rango de tiempo estimado para completar el proyecto es de 4 a 5 Sprints.
-
-* La lógica del proyecto debe estar implementada completamente en JavaScript
-  (ES6+), HTML y CSS :smiley:. Para este proyecto **no está permitido** utilizar
-  _frameworks_ o librerías de CSS y JS.
-
-* La división y organización del trabajo debe permitir, sin excepciones, que
-  **cada integrante** del equipo practique el aprendizaje de todo lo involucrado
-  en **cada historia**. _No se dividan el trabajo como en una fábrica._
-  - ¿Hasta acá has avanzado en tus proyectos con cierta fluidez y sin mayores
-    problemas? Sé generosa con tus compañeras, permíteles aprender y practicar
-    sin restricciones, aunque tome un poco más de tiempo. Aproveha de
-    _coachearlas_, de hacer _pair programming_, una de las mejores maneras de
-    aprender es explicando verbalmente.
-
-  - ¿Se te está haciendo difícil y te cuesta un poco más avanzar? No te quedes
-    con las partes "fáciles" del proyecto, conversa, negocia, exige tu oportunidad
-    para practicar y aprender lo que se te hace más difícil.
-
-* Solamente pueden trabajar en una única historia por vez, no pueden avanzar a
-  la siguiente sin haber completado la anterior. La historia se completa cuando
-  se cumplen **todos** sus Criterios de Aceptación + **toda** su Definición
-  de Terminado.
-
-Para comenzar tendrás que hacer un _fork_ y _clonar_ este repositorio.
-
-## 5. Criterios de aceptación mínimos del proyecto
-
-### 5.1 Boilerplate
-
-Este proyecto no incluye un _boilerplate_ completo, solo algunos archivos de
-configuración basico, así es que tendrás que definir la estructura de carpetas
-y escribir tus propias Pruebas Unitarias (_tests_). Para hacerlo, puedes guiarte
-de los proyectos anteriores y/o organizar los archivos siguiendo una estructura
-de [Modelo-Vista-Controlador](https://developer.mozilla.org/es/docs/Glossary/MVC).
-
-En este proyecto vamos a usar una herramienta llamada
-[Vite](https://es.vitejs.dev/) para empaquetar nuestros módulos y arrancar
-el servidor de desarrollo, el cual provee nuestros archivos utilizando
-la estrategia `Hot Module Replacement`
-[(HMR)](https://es.vitejs.dev/guide/features.html#hot-module-replacement),
-esto significa que cuando hagas cambios en los archivos que estén siendo
-servidos, el navegador automáticamente se actualizará sin tener que refrescar
-y volver a cargar todo el sitio. Debes tener especial cuidado de no tener
-ninguna _dependencia circular_ en tu código ya que
-[eso puede ocasionar problemas con HMR](https://es.vitejs.dev/guide/troubleshooting.html#ocurre-un-refresco-completo-en-lugar-de-hmr).
-(`eslint-plugin-import` tiene una regla
-[import/no-cycle](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md)
-que va a avisar si las tiene.)
-
-### 5.2 Definición del producto
-
-En el `README.md` cuéntanos brevemente cómo descubriste las necesidades de los
-usuarios y cómo llegaste a la definición final de tu producto. Es importante
-que detalles:
-
-* Quiénes son los principales usuarios de producto.
-* Qué problema resuelve el producto / para qué le servirá a estos usuarios.
-
-### 5.3 Historias de usuario
-
-Una vez que entiendas las necesidades de tus usuarixs, escribe las Historias de
-Usuario que representen todo lo que necesitan hacer/ver en la Red Social. Cada
-una de tus Historias de Usuario debe tener:
-
-* **Criterios de Aceptación:** todo lo que debe ocurrir para satisfacer las
-  necesidades del usuario.
-
-* **Definición de terminado:** todos los aspectos técnicos que deben cumplirse
-  para que, como equipo, sepan que esa historia está terminada y lista
-  para publicarse. **Todas** tus Historias de Usuario (salvo excepciones), deben
-  incluir estos aspectos en su Definición de Terminado (más todo lo que
-  necesiten agregar):
-
-  - Debe ser una SPA.
-  - Debe ser _responsive_.
-  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
-  - Hicieron los _test_ unitarios
-  - Testearon manualmente buscando errores e imperfecciones simples.
-  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
-    usuarios como mejoras.
-  - Desplegaron su aplicación y etiquetaron la versión (git tag).
-
-### 5.4 Diseño de la Interfaz de Usuario (prototipo de baja fidelidad)
-
-Debes definir cuál será el flujo que seguirá el usuario dentro de tu aplicación
-y, con eso, diseña la Interfaz de Usuario (UI por sus siglas en inglés) que
-siga este flujo.
-
-### 5.5 Responsive
-
-Debe verse bien en dispositivos de pantallas grandes
-(computadoras/es, laptops, etc.) y pequeñas (_tablets_, celulares, etc.). Te
-sugerimos seguir la técnica de _`mobile first`_ (más detalles sobre esta técnica
-al final).
-
-### 5.6 Consideraciones del comportamiento de la interfaz de usuario (UI)
-
-Estas consideraciones te ayudarán a escribir las Definiciones de Terminado de
-tus H.U.:
-
-#### Creación de cuenta de usuario e inicio de sesión
-
-* _Login_ con Firebase:
-  - Para el _login_ y las publicaciones en el muro puedes utilizar [Firebase](https://firebase.google.com/products/database/)
-  - Creación de cuenta de acceso y autenticación con cuenta de correo y
-    contraseña, y también con una cuenta de Google.
-* Validaciones:
-  - Solamente se permite el acceso a usuarios con cuentas válidas.
-  - No pueden haber usuarios repetidos.
-  - La cuenta de usuario debe ser un correo electrónico válido.
-  - Lo que se escriba en el campo (_input_) de contraseña debe ser secreto.
-* Comportamiento:
-  - Al enviarse el formulario de registro o inicio de sesión, debe validarse.
-  - Si hay errores, se deben mostrar mensajes descriptivos para ayudar al
-  usuario a corregirlos.
-
-#### Muro/timeline
-
-* Validaciones:
-  - Al publicar, se debe validar que exista contenido en el _input_.
-* Comportamiento:
-  - Al recargar la aplicación, se debe verificar si el usuario está _logueado_
-    antes de mostrar contenido.
-  - Poder publicar un _post_.
-  - Poder dar y quitar _like_ a una publicación. Máximo uno por usuario.
-  - Llevar un conteo de los _likes_.
-  - Poder eliminar un post específico.
-  - Pedir confirmación antes de eliminar un _post_.
-  - Al dar _click_ para editar un _post_, debe cambiar el texto por un _input_
-    que permita editar el texto y luego guardar los cambios.
-  - Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la
-    información editada.
-  - Al recargar la página debo de poder ver los textos editados.
-
-### 5.7 Consideraciones técnicas Front-end
-
-* Separar la manipulación del DOM de la lógica (Separación de responsabilidades).
-* Contar con múltiples vistas. Para esto, tu aplicación debe ser una
- [Single Page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
-* Alterar y persistir datos. Los datos que agregues o modifiques deberán
-  persistir a lo largo de la aplicación. Te recomendamos que uses
-  [Firebase](https://firebase.google.com/) para eso también.
-
-#### Pruebas unitarias (unit tests)
-
-* Recuerda que no hay un _setup_ de **tests** definido, dependerá de
-  la estructura de tu proyecto. Algo que no debes de olvidar es pensar en éstas
-  pruebas, te pueden ayudar a definir la estructura y nomenclatura de tu lógica.
-
-* Los tests unitarios deben cubrir un mínimo del 70% de _statements_, _functions_,
-  _lines_, y _branches_.
-
-### 5.8 Consideraciones técnicas UX
-
-* Hacer al menos 2 entrevistas con usuarios.
-* Hacer un  prototipo de baja fidelidad.
-* Asegurarte de que la implementación en código siga los lineamientos del
-  diseño.
-* Hacer sesiones de _testing de usabilidad_ con el producto en HTML.
-
-## 6. Hacker edition
-
-Las secciones llamadas _Hacker Edition_ son **opcionales**. Si **terminaste**
-con todo lo anterior y te queda tiempo, intenta completarlas. Así podrás
-profundizar y/o ejercitar más sobre los objetivos de aprendizaje del proyecto.
-
-* Permite crear posts con imágenes.
-* Permite buscar usuarios, agregar y eliminar "amigos".
-* Permite definir la privacidad de los _posts_ (público o solamente para amigos).
-* Permite ver su muro de cualquier usuario "no-amigo" (solamente los
-  posts _públicos_).
-* Permite comentar o responder una publicación.
-* Permite editar perfil.
-
-## 7. Entrega
-
-El proyecto será _entregado_ subiendo tu código a GitHub (`commit`/`push`) y la
-interfaz será desplegada usando GitHub pages u otro servicio de hosting
-(Firebase, Netlify, Vercel, etc) que puedas haber encontrado en el camino.
-Revisa la [documentación de Vite](https://vitejs.dev/guide/static-deploy.html)
-para guiarte con eso.
-
-***
-
-## 8. Pistas, tips y Lecturas complementarias
-
-Súmate al canal de Slack
-[#project-social-network](https://claseslaboratoria.slack.com/archives/C03SE63GFJQ)
-para conversar y pedir ayuda del proyecto.
-
-### Mobile first
-
-El concepto de [_mobile first_](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/)
-hace referencia a un proceso de diseño y desarrollo donde partimos de cómo se ve
-y cómo funciona la aplicación en un dispositivo móvil primero, y más adelante se
-ve como adaptar la aplicación a pantallas progresivamente grandes y
-características específicas del entorno desktop. Esto es en contraposición al
-modelo tradicional, donde primero se diseñaban los websites (o webapps) para
-desktop y después se trataba de _arrugar_ el diseño para que entre en pantallas
-más chicas. La clave acá es asegurarse de que desde el principio diseñan usando
-la vista _responsive_ de las herramientas de desarrollador (developer tools) del
-navegador. De esa forma, partimos de cómo se ve y comporta la aplicación en una
-pantalla y entorno móvil.
-
-### Múltiples vistas
-
-En proyectos anteriores nuestras aplicaciones habían estado compuestas de una
-sola _vista_ principal (una sóla _página_). En este proyecto se introduce la
-necesidad de tener que dividir nuestra interfaz en varias _vistas_ o _páginas_
-y ofrecer una manera de navegar entre estas vistas. Este problema se puede
-afrontar de muchas maneras: con archivos HTML independientes (cada uno con su
-URL) y links tradicionales, manteniendo estado en memoria y rederizando
-condicionalmente (sin refrescar la página), [manipulando el historial del
-navegador](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
-con [`window.history`](https://developer.mozilla.org/es/docs/Web/API/Window/history).
-En este proyecto te invitamos a explorar opciones y decidir una opción
-de implementación.
-
-### Escritura de datos
-
-En los proyectos anteriores hemos consumido (leído) datos, pero todavía no
-habíamos escrito datos (salvar cambios, crear datos, borrar, ...). En este
-proyecto tendrás que crear (salvar) nuevos datos, así como leer, actualizar y
-modificar datos existentes. Estos datos se podrán guardar de forma remota
-usando [Firebase](https://firebase.google.com/).
-
-Para usar Firebase hay que crear un proyecto en la consola de Firebase e
-instalar la dependencia `firebase` utilizando `npm`.
-Lee [las instrucciones paso a paso aqui](https://firebase.google.com/docs/web/setup).
-
-Otras:
-
-* [Modulos: Export](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export)
-* [Modulos: Import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import)
-* [Diseño web, responsive design y la importancia del mobile first - Media Click](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/)
-* [Mobile First: el enfoque actual del diseño web móvil - 1and1](https://www.1and1.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/)
-* [Mobile First - desarrolloweb.com](https://desarrolloweb.com/articulos/mobile-first-responsive.html)
-* [Mobile First Is NOT Mobile Only - Nielsen Norman Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
+![Imagenes del inicio](./src/imagenes/inicio.png)
+![Imagenes de registro](./src/imagenes/registro.png)
+![Imagenes de log in](./src/imagenes/log%20in.png)
+![Imagenes de mapa](./src/imagenes/mapa%20vista.png)
+![Muro México](./src/imagenes/muro%20mexico.png)
+![Muro Colombia](./src/imagenes/muro%20colombia.png)
+![Muro Perú](./src/imagenes/muro%20peru.png)
