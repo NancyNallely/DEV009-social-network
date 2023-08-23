@@ -736,7 +736,7 @@ body {
   #paginaprincipalmapa {
     display: flex;
     overflow: hidden;
-    background: url(./imagenes/AMERICA\,.jpg);
+    background: url(./imagenes/america.jpg);
     background-repeat: repeat;
     margin: 10px;
     align-content: center;
