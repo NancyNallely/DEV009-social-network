@@ -49,13 +49,14 @@ async function navigateTo(hash) {
         root.removeChild(root.lastChild);
       }
     }
+    // agrega la nueva vista al elemento con id root
     root.append(...await route.vista(navigateTo));
   } else {
     // Si no existe 'route' o no contiene la propiedad 'vista', redirige a la ruta '/error'.
     navigateTo('/error');
   }
 }
-
+// funcion onpopstate
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };

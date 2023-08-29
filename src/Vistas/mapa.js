@@ -1,8 +1,11 @@
 import * as firebase from '../lib/index.js';
 import logoImg from '../imagenes/logo.jpg';
 
+// se define una f mapa que acepta un argumento navigateTo
 function mapa(navigateTo) {
+  // Limpia todos los datos almacenados en el almacenamiento local
   localStorage.clear();
+  // Obtiene la referencia al elemento con el ID 'paginaPrincipal'
   const paginaPrincipal = document.getElementById('paginaPrincipal');
   const section = document.createElement('section');
   const buttonMexico = document.createElement('button');
@@ -14,6 +17,7 @@ function mapa(navigateTo) {
   const buttonCerrarSesion = document.createElement('button');
   const title = document.createElement('h1');
   const mapas = document.createElement('img');
+  // Crea un nuevo array llamado 'pagina' para almacenar elementos y estructurar la página.
   const pagina = [];
 
   paginaPrincipal.id = 'paginaprincipalmapa'; // Agregamos un ID al elemento section creado
@@ -22,9 +26,12 @@ function mapa(navigateTo) {
   title.textContent = 'Selecciona tu país de destino';
   buttonCerrarSesion.textContent = 'Cerrar Sesión';
   buttonCerrarSesion.addEventListener('click', firebase.cerrarSesion);
+
   buttonMexico.addEventListener('click', () => {
     paginaPrincipal.id = 'paginaPrincipal';
+    // Almacena en el almacenamiento local el valor 'Mexico' asociado a la clave 'paisSeleccionado'
     localStorage.setItem('paisSeleccionado', 'Mexico');
+    // Navega a la ruta '/muro' usando la función 'navigateTo'
     navigateTo('/muro');
   });
   buttonColombia.addEventListener('click', () => {

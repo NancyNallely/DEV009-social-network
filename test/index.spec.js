@@ -160,7 +160,7 @@ describe('tests para validar la creacion de vistas', () => {
     expect(typeof mapa).toBe('function');
   });
 
-  it('test para validar que mapa regrese html', () => {
+  it('test para validar que mapa regrese codigo html', () => {
     const mockElement = document.createElement('div');
     mockElement.id = 'paginaPrincipal';
     document.body.appendChild(mockElement);
@@ -191,7 +191,7 @@ describe('tests para validar la creacion de vistas', () => {
     expect(typeof EditarComentario).toBe('function');
   });
 
-  it('test para validar que editarComentario regrese html', () => {
+  it('test para validar que editarComentario regrese codigo html', () => {
     // Crea un objeto de prueba y una nueva cadena de comentario
     const doc = {id:'0001'};
     const nuevoComentario = 'sabroso';

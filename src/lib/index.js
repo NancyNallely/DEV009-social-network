@@ -9,12 +9,20 @@ import {
 } from '../firebase.js';
 
 // funcion de firebase para registrar usuarios
+// Define una función asincrónica llamada createUser que acepta un email y
+// una contraseña como parámetros
 export async function createUser(email, password) {
+  // Utiliza la función createUserWithEmailAndPassword para crear un usuario con
+  // el email y la contraseña proporcionados
+  // Esperar hasta que se complete la operación
   await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Registrado
+      // En caso de éxito, se ejecutará esta función de devolución de llamada
+      // Extraer el usuario del objeto userCredential
       const user = userCredential.user;
       alert(`Bienvenido(a) ${user.email}`);
+      // Configurar un temporizador para redirigir a la página './mapa' después de
+      // 2 segundos (2000 milisegundos)
       setTimeout(() => {
         window.location.href = './mapa';
       }, 2000);
@@ -26,10 +34,16 @@ export async function createUser(email, password) {
 }
 // funcion para mostrar menu
 export function mostrarMenu() {
+  // Obtener una referencia al elemento HTML con el ID 'divHome'
   const menu = document.getElementById('divHome');
+  // Verificar el estado actual de visualización del elemento
   if (menu.style.display === 'block') {
+  // Si el elemento está actualmente mostrándose (display:block),
+  // cambiarlo para ocultarlo (display:none)
     menu.style.display = 'none';
   } else {
+  // Si el elemento está actualmente oculto (display:none), 
+  // cambiarlo para mostrarlo (display:block)
     menu.style.display = 'block';
   }
 }
