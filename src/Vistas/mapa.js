@@ -39,9 +39,13 @@ function mapa(navigateTo) {
   });
   mapas.src = logoImg;
   section.append(title, mapas, buttonMexico, buttonPeru, buttonColombia);
+  // Se añade el elemento 'section' como hijo del elemento 'paginaPrincipal'.
   paginaPrincipal.append(section);
+  // Se agrega el elemento 'section' al final del array 'pagina'.
   pagina.push(buttonCerrarSesion, section);
+  // La función devuelve el array 'pagina' que contiene la estructura
+  // organizada de la página de mapas.
   return pagina;
 }
-
+// Exporta la función 'mapa' como el valor por defecto del módulo actual.
 export default mapa;

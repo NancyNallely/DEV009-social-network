@@ -1,13 +1,19 @@
 /* eslint-disable no-alert */
+// importa el modulo firebase desde index.js
 import * as firebase from '../lib/index.js';
+// importacion de imagenes
 import mexicoLogo from '../imagenes/mexicoLogo.png';
 import colLogo from '../imagenes/colLogo.png';
 import peruLogo from '../imagenes/peruLogo.png';
 import logoImg from '../imagenes/logo.jpg';
 
+// se declara la funcion para publicar datos
 function publicarDatos() {
+  // selecciona todos los elementos en el form con la clase formInput
   const formulario = document.querySelectorAll('.formInput');
+  // llama a la funcion obtener usuario
   const usuarioActual = firebase.obtenerUsuario();
+  // llama a la funcion guardar registros y 3 argumentos
   const resultado = firebase.guardarRegistros(formulario, localStorage.getItem('imgUrl'), usuarioActual);
   if (resultado) {
     alert('publicacion realizada con exito');
@@ -15,12 +21,15 @@ function publicarDatos() {
     alert('error de publicacion');
   }
 }
-
+// se define una funcion asyncrona llamada subir img
 async function subirImg() {
+  // selecciona elementos del documento con clase updloadedimg
   const img = document.querySelector('.updloadedImg');
+  // con await se espera la devolucion de la promesa
   await firebase.getImgUrl(img.files[0], img.files[0].name);
 }
 
+// se define una f publicaciones que acepta un argumento navigateTo
 function publicaciones(navigateTo) {
   // Obtener referencia al elemento nav
   const barraNav = document.createElement('nav');
@@ -65,9 +74,10 @@ function publicaciones(navigateTo) {
   const comentario = document.createElement('input');
   const foto = document.createElement('input');
   const publicar = document.createElement('button');
-
+  // se declara una constante llamada pagina y se le asigna un valor inicial,
+  // que es un array vacío []
   const pagina = [];
-
+  // asignacion de atributos y contenido
   barraNav.id = 'barraNav';
   mex.src = mexicoLogo;
   mex.id = 'logom';
@@ -145,6 +155,7 @@ function publicaciones(navigateTo) {
   foto.addEventListener('change', subirImg);
 
   cerrarSesion.addEventListener('click', firebase.cerrarSesion);
+
   inicio.addEventListener('click', () => {
     navigateTo('/mapa');
   });
@@ -156,6 +167,8 @@ function publicaciones(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', firebase.mostrarMenu);
 
+  //  El método append se utiliza en nodos para agregar uno o varios elementos
+  // al final de otro elemento.
   div.append(deLujo, paraTodos, cocinaEconomica, todosTipos, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu, mex, per, col);
   pais.append(mexico, colombia, peru);
@@ -175,6 +188,7 @@ function publicaciones(navigateTo) {
     publicar,
   );
   main.append(formulario);
+  // El método push se utiliza en arrays para agregar uno o varios elementos al final del array
   pagina.push(barraNav, main);
 
   return pagina;

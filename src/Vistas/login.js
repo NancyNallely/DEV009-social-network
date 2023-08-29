@@ -39,12 +39,17 @@ function login() {
   buttonLogin.id = 'botonLogin';
   buttonLogin.className = 'ingreso';
   buttonLogin.addEventListener('click', firebase.autenticarUsuario);
-  section.append(logo);
+  section.append(logo);// Se añade el elemento 'logo' como hijo del elemento 'section'.
+  // Se añade el elemento 'imagenGoogle' como hijo del elemento 'spanGoogle'.
   spanGoogle.append(imagenGoogle);
   spanOlvido.append(olvidoPassword);
   div.append(title, inputUsuario, inputContraseña, buttonLogin, spanGoogle, spanOlvido);
+  // Se agrega el elemento 'section' y el elemento 'div' al final del array 'pagina'.
   pagina.push(section, div);
+  // La función devuelve el array 'pagina' que contiene la estructura organizada
+  // de la página de inicio de sesión.
   return pagina;
 }
 
+// Exporta la función 'login' como el valor por defecto del módulo actual.
 export default login;

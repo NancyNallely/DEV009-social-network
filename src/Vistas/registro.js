@@ -27,8 +27,14 @@ function registro() {
   button.type = 'button';
   button.addEventListener('click', firebase.registrarUsuarios);
 
+  // Se añaden los elementos 'title', 'name', 'lastname', 'email', 'emailagain',
+  // 'newpassword', 'birthdate' y 'button' como hijos del elemento 'section'.
   section.append(title, name, lastname, email, emailagain, newpassword, birthdate, button);
+  // Se agrega el elemento 'section' al final del array 'pagina'.
   pagina.push(section);
+  // La función devuelve el array 'pagina' que contiene la estructura
+  // organizada de la página de registro.
   return pagina;
 }
+// Exporta la función 'registro' como el valor por defecto del módulo actual.
 export default registro;

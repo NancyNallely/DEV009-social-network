@@ -40,13 +40,14 @@ function home(navigateTo) {
     navigateTo('/Login');
   });
 
-  intro.textContent = 'Visitas México, Colombia o Perú pronto. Aqui podrás encontrar recomendaciones para comer según tu presupuesto y también compartirnos tus experiencias propias.';
+  intro.textContent = '¿Visitas México, Colombia o Perú pronto?. Aqui podrás encontrar recomendaciones para comer según tu presupuesto y también compartirnos tus experiencias propias.';
   div.append(registro, ingreso);
   barraNav.append(bienvenida, div, menu, logo);
-  main.append(intro);
-  pagina.push(barraNav);
-  pagina.push(main);
+  main.append(intro); // Se añade el elemento 'intro' como hijo del elemento 'main'.
+  pagina.push(barraNav);// Se agrega el elemento 'barraNav' al final del array 'pagina'.
+  pagina.push(main);// Se agrega el elemento 'main' al final del array 'pagina'.
+  // La función devuelve el array 'pagina' que contiene la estructura organizada de la página web.
   return pagina;
 }
-
+// Exporta la función 'home' como el valor por defecto del módulo actual.
 export default home;

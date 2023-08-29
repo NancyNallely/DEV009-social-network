@@ -13,6 +13,7 @@ import mexicoLogo from '../imagenes/mexicoLogo.png';
 import colLogo from '../imagenes/colLogo.png';
 import peruLogo from '../imagenes/peruLogo.png';
 
+// funcion para editar comentarios
 export async function EditarComentario(nuevoComentario, doc) {
   const postId = doc.id; // Reemplaza con el ID del post que deseas editar
   const nuevosDatos = {
@@ -24,8 +25,9 @@ export async function EditarComentario(nuevoComentario, doc) {
     window.location.href = '/muro';
   }
 }
+// funcion para crear DropDown
 export function createDropDown(doc) {
-  // Close the dropdown if the user clicks outside of it
+  // Cierra el dropdown si el usuario da click en otro lado
   window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
       const dropdowns = document.getElementsByClassName('dropdown-content');
@@ -81,6 +83,7 @@ export function createDropDown(doc) {
   dropdown.append(dropbtn, myDropdown);
   return dropdown;
 }
+// funcion para crear card de publicaciones en el muro
 export async function crearPost(paisSeleccionado, tipo) {
   let listaPublicaciones;
   if (tipo == null) {
@@ -89,7 +92,7 @@ export async function crearPost(paisSeleccionado, tipo) {
     listaPublicaciones = await firebase.registrosTipo(tipo, paisSeleccionado);
   }
 
-  // listaPublicaciones = await firebase.registrosPais(paisSeleccionado);
+  // div contenedor general, adentro contiene las card, cada card es un div
   const contenedor = document.createElement('div');
   contenedor.className = 'contenedor';
   if (listaPublicaciones.length > 0) {
@@ -147,7 +150,7 @@ export async function crearPost(paisSeleccionado, tipo) {
       spanLikes.append(cardLikes);
       cardCalificacion.append(cardPrecio, cardServicio, cardPicante, spanLikes);
       card.append(cardContent, cardCalificacion, botonGuardar);
-      contenedor.appendChild(card);
+      contenedor.appendChild(card);// agrega hijos que son las cards creadas en el ciclo for each
 
       let clicBoton = false;
       spanLikes.addEventListener('click', () => {
@@ -167,7 +170,7 @@ export async function crearPost(paisSeleccionado, tipo) {
   }
   return contenedor;
 }
-
+// funcion para crear una publicacion
 export function agregarPost() {
   const informacion = document.createElement('input');
   informacion.addEventListener('click', () => {
@@ -177,7 +180,7 @@ export function agregarPost() {
   informacion.placeholder = 'Cuentanos tu experiencia en aquel lugar';
   return informacion;
 }
-
+// funcion para crear aside de platos tipicos
 export function crearAside(pais) {
   let imgPlato1 = '';
   let imgPlato2 = '';
@@ -227,7 +230,7 @@ export function crearAside(pais) {
 
   return divAside;
 }
-
+// funcion para crear el muro
 async function muro(navigateTo) {
   // Obtener referencia al elemento nav
   const barraNav = document.createElement('nav');
@@ -298,7 +301,7 @@ async function muro(navigateTo) {
   });
 
   cocinaEconomica.addEventListener('click', () => {
-    localStorage.setItem('tipo', 'cocina economica');
+    localStorage.setItem('tipo', 'cocina económica');
     navigateTo('/muro');
   });
 
@@ -312,12 +315,14 @@ async function muro(navigateTo) {
   menu.appendChild(barrasMenu);
   menu.addEventListener('click', firebase.mostrarMenu);
 
+  // se agregan varios elementos a cada elemento general que los contiene
   div.append(deLujo, paraTodos, cocinaEconomica, todosTipos, inicio, cerrarSesion);
   barraNav.append(title, logo, div, menu);
   main.append(await crearPost(pais, tipo));
-  aside.append(crearAside(pais));
-  pagina.push(barraNav, aside, agregarPost(), main);
-  return pagina;
+  aside.append(crearAside(pais));// append une elementos html
+  pagina.push(barraNav, aside, agregarPost(), main);// push mete elementos en un arreglo
+  return pagina;// se retorna el arreglo pagina, que contiene todos los elementos que han
+  // sido ensamblados para formar la página web.
 }
 
 export default muro;

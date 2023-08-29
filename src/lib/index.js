@@ -8,7 +8,7 @@ import {
   signOut, browserPopupRedirectResolver, deleteDoc,
 } from '../firebase.js';
 
-// funcion para registrar usuarios
+// funcion de firebase para registrar usuarios
 export async function createUser(email, password) {
   await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -33,7 +33,7 @@ export function mostrarMenu() {
     menu.style.display = 'block';
   }
 }
-// funcion para autenticar usuarios
+// funcion de firebase para autenticar usuarios
 async function autenticarUsuarios(email, password) {
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -50,7 +50,7 @@ async function autenticarUsuarios(email, password) {
     });
 }
 
-// funcion para autenticar con google
+// funcion de firebase para autenticar con google
 export async function autenticarGoogle() {
   await signInWithPopup(auth, new GoogleAuthProvider(), browserPopupRedirectResolver)
     .then((result) => {
@@ -66,7 +66,7 @@ export async function autenticarGoogle() {
     });
 }
 
-// funcion para restaurar contraseña
+// funcion de firebase para restaurar contraseña
 export async function restaurarPassword(email) {
   sendPasswordResetEmail(auth, email)
     .then(() => {
@@ -78,7 +78,7 @@ export async function restaurarPassword(email) {
     });
 }
 
-// funcion para cerrar sesion
+// funcion de firebase para cerrar sesion
 export async function cerrarSesion() {
   await signOut(auth).then(() => {
     // Cerro sesion satisfactoriamente
@@ -152,7 +152,7 @@ export async function registrarUsuarios() {
   }
 }
 
-// funcion para obtener el usuario que se encuentra logueado
+// funcion de firebase para obtener el usuario que se encuentra logueado
 export function obtenerUsuario() {
   const usuario = auth.currentUser;
   if (usuario !== null) {
@@ -161,9 +161,10 @@ export function obtenerUsuario() {
   return null;
 }
 
-// funcion para subir una publicacion a firestore
+// funcion de firebase para subir una publicacion a firestore
 export async function guardarRegistros(formulario, foto, usuario) {
   try {
+    // toma el valor de los datos y los inserta en esa coleccion
     const docRef = await addDoc(collection(db, 'publicacionesMuros'), {
       nombreLugar: formulario[1].value,
       tipo: formulario[3].value,
@@ -183,7 +184,7 @@ export async function guardarRegistros(formulario, foto, usuario) {
   }
 }
 
-// funcion para guardar imagen
+// funcion de firebase para guardar imagen
 export function guardarImg(archivo, nombreArchivo) {
   const storageRef = ref(storage, nombreArchivo);
 
@@ -192,7 +193,7 @@ export function guardarImg(archivo, nombreArchivo) {
   });
 }
 
-// funcion para obtener el enlace de la imagen
+// funcion de firebase para obtener el enlace de la imagen
 export async function getImgUrl(archivo, nombreArchivo) {
   await guardarImg(archivo, nombreArchivo);
   getDownloadURL(ref(storage, nombreArchivo))
@@ -204,21 +205,21 @@ export async function getImgUrl(archivo, nombreArchivo) {
     });
 }
 
-// funcion para buscar los registros por pais
+// funcion de firebase para buscar los registros por pais
 export async function registrosPais(pais) {
   const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs;
 }
 
-// funcion para obtener registros por tipo de lugar
+// funcion de firebase para obtener registros por tipo de lugar
 export async function registrosTipo(tipo, pais) {
   const q = query(collection(db, 'publicacionesMuros'), where('pais', '==', pais), where('tipo', '==', tipo));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs;
 }
 
-// funcion para incrementar el numero de likes
+// funcion de firebase para incrementar el numero de likes
 export async function aumentoLikes(id) {
   const refPublicaciones = doc(db, 'publicacionesMuros', id);
   await updateDoc(refPublicaciones, {
@@ -226,7 +227,7 @@ export async function aumentoLikes(id) {
   });
 }
 
-// Función para eliminar un documento
+// Función de firebase para eliminar un documento
 export async function docDelete(docId) {
   try {
     await deleteDoc(doc(db, 'publicacionesMuros', docId));
@@ -235,7 +236,7 @@ export async function docDelete(docId) {
   }
 }
 
-// función para editar un documento
+// función de firebase para editar un documento
 export async function editarDocumento(docId, nuevosDatos) {
   try {
     const docRef = doc(db, 'publicacionesMuros', docId);
